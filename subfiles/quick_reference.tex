@@ -1,0 +1,62 @@
+\documentclass[main.tex]{subfile}
+\begin{document}
+    \chapter*{Quick Reference}
+    \begin{enumerate}
+        \item Description of team and updated list of all associated team members and advisors
+        \item Design description for Pod. At a minimum, this should include:
+        \begin{enumerate}
+            \item Pod top-level design summary
+            \item Pod dimensions
+            \item Pod mass by subsystem
+            \item Pod payload capability
+            \item Pod materials
+            \item Pod power source and consumption
+            \item Pod navigation mechanism
+            \item Pod levitation mechanism (if any)
+            \item Pod propulsion mechanism
+            \item Pod braking mechanism
+            \item Pod stability mechanisms (e.g. attitude and lateral motion)
+            \item Pod aerodynamic coefficients
+            \item Pod magnetic parameters (if applicable)
+        \end{enumerate}
+        \item Predicted Pod thermal profile
+        \item Predicted Pod trajectory (speed versus distance)
+        \item Predicted vibration environments
+        \item Pod structural design cases: at a minimum, this shall include initial acceleration, nominal deceleration, and a reasonably foreseeable off-nominal crash
+        \item Pod production schedule
+        \item Pod cost breakdown
+        \item Sensor list and location map
+        \item Comments on scalability to an operational Hyperloop with respect to:
+        \begin{enumerate}
+            \item System size (increased tube length, tube diameter, and Pod size)
+            \item Cost (both production and maintenance)
+            \item Estimated Pod mass and cost if built full-scale
+            \item Maintenance (e.g. not requiring specialized alignment tools, hot-swappable subsystems)
+        \end{enumerate}
+        \item Loading and unloading plan
+        \begin{enumerate}
+            \item Full descriptions of all functional tests (see Sections 10 and 12)
+            \item Full description of Ready-to-Launch checklist/state (e.g. Loop Computer in “Launch Mode” and sending telemetry, Pod hovering at 0.25 inches)
+            \item Full description of Ready-to-Remove checklist/state (e.g. Wheels locked, Power Off)
+            \item Description of how Pod is moved from Staging Area to Hyperloop
+            \item Description of how Pod is moved from Hyperloop to Exit Area
+        \end{enumerate}
+        \item List and description of any stored energy on the Pod (i.e. pressure vessels, batteries)
+        \item List of any hazardous materials, if any
+        \item Description of safety features including:
+        \begin{enumerate}
+            \item Hardware and software inhibits on braking during the acceleration phase
+            \item Mechanisms to mitigate a complete loss of Pod power
+            \item Pod robustness to a tube breach resulting in rapid pressurization
+            \item Fault tolerance of braking, levitation, and other subsystems
+            \item Single point of failures within the Pod
+            \item Recovery plan if Pod becomes immovable within tube
+            \item Implementation of the Pod-Stop command
+        \end{enumerate}
+        \item Component and system test program before the Pod arrives for the Competition
+        \item Vacuum Compatibility Analysis
+        \item If a returning Pod, highlight the modifications and upgrades made
+    \end{enumerate}
+
+    \addcontentsline{toc}{chapter}{Quick Reference}
+\end{document}

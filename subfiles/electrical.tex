@@ -1,0 +1,276 @@
+\documentclass[main.tex]{subfile}
+\begin{document}
+    \section{Electrical}
+    Mass, power consumption tables\\
+    Fault tolerance, potential failure modes (FMEA)\\
+    Whether it’s a single point of failure, and how to manage that\\
+    Tests \& Validation (completed and planned)\\
+    Cost breakdown\\
+    Bill of Materials; whether it’s off the shelf or custom built.\\
+
+    ABS Specs for 3D printing.\\
+    Volume: \SI{0.80}{cm^3/g} or \SI{800}{cm^3/kg}.\\
+    \SI{1.75}{mm} filament length per \SI{1}{kg} spool: $\sim \SI{330}{m}\ / \sim \SI{1080}{ft}$\\
+    ABS. Cost: $\$\SI{30}{/kg} \rightarrow \$\SI{0.03}{/g}$\\
+
+    Connectors\\
+
+    Copper Wiring\\
+
+
+
+
+    Safety and handling\\
+    Ilya’s doc + modification\\
+    Detailed CAD, as well as a picture of where it is in the main CAD.\\
+    Justin will provide cads. \\
+    Manufacturability; current build status if applicable\\
+    Wire Management\\
+    Insulation and harnessing\\
+    Connectors\\
+    Mass \\
+    Materials (ABS, Aluminium, Copper)\\
+
+
+    University of Waterloo has spot welding equipment for connecting cells in series.
+    3D print cell supports using ABS plastic. E5 print room has 3D printers for that purpose.
+    Graphs and visuals\\
+
+    Justifications for design decisions - including selection process for design candidates and OTS products.\\
+
+    Vacuum compatibility\\
+
+    \subsection{Battery}
+    \subsubsection{Design Criteria}
+    \subsubsection{535V Battery}
+    The 535V battery will be referred to as the main battery for the rest of this document.\\
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{@{}lr@{}} \toprule
+            Specification & Emrax 268 motor\\ \midrule
+            Peak Voltage & \SI{680}{V}\\
+            Operating Voltage & \SI{400}{V}\\
+            RPM per Volt & \SI{7.5}{rpm} (estimated)\\
+            Torque per Amp & \SI{1.4}{Nm}\\
+            Power (peak) & \SI{230}{KW}\\
+            Power (continuous) & \SI{100}{KW}\\
+            Torque (peak) & \SI{500}{Nm}\\
+            Torque (continuous) & \SI{250}{Nm}\\ \bottomrule
+        \end{tabular}
+        \caption{Motor Specifications}
+    \end{table}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{@{}lr@{}} \toprule
+            Specification & Main Battery\\ \midrule
+            Max Voltage & \SI{535}{V}\\
+            Peak Current & \SI{337.5}{A}\\
+            Power (peak) & \SI{135}{KW}\\
+            Power (continuous) & \SI{97.5}{KW}\\ \bottomrule
+        \end{tabular}
+        \caption{Main Battery Specifications}
+    \end{table}
+    This battery will power the motor and will be assembled with LiPo cells from HobbyKing. HobbyKing is a manufacturer that tailors to RC hobby planes, which draw high current for short bursts of time, which is a relatively similar use case to the Goose 3.  Furthermore, they are readily accessible in low quantities such that the team can place rush orders if necessary.  Many other cell chemistries and other Lithium Polymer cells were considered, however the Nanotech batteries (with specs stated above) were chosen for their low cost, high discharge rate, and similar intended use case. The BMS is being outsourced to Elithion, who has a reputation for building reliable Battery Management Systems for many different prototypes and student design teams. Factors such as internal resistance have been factored into the determination of the battery voltage. As seen in the table above, in order to achieve desired speed, the battery voltage must not drop below 385 V.  Thus, a conservative value of 400V was decided as the minimum expected voltage of the battery within it’s approximately 11 second run. Running at \SI{67}{\celsius}, this means the maximum voltage of the battery must be approximately 550 V.
+    \begin{itemize}
+        \item 4.2V(peak), 3.7V (nominal), 3700mAh, 337.5A (90C)
+        \item Design of cell/module/battery. Include dimensions of each.
+        650V battery power consumption table
+    \end{itemize}
+    Screenshots of CAD models
+    \begin{itemize}
+        \item Cell terminals to be spot welded in series. 4/5 cells in each module. Want to use entire surface of terminal.
+        \item 32 modules connected in series.??
+        \item BMS only has input for 16 modules, so will need to connect two modules together to meet the maximum number of input.
+    \end{itemize}
+    \subsubsection{24V Battery}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{@{}lrc@{}} \toprule
+            Specification & Main Battery & Unit\\ \midrule
+            Maximum Voltage & 25.2 & \si{V}\\
+            Nominal Voltage & 22.2 & \si{V}\\
+            Minimum Voltage & 19.2 & \si{V}\\
+            Capacity & 7.5 & \si{Ah}\\
+            Current Draw & 3.06 & \si{A}\\
+            Power Draw & 40 & \si{W}\\
+            Discharge Rate & 0.41 & \si{C}\\
+            Time to Discharge & 2.45 & \si{h}\\ \bottomrule
+        \end{tabular}
+        \caption{24V Battery Specifications}
+    \end{table}
+    The 24V battery will be constructed of the same cells as the main battery. This decision was made to be resource and cost efficient, since designs and materials from the main battery can be carried over.. The battery will be contained within the same housing as the main battery. The cell arrangement is 6S2P, and will be built from the same cells as the main battery.The 24V battery will power the embedded system, including all sensors (including ESC’s additional functions). In the instance the 24V battery fails, there will be a backup battery with identical specs, but with half the capacity (6S1P configuration). This backup battery will be held isolated from the other batteries in  a location identified in the sensor map (in embedded section). This location was chosen due to the short distance from friction and EC brakes, which would need to be activated in case of an emergency.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{@{}lrrrrrc@{}} \toprule
+            Component & Quantity & \makecell{Operating \\ Voltage (V)} & \makecell{Current \\ Draw/Unit (A)} & \makecell{Total Current \\ Draw (A)} & \makecell{Power \\ Draw (W)} & Notes\\ \midrule
+            Arduino Nano & 6 & 5 & 0.0334 & 0.2004 & 1.002 &\\
+            Arduino Mega & 3 & 5 & 0.05 & 0.15 & 0.75 &\\
+            Raspberry Pi & 2 & 5 & 0.7 & 1.4 & 7 &\\
+            Contact Temp. & 8 & 5 & 0.00005 & 0.0004 & 0.002 &\\
+            IR Temp & 8 & 3.3 & 0.00024 & 0.00192 & 0.006336 &\\
+            PED & 4 & 24 & 0.1 & 0.4 & 9.6 &\\
+            IMU & 2 & 3.3 & 0.0016 & 0.0032 & 0.01056 &\\
+            ESC & 1 & 24 & 0.9 & 0.9 & 21.6 & \makecell{Inrush \\ current of 4A}\\ \midrule
+            Total & & & & 3.05592 & 39.970896 &\\ \bottomrule
+        \end{tabular}
+        \caption{Consumption of Components}
+    \end{table}
+    \paragraph{Wire Management}
+    The wire used to power the motor needs to support a voltage of 625V and a current of 205A. This will need to run from the battery to the motor, which are about 0.5m apart from each other. According to guidelines outlined by Blue Sea Systems Inc.\footnote{“Part 1: Choosing the Correct Wire Size for a DC Circuit.” Internet: https://www.bluesea.com/resources/1437, May 19, 2010 [Dec 17, 2017]}, this wire needs to be a 2|0 AWG copper wire. The arduinos and sensors do not require a current greater than 5A, so they can use 16 AWG copper wire.\\
+
+    Wires will be routed such that power lines for main battery will be as far away as possible from all other cables (to avoid interference).
+
+    \begin{itemize}
+        \item Add notes above harness, connectors (cannon and molex microfit jr.) connections intended to be used
+    \end{itemize}
+
+    \subsubsection{Battery Management System}
+    \paragraph{Main Battery}
+    \begin{itemize}
+        \item BMS
+    \end{itemize}
+
+    \paragraph{24V Battery}
+    The 24V battery will use a commercially available 6S BMS. In order to ensure the BMS works as advertised, very basic tests will be conducted (i.e. try to draw current above what BMS is restricted to).
+    \subsubsection{Battery Charging}
+    \paragraph{Main Battery}
+    \begin{itemize}
+        \item Charging
+    \end{itemize}
+    \paragraph{24V Battery}
+    The 24V battery will be charged through standard hobbyist grade LiPo cell chargers, which are already owned by the team.\\
+
+    ESC, how power will be transferred and ensured for safety
+
+    \subsection{Circuit Diagrams \& Flowcharts}
+    \begin{itemize}
+        \item Safety Circuits
+    \end{itemize}
+    \subsection{Failsafes}
+    \begin{itemize}
+        \item Main power loss immediately activates EC brakes and disables motors.
+        \item Software power loss does the same thing.
+    \end{itemize}
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{@{}lll@{}} \toprule
+            & Operational & Failed\\ \midrule
+            EC Brakes & Normally open \& Brakes disengaged & Go to Normally Closed \& Brakes engage\\
+            Friction Brakes & Friction brake disengaged & If speed is below \_ m/s, engage friction brakes.\\
+            IMU & \makecell[l]{Powered by Arduino 3.3V line (which \\ will be powered via 24V battery).} & \makecell[l]{IMU (and associated Arduino) will be \\ powered via backup LiPo cell.}\\
+            Discharge Circuit & Not operational & \makecell[l]{Discharge battery through a capacitor and \\ power resistor.}\\ \bottomrule
+        \end{tabular}
+        \caption{Caption}
+    \end{table}
+    Hardware and software inhibits on braking during the acceleration phase
+    \begin{itemize}
+        \item E.g. electrically cut power to the motor if brakes engage
+    \end{itemize}
+    \subsection{Thermal}
+    \subsection{Testing}
+    Since different cell chemistries (even similar ones) react differently to various incidents (i.e. puncturing the cell), it was determined that the most effective way to show the battery design will be safe would be to experimentally test various components of the batteries to varying  extents, and using experimentally derived results to determine safe operating ranges for the batteries. The 3.7 V batteries used as backup power for the Arduino and Raspberry Pi have already been tested previously by our team in a vacuum, drawing expected current draw with no issues. Outlined below are general testing plans for the main and 24V battery. They will be furthered expanded upon once details of testing have been finalized.
+    \subsubsection{Purpose of Testing}
+    To determine the absolute limits of batteries and to determine expected range of values for battery including temperature, current, and voltage under various different conditions.
+    \subsubsection{Parameters of Testing}
+    All cell level testing (testing levels will be described later further on) will be done to failure with the exception of vacuum testing (in order to protect testing equipment). With the exception of vibration testing, module level testing will be tested to failure with the exception of vibration testing, which will be done through a wide range of frequencies. The final battery will undergo no destructive testing however testing from all level testings should provide a thorough analysis of how final battery will react to various different unexpected scenarios.
+    \subsubsection{Equipment for Testing}
+    Temperature sensors (both IR and contactless) will be used to monitor temperature of batteries in all tests. A shunt resistor and arduino will be used to measure current and voltage at all times, in all tests. Impact testing and hydraulic press testing will most likely be performed at university facilities, however facilities have not been confirmed. Vibration testing will be performed at Infinity Testing Solutions, however use of facilities for Goose III have not been confirmed.
+    \subsubsection{Testing Procedure}
+    Side Note: Testing will be broken into three “levels”; cell testing, module testing and battery testing. This testing is specifically with regards to the 535V battery. While the other batteries (24V and 3.7 V) will be tested, the 535V battery will be tested to the most rigorous degree, as a failure of this battery would lead to a significantly more catastrophic outcome than the other ones.
+
+    \paragraph{Level One: Cell Testing}
+    This level of testing is where the most destructive testing will occur, since cells are relatively cheap in comparison to modules and the full battery. The cells being tested on will be from the Turnigy’s Nano-tech Ultimate  7500 mAh 2S2P. Since the battery comes in a variety of different capacities, all cell level testing will be done on both the 3750 mAh cells as well as the 1300 mAh cells, to determine the consistency of the specific cell chemistry. This will help the team, in the instance our power demands change and a change in capacity is required. The cell level tests include:
+    \begin{enumerate}
+        \item \textbf{Mechanical Damage}
+        \begin{enumerate}
+            \item \textit{Impact Testing}
+            \begin{enumerate}
+                \item \textbf{What: }Use impact testing facilities to expose the cells to impulses of increasing values, until failure.
+                \item \textbf{Why: }To understand what precautions need to be taken while transporting the batteries, whether this is driving the battery to competition, what to expect if the battery is accidentally dropped, and any other potential cases that may damage the battery.
+                \item \textbf{Recorded Data: }Qualitative analysis (including video) and maximum impulse a cell can handle from various angles.
+                \item \textbf{Next steps: }To model the full battery based on the results from cell testing.
+            \end{enumerate}
+            \item \textit{Puncture Testing}
+            \begin{enumerate}
+                \item \textbf{What: }Use a nail to puncture the cells in various locations.
+                \item \textbf{Why: }To understand what will happen if cell is accidentally punctured during assembly or transport.
+                \item \textbf{Recorded Data: }Qualitative analysis (including video) and heat generated over time.
+                \item \textbf{Next Steps: }N/A
+            \end{enumerate}
+        \end{enumerate}
+        \item \textbf{Over Current Damage}
+        \begin{enumerate}
+            \item \textbf{What: }Short the two leads of the battery together in a safe environment.
+            \item \textbf{Why: }To understand what will occur in case of a short, since various LiPo cells  react differently when shorting (some, just gas, while others start a fire).
+            \item \textbf{Recorded Data: }Qualitative analysis (including video), maximum dimensions of cell (via video analysis) and heat generated.
+            \item \textbf{Next Steps: }Model the full battery overcurrent damage based on data from cell damage.
+        \end{enumerate}
+        \item \textbf{Over Charging Damage}
+        \begin{enumerate}
+            \item \textbf{What: }Charge cell to increasing levels of voltage above 4.2 V max charge rating.
+            \item \textbf{Why: }To test the maximum manufacturer rating for the battery, and to see how far above it the battery can go (or if it is even capable of reaching 4.2 V). Batteries used in competition will not be charged about maximum manufacturer rating nor will they have been previously charged above this value. The overcharge component of the test is purely for testing purposes.
+        \end{enumerate}
+        \item \textbf{Cycle Testing}
+        \begin{enumerate}
+            \item \textbf{What: }Cycle cells at various discharge rates, including and above our expected discharge rate.
+            \item \textbf{Why: }To determine the expected life cycle of the full battery. If our battery is used for different purposes in the future, expected lifespan can then be calculated from tests at different discharge rates. Furthermore, this will help determine whether or not the battery manufacturer’s listed specs are valid.
+            \item \textbf{Recorded Data: }Qualitative analysis (including video), cell charge and discharge rates and times, charge capacity, heat generation, and cell initial and final dimensions (plus any other notable dimension changes if any).
+            \item \textbf{Next Steps: }N/A
+        \end{enumerate}
+        \item \textbf{Vacuum Testing}
+        \begin{enumerate}
+            \item \textbf{What: }High current testing in a vacuum up to 90C or until it appears (both qualitatively and thermally) the cell is about to explode. This test must be conducted last of the five cell level tests. While the order of other tests does not matter, this test must be conducted last. The data of the other tests will provide expected ranges in which the battery can safely operate (i.e. temperature, expansion, etc.). There must be automatic shutoffs in place when any value exceeds safe ranges in order to avoid damaging the testing facility.
+            \item \textbf{Why: }To ensure the battery will operate safely in a vacuum, while drawing a high current, since pressure changes may cause increase expansion rate.
+            \item \textbf{Recorded Data: }Qualitative analysis (including video), current and voltage draw,
+            \item \textbf{Next Steps: }If cells do expand due to testing, determine whether or not the cells can be safely used in the design, or if new cell needs to be used
+        \end{enumerate}
+    \end{enumerate}
+    \paragraph{Level Two: Module Testing}
+    This level of testing will be conducted on modules (4S). The cells being tested on will be from the Turnigy’s Nano-tech Ultimate  7500 mAh 2S2P. Since the battery comes in a variety of different capacity’s, all cell level testing will be done on both the 3750 mAh cells as well as the 1300 mAh cells (if time and budget permits), to determine the consistency of the specific cell chemistry. This will help the team, in the instance our power demands change and a change in capacity is required. The module level tests include:
+    \begin{enumerate}
+        \item \textbf{Expansion Testing}
+        \begin{enumerate}
+            \item \textbf{What: }Allow x number of cells (where x ranges from 1-4) to expand via a short circuit.
+            \item \textbf{Why: }To determine what will happen in the instance a cell (or multiple cells) within a module expand.
+            \item \textbf{Recorded Data: }Qualitative analysis (including video), and thermal analysis.
+            \item \textbf{Next Steps: }Design and test multiple different module enclosures, to determine the safest, effective design.
+        \end{enumerate}
+    \end{enumerate}
+    \paragraph{Level Three: Full Battery Testing}
+    This level of testing will be conducted with the full battery (650V), in its completed arrangement. There will be no destructive testing at this level (due to cost), and data provided from previous tests should set parameters at which the battery can safely operate. The data from this level of testing should correlate with results from previous tests, however the current draw will be incrementally increased to avoid damage from unexpected factors. The first two tests will be conducted with a large number of temperature sensors (and potentially a thermographic camera) to create a simulated “map” of the battery’s temperature at any given location. From there the 3-4 points that have the tendency to be the hottest will chosen for the final sensor setup. The latter two tests will only use this 3-4 points of temperature monitoring, and will be conducted at competition using SpaceX’s vacuum facilities.
+    \begin{enumerate}
+        \item \textbf{Motor No Load Testing}
+        \begin{enumerate}
+            \item \textbf{What: }Incrementally increasing current draw from motor, until at max expected draw of 55C.
+            \item \textbf{Why: }To ensure the motor, BMS, and ESC all work in conjunction with one another.
+            \item \textbf{Recorded Data: }Qualitative analysis (including video), thermal profile, RPM of motor, and any other info the ESC and BMS will provide.
+            \item \textbf{Next Steps: }N/A
+        \end{enumerate}
+        \item \textbf{Motor With Load Testing}
+        \begin{enumerate}
+            \item \textbf{What: }Once friction drive has been assembled and both the friction drive and battery have been integrated, the same test as the previous test will be conducted. If there is a test track available, there will be a second component to this test in which the pod will move down the racetrack.
+            \item \textbf{Why: }To ensure the friction drive has been assembled correctly, and will function as expected.
+            \item \textbf{Recorded Data: }Qualitative analysis (including video), and all sensor info from embedded system.
+            \item \textbf{Next Steps: }N/A
+        \end{enumerate}
+        \item \textbf{Vacuum Testing}
+        \begin{enumerate}
+            \item \textbf{What: }Test the battery (with electronics powered on) within SpaceX’s vacuum testing facility.
+            \item \textbf{Why: }To ensure everything works as expected.
+            \item \textbf{Recorded Data: }Data from embedded systems.
+            \item \textbf{Next Steps: }N/A
+        \end{enumerate}
+        \item \textbf{Motor Testing in Vacuum}
+        \begin{enumerate}
+            \item \textbf{What: }Test the pod down SpaceX’s race track.
+            \item \textbf{Why: }To ensure everything works as expected.
+            \item \textbf{Recorded Data: }Data from embedded systems.
+            \item \textbf{Next Steps: }N/A
+        \end{enumerate}
+    \end{enumerate}
+    \paragraph{General Next Steps (this includes tests marked N/A)}
+    An initial Battery Safety 101 will be conducted with all members who participate in testing. Furthermore, all results from level one and two testing will be incorporated into a secondary Battery Safety Training which provide all necessary info on what to do with a cell, module or battery in any given instance.Training will be given to all members involved in battery construction, as well as the Integration leads. If at any point of testing, the batteries are deemed to be “too dangerous” (i.e. vacuum testing shows that cells will burst when drawing expected discharge rate of 55C), the team must go back to the drawing board and determine a new potential cell candidate.
+
+\end{document}
