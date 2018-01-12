@@ -1,11 +1,12 @@
-\documentclass{report}
+\documentclass[hidelinks, twoside]{report}
 \usepackage[utf8]{inputenc}
 \usepackage[toc,page]{appendix}
 \usepackage[letterpaper, margin=1in]{geometry}
 \usepackage{tocbibind}
 \usepackage{datetime}
 \usepackage{multicol}
-\usepackage{graphicx}
+\usepackage[]{graphicx}
+\usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{float}
 \usepackage{siunitx}
@@ -13,12 +14,45 @@
 \usepackage{booktabs}
 \usepackage{makecell}
 \usepackage{subfiles}
+\usepackage{textcomp}
 \usepackage{hyperref}
 \usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{color}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage{etoc}
+\usepackage{minted}
+\usepackage{etoolbox}
+\usepackage{lscape}
+\usepackage{enumitem}
 
-\author{Waterloop Team}
+\pagestyle{fancy}
+\renewcommand{\etocaftertitlehook}{\thispagestyle{fancy}}
+\renewcommand{\etocaftertochook}{\thispagestyle{fancy}}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+\fancyhf{}
+\fancyhead[LE,RO]{Final Design Package}
+\fancyhead[RE,LO]{Waterloop}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[CE,CO]{
+	\begin{minipage}{.18\textwidth}
+        \centering
+        \includegraphics[width=\linewidth,height=15pt,keepaspectratio]{images/w_logo_transparent.png}
+    \end{minipage}
+}
 
-\setlength{\parindent}{0pt}
+\author{Team Waterloop}
+
+\newcommand{\refeq}[1]{\hyperref[#1]{Equation \ref*{#1} on page \pageref*{#1}}}
+\newcommand{\refsec}[1]{\hyperref[#1]{Section \ref*{#1} on page \pageref*{#1}}}
+\newcommand{\refsubsec}[1]{\hyperref[#1]{Subsection \ref*{#1} on page \pageref*{#1}}}
+\newcommand{\refsubsubsec}[1]{\hyperref[#1]{Subsubsection \ref*{#1} on page \pageref*{#1}}}
+\newcommand{\refpara}[1]{\hyperref[#1]{Paragraph \ref*{#1} on page \pageref*{#1}}}
+\newcommand{\reffig}[1]{\hyperref[#1]{Figure \ref*{#1} on page \pageref*{#1}}}
+\newcommand{\reftab}[1]{\hyperref[#1]{Table \ref*{#1} on page \pageref*{#1}}}
+
+% \setlength{\parindent}{0pt}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 \title{Waterloop Final Design Package}
@@ -31,29 +65,67 @@
 
 \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}\\}
 
+% % Hack to make minted work inside tabularx
+\makeatletter
+\def\tabxmintinline#1#2{%
+\ifx\@footnotetext\TX@trial@ftn
+\detokenize{#2}%
+\else
+\mintinline{#1}{#2}%
+\fi}
+\makeatother
+
 \begin{document}
-    \maketitle
+    %%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+    %   TITLEPAGE
+    %
+    %   due to variety of titlepage schemes it is probably better to make titlepage manually
+    %
+    %%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
+    \thispagestyle{empty}
+
+    {%%%
+    \centering
+    \Large
+
+    ~\vspace{\fill}
+
+    \vspace{2.5cm}
+
+    \includegraphics[width=200px]{images/waterloop_logo.png}
+
+    \includegraphics[width=\textwidth]{images/assembled_goose.png}
+
+    \vspace{3.5cm}
+    University of Waterloo
+
+    \vspace{\fill}
+
+    2017-2018
+
+    %%%
+    }%%%
+    \clearpage
+
     Revised \displaydate{date}\\
 
     Prepared by the Waterloop Team.
 
     Prepared for Space Exploration Technologies Corp. for the Hyperloop Pod Competition.\\
 
-    \copyright \ 2017 by Waterloop.
+    \copyright \ 2018 by Waterloop.
 
     All rights reserved. Not for public distribution.\\
 
-    Document approved for submission by the Waterloop executive team on \_\_\_.
+    Document approved for submission by the Waterloop executive team on January 12, 2018.
 
     \tableofcontents
     \newpage
 
-    \subfile{subfiles/quick_reference.tex}
+ 	\subfile{subfiles/quick_reference.tex}
     \subfile{subfiles/introduction.tex}
 
-
     \chapter{Subsystems}
-
     \subfile{subfiles/propulsion.tex}
     \subfile{subfiles/eddy_current_brakes.tex}
     \subfile{subfiles/lateral.tex}
@@ -61,24 +133,98 @@
     \subfile{subfiles/shell.tex}
     \subfile{subfiles/electrical.tex}
     \subfile{subfiles/embedded.tex}
+    \subfile{subfiles/control.tex}
+    \subfile{subfiles/safety.tex}
     \subfile{subfiles/next_steps.tex}
 
     \begin{appendices}
         \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
         \makeatletter
-        \addtocontents{toc}{%
+        \addtocontents{toc}{
             \begingroup
             \let\protect\l@chapter\protect\l@section
             \let\protect\l@section\protect\l@subsection
         }
         \makeatother
-
+        
         \chapter{Hazards \& FMEA}
-        \chapter{Procedures}
+
+Hazardous materials can be released due to any of these situations: rupturing lithium cells, short-circuiting lithium cells that could cause a fire, fires that may cause lithium cells to explode, or piercing/ breaking the protective layers of any cell. If a lithium battery explodes, there can be released molten lithium shrapnel.\\
+
+\noindent \underline{List of hazards and associated hazardous materials:}\\
+
+\noindent TOXIC (Harmful if inhaled or swallowed):\\
+\noindent Thionyl chloride, Bromine gas, Chlorine dioxide gas, Sulfur dioxide gas, Sulfuryl chloride gas.\\
+
+\noindent CORROSIVE (Causes skin, digestive and respiratory tract burns and eye damage):\\
+\noindent Thionyl chloride, Bromine gas, Chlorine dioxide gas, Hydrochloric acid, Sulfur dioxide gas, Sulfuryl chloride gas, Lithium hydroxide.\\
+
+\noindent FLAMMABLE:\\
+\noindent Hydrogen gas\\
+
+\noindent OXIDIZING MATERIAL (May cause or 
+intensify fire; oxidizer):\\
+\noindent Chlorine dioxide gas\\
+
+\noindent \underline{General procedures in keeping others safe:}\\
+    
+\noindent Make sure anyone wanting to inspect the Waterloop pod, or any of its components are accompanied by a trained Waterloop member. In case of any emergency, warn others and immediately leave to a safer area. Report the emergency and attend to any person exposed to any leaked hazardous materials. Seek medical attention, if required.\\
+
+\noindent \underline{Failure Mode and Emergency Analysis}\\
+
+\begin{table}
+\centering
+  \begin{tabular}{@{}p{2cm}p{2cm}p{3cm}p{1cm}p{3cm}p{3cm}@{}} \toprule
+    Function & Failure Type & Potential Impact & Severity & Potential Causes & Detection Mode \\ \midrule
+    Air bag suspension & Leak / burst & Poor stability & 9 & Defective airbag & None\\
+    Belt & Snap & No power delivery & 9 & Over-tension, defective belt & RPM spike and speed decreases\\
+    Motor cooling & Leak & Motor overheating & 6 & Defective hose & Temperature sensor\\
+    Pneumatic actuator & Leak/Burst & Insufficient pressure/force & 9 & Over-pressurization, defective & Pressure sensor \\
+    Wheels & Polyurethane wearing off & More resistance during propulsion, lower speed & 7 & Polyurethane not able to withstand high speed & None \\
+    Bearings & Degradation & Increase in friction / resistance, overheating & 7 & Improper lubrication, defective bearings & None \\
+    Shaft & Deformation & Less effective transmission system & 8 & Excessive force on transmission system & None \\ \bottomrule
+  \end{tabular}
+  \caption{FMEA Propulsion}
+  \label{table:fmea-propulsion}
+\end{table}
+
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{ccclcccc}
+\hline
+\multicolumn{3}{c}{Input}    &  & \multicolumn{4}{c}{Output}                                      \\ \hline
+Main Battery & 24V 1 & 24V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes & Friction Drive \\ \hline
+1            & 1     & 1     &  & 1                & 1         & 1               & 1              \\
+1            & 1     & 0     &  & 1                & 0         & 1               & 0              \\
+1            & 0     & 1     &  & 1                & 0         & 1               & 0              \\
+1            & 0     & 0     &  & 0                & 0         & 0               & 0              \\
+0            & 1     & 1     &  & 1                & 0         & 1               & 0              \\
+0            & 1     & 0     &  & 1                & 0         & 1               & 0              \\
+0            & 0     & 1     &  & 1                & 0         & 1               & 0              \\
+0            & 0     & 0     &  & 0                & 0         & 0               & 0              \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}
+\centering
+  \begin{tabular}{@{}p{2cm}p{2cm}p{3cm}p{1cm}p{3cm}p{3cm}@{}} \toprule
+    Function & Failure Type & Potential Impact & Severity & Potential Causes & Detection/Mitigation \\ \midrule
+    \multirow{2}{}{Battery} & Overheat & Fire & 10 & Short Circuit/
+    Air bag suspension & Leak / burst & Poor stability & 9 & Defective airbag & None\\
+     \bottomrule
+  \end{tabular}
+  \caption{FMEA Electrical}
+  \label{table:fmea-electrical}
+\end{table}
+
+\chapter{Procedures}
         \chapter{Bill of Materials}
+        \label{app:bom}
+        \subfile{subfiles/bom.tex}
         \chapter{Part Drawings}
         \chapter{Engineering Calculations?}
-        \chapter{Research Topics?}
         \addtocontents{toc}{\endgroup}
     \end{appendices}
 
