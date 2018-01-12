@@ -74,7 +74,7 @@ Due to the UWaterloo co-op system, our team rotates approximately every four mon
     \item Administrative Leads: Nicholas Jelich, Natalia Zigante, Nafee Hasan, Aditya Arora
     \item Technical Leads: William Ngana, Deep Dhillon, Ruslan Nikolaevra, Urooj Khaleeli, Jimmy Zhou, Benjamin Tonita, Chawthri Kanagarasa, Lily Hwang
 \end{itemize}
-
+\begin{flushleft}
 \subsection{Sponsors}
 Thanks to all our sponsors, past and present
 
@@ -390,7 +390,7 @@ Thanks to all our sponsors, past and present
 \chapter{Top-Level Design}
 Labeled CAD (Exploded? Semitransparent? Color coded?)\\
 
-Our pod design process for Competition III began with the goal of building the fastest possible pod. Based purely on specific power and energy of lithium ion batteries (and perhaps supercapacitors), it is theoretically possible to achieve speeds above Mach 1 within the 1-mile Hyperloop test track. Our pod this year is designed to achieve 100 m/s, and we are working gradually toward higher and higher speeds for future competitions.
+Our pod design process for Competition III began with the goal of building the fastest possible pod. Based purely on specific power and energy of lithium ion batteries (and perhaps supercapacitors), it is theoretically possible to achieve speeds above Mach 1 within the 1-mile Hyperloop test track. Our pod this year is designed to achieve 100 m/s, and we are gradually working towards higher and higher speeds for future competitions.
 
 
 \section{Summary of design}
@@ -402,17 +402,18 @@ Our pod consists of the following major components:
     \item Frame: Aluminum ladder frame
 \end{itemize}
 Uniqueness/Novelty\\
+The Pod for the third competition differentiates itself from the previous one, primarily due to the incorporation of the propulsion system. This change has 
 Changes from PDB and reasoning for changes\\
 If reusing a system in whole or part, explain changes\\
 
 \subsection{Size and Mass}
 The size of the pod is primarily dictated by the size of the propulsion system and the size of the I-beam.\\
-The mass of the pod depends on the individual mass of each subsystem, as seen in table 2.1. The overall mass of the pod should be approximately 150 kilograms. 
+  The mass of the pod depends on the individual mass of each subsystem, as seen in \reftab{table:mass}. The overall mass of the pod should be approximately 150 kilograms. 
 
-\begin{table}[H]
+\begin{table}
 \centering
-\begin{tabular}{c c}
-	\toprule Subsystem & Mass of Subsystem (KG) \\ \midrule
+\begin{tabular}{@{}lc@{}}
+	\toprule Subsystem & Mass of Subsystem (\si{kg}) \\ \midrule
     Friction Drive & 55.8 \\
     Frame & 19.0 \\
     Electrical & 23.5 \\
@@ -422,10 +423,10 @@ The mass of the pod depends on the individual mass of each subsystem, as seen in
     Lateral & 10.1 \\ 
     \end{tabular}
   \caption{Mass of individual subsystems}
-  \label{table:bearingtable}
+  \label{table:mass}
 \end{table}
     
-Overall weight distribution/Center of mass\\
+Overall weight distribution/Centre of mass\\
 The cross-section of the pod is small enough that aerodynamic effects like the Kantrowitz limit\\
 are negligible (IS THIS SENTENCE OUT OF PLACE?).\\
 
@@ -447,22 +448,22 @@ How are various parts of the pod cooled? (summarize)
 
 \subsection{Predicted Pod trajectory}
 Speed versus distance graph
-\begin{figure}
+\begin{figure} [H]
         \centering
         \includegraphics[width=\linewidth]{images/velocity_time_graph}
         \caption{Velocity Profile During Braking}
         \label{fig:velocity-profile}
     \end{figure}
     
-    \begin{figure}
+    \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/distance_time_graph}
-        \caption{the distance traveled in during braking}
+        \caption{the distance travelled in during braking}
         \label{fig:distance-profile}
     \end{figure}
 
 \subsection{Loading and Unloading Plan}
-Due to the pod being relatively lightweight – approximately 150 kilograms, the pod can simply be moved and lifted by 10 people. Therefore, moving to and away from the Hyperloop is not a large safety concern.
+Due to the pod being relatively lightweight – approximately 150 kilograms, the pod can simply be moved and lifted by 10 people. Therefore, moving to and away from the Hyperloop competition is not a large safety concern.
 
 \section{Scalability}
 Our pod design seeks to be the simplest possible design for a Hyperloop. However, it is difficult to scale to high-subsonic speeds for several reasons.
@@ -477,4 +478,5 @@ Preliminary analysis on scalability to an operational Hyperloop needs to be done
     \item Power, cooling, safety, etc.
     \item Propulsion effectiveness
 \end{itemize}
+\end{flushleft}
 \end{document}

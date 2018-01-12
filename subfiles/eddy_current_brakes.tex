@@ -5,7 +5,14 @@
     With only 1.6 kilometers of tube to work with, it is extremely difficult to dissipate the huge kinetic energy at 100m/s quickly. Pure friction braking, as with the braking calipers (\refsec{sec:friction-braking-calipers}), cannot work alone, since either the enormous shear forces and heat generated will destroy the brakes, or the pod will not stop within the length of the tube. This is why eddy current will be used for the braking. These permanent magnet eddy current brakes work by inducing an eddy current in the top flanges of the aluminum rail. These eddy currents create an opposing magnetic field causing braking force on the pod. All eddy current heat generation occurs in the rail, resulting in zero heat addition to the pod system. This rate of heat generation will never come even within an order of magnitude of damaging the rail or the pod. The difficulty arises in the large forces that will be created by the brakes. The design of the brakes will have to be able to handle theses forces. 
 
     \section{Overall Design}
-    For the brakes we will be using a pneumatic actuator and to do so we will be using the pneumatic circuit in \reffig{fig:pneumatic-circuit}. The actuator is mounted \\
+    For the brakes we will be using a pneumatic actuator and to do so we will be using the pneumatic circuit in \reffig{fig:pneumatic-circuit}. \\
+    \begin{figure}
+        \centering
+        \includegraphics[width=\linewidth]{images/EC_Pnuematic_Circuit.png}
+        \caption{The pneumatic circuit that we will be using to power the actuators of the brakes}
+        \label{fig:pneumatic-circuit}
+    \end{figure}
+    The overall brakes can be seen in \reffig{fig:EC-Assembly}. The piston is mounted to the frame through our piston mount which is attached to the magnet bar. and the magnet bar will be moving in a linear direction given by the shaft.
     \begin{figure}
     	\centering
         \includegraphics[width =\linewidth]{images/EC_Brake_Master_2018}
@@ -33,22 +40,10 @@
         \label{fig:MagnetBar}
         \caption{FEA of the Magnet Bar}
     \end{figure}
-
-     \begin{figure}
-        \centering
-        \includegraphics[width=\linewidth]{images/EC_Pnuematic_Circuit.png}
-        \caption{The pneumatic circuit that we will be using to power the actuators of the brakes}
-        \label{fig:pneumatic-circuit}
-    \end{figure}
-    
-    [Comments on how this integrates with friction braking calipers]\\
-    Full labeled detailed CAD\\
-    Mass, power, etc.\\
-    How is it failsafe?\\
-    Full cost breakdown, comments on manufacturability and production costs\\
+    Above we have FEA for each specific component of the brakes that will be experiencing large forces. 
     “A full Bill of Materials can be found in Appendix C.”
 
-    \subsection{Physical Modeling}
+    \section{Physical Modeling}
     \begin{table}
     	\centering
     	\begin{tabular}{ll} \toprule
@@ -132,7 +127,7 @@
     Since we are using magnets, that means that there will always be a force related at some separation from the track. That means that when the brakes are in an off state they need to be far enough from the track such that the force that they pod feels is minimal. In order to figure this out what we used the equation for drag force (\ref{eq:lift-force2}) and inputted separation values and determined the one that would give us the lowest maximum drag force that fit our design requirements. From that we found that the optimal distance was 0.049mm away from the track.    
     
  
-    \subsection{Thermal}
+    \section{Thermal}
     One thing that we have to be careful of is the heating that the breaks would have. As stated in the table above the max operating temperature for the magnets is $80$C\textdegree this means that we need to make sure that that the brakes do not get to that level.\\
 
     \begin{figure}
@@ -143,16 +138,16 @@
     \end{figure}
     \reffig{fig:ec-heat} shows how hot the rail would get at high speeds due to the Eddy Current brakes. For this plot we use a $z_0$ values of 6-\SI{8}{mm}. You can see that at \SI{100}{m/s}, which is the max speed our pod is designed for, the total heating on the rail ranges between 69-\SI{73}{\celsius} from this if we then extrapolate to the value of $z_0 = \SI{19}{mm}$ that we are using we see that the thermal heating due to the Eddy Current brakes will not damage the rail or the magnets in the brakes at all.
 
-    \subsection{Structural}
+    \section{Structural}
     One thing that we have to understand of is how these brake will react in the case of failure, electrical or otherwise. For the brakes they require to power to activate, therefore in case of power failure in our main battery we have a backup battery specifically for the brakes that will activate and slow the pod down.  \\
     What are several reasonable and edge-case loading scenarios, and how does the FEA look for all of those? Justify your “reasonable” scenarios. If possible to simulate, how many cycles might it withstand?\\
     How will we deal with imperfections and irregularities in the track, both lateral and vertical? (Simulation would be good)
 
-    \subsection{Tests \& Validation (completed and planned)}
+    \section{Tests \& Validation (completed and planned)}
     Test rig (see Next Steps as well)\\
     Fault tolerance, potential failure modes (FMEA)
 
-    \subsection{Safety and handling}
+    \section{Safety and handling}
     Neodymium magnets have the ability to damage both equipment and handlers. Therefore, only members of the team that have taken the magnet handling safety course are permitted access to the magnets. When transferring the magnets always hold two separate magnets in opposite hands away from any ferromagnetic metal. Eye protection must be worn when handling the magnets as magnet dust may get into eyes and gloves are recommended. In case of emergency evacuation, place magnets in a safe area away from ferromagnetic metals. 
     
 \end{document}

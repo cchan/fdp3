@@ -5,7 +5,7 @@
 \usepackage{tocbibind}
 \usepackage{datetime}
 \usepackage{multicol}
-\usepackage[]{graphicx}
+\usepackage[draft]{graphicx}
 \usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{float}
@@ -124,8 +124,6 @@
 
  	\subfile{subfiles/quick_reference.tex}
     \subfile{subfiles/introduction.tex}
-
-    \chapter{Subsystems}
     \subfile{subfiles/propulsion.tex}
     \subfile{subfiles/eddy_current_brakes.tex}
     \subfile{subfiles/lateral.tex}
@@ -190,7 +188,7 @@ intensify fire; oxidizer):\\
 
 \begin{table}[]
 \centering
-\caption{My caption}
+\caption{Failsafe Circui Electrical (}
 \label{my-label}
 \begin{tabular}{ccclcccc}
 \hline
@@ -211,8 +209,14 @@ Main Battery & 24V 1 & 24V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes
 \centering
   \begin{tabular}{@{}p{2cm}p{2cm}p{3cm}p{1cm}p{3cm}p{3cm}@{}} \toprule
     Function & Failure Type & Potential Impact & Severity & Potential Causes & Detection/Mitigation \\ \midrule
-    \multirow{2}{}{Battery} & Overheat & Fire & 10 & Short Circuit/
-    Air bag suspension & Leak / burst & Poor stability & 9 & Defective airbag & None\\
+    \multirow{2}{*}{Battery} & Overheat & Fire & 10 & Short Circuit & Temperature sensors and Fuses \\
+    & Disconnection & Power Loss & 9 & Poor Connection/Wire Severed & 24V Battery Redundancy and Safety Circuit \\
+    BMS & Disconnection & Loss of cell voltage data from pod status telemetry frame & 5 & Poor Connection/Wire Severed & Telemetry data \\
+    \multirow{2}{*}{IMU} & Disconnection & Loss of acceleration/velocity data & 7 & Poor Connection/Wire Severed & Sensor Redundancy \\
+    & Erroneous acceleration/velocity data & Inaccurate Pod State Estimation & 9 & Faulty hardware & Sensor Redundancy and Data Fusion \\
+
+    
+    
      \bottomrule
   \end{tabular}
   \caption{FMEA Electrical}

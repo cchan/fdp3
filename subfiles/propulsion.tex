@@ -206,7 +206,7 @@ Using the expected pod mass and the motor's specifications, the pod is projected
     
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{images/pulley3.png}
+    \includegraphics[width=0.75\linewidth]{images/pulleythree.png}
     \caption{Small pulley FEA results}
     \label{fig:pulley3}
 \end{figure}
@@ -242,7 +242,7 @@ Using these numbers, the friction drive would require at least a 778mm belt.
         \item Outgassing of the epoxy used to secure the motor’s internal components could weaken these fastenings and also deposit epoxy on other parts of the motor.
         \begin{itemize}
             \item EMRAX has confirmed that the motor’s internal components are both mechanically and chemically secured, so that even with epoxy outgassing there will be no problems in fastening.
-            \item Deposition of epoxy could damage other parts within the motor. [CAN WE ASK THEM WHAT THINGS THEY ARE USING THAT COULD OUTGAS?]
+            \item Deposition of epoxy could damage other parts within the motor. \textbf{[CAN WE ASK THEM WHAT THINGS THEY ARE USING THAT COULD OUTGAS?]}
         \end{itemize}
     \end{itemize}
 
@@ -272,7 +272,8 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
      	\textit{Angular velocity} (\omega) \times \frac{60}{2\pi} = \textit{RPM}\\
      	\textit{Power} (P) = \textit{Torque} (\tau)  \times \textit{Angular velocity} (\omega)\\
      \end{gather*}
-    
+    %why is there a random picture of a wheel?
+   
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig17}
@@ -307,7 +308,7 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
     \end{figure}
     Our propulsion system requires strong wheels that are able to withstand high RPM ranges at a large variety of axial and thrust loads. The design was created with an aluminum 6061-T6511 core and a polyurethane wheel tread. Aluminum 6061-T6511 was chosen as the wheel’s core because of the yield strength and low density, as we would require the wheel to be lightweight in order to minimize inefficiency of transferring torque to the ground and the strength such that the wheel will not yield under peak loads. In addition, because this material is easily machined, there is no need for extensive tooling or custom extrusion techniques in order to produce the wheel. 6061-T6511 is a well known and common alloy and thus extensive research has been conducted on the fatigue behaviour of this wheel. Based on fatigue analysis\footnote{\url{https://www.osti.gov/scitech/servlets/purl/10157028}}, even when the wheel has done $10^6$ cycles, it will still be within design specifications and can be used safely.\\
 
-    Testing for the wheel (balance issues?)
+    \textbf{Testing for the wheel (balance issues?)}
 
     \subsection{Calculations for slip}
     By using first-principles of Newtonian physics, we can simplify our traction based on static friction. In order to translate angular movement into translational movement, we require that the wheel remain in traction with the track.\\

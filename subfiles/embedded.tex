@@ -1,7 +1,8 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
-    \section{Embedded} 
-    \subsection{Terminology}
+    \chapter{Embedded} 
+    \label{ch:embedded}
+    \section{Terminology}
 Embedded-systems - AVR hardware programmed with custom in-house software stack, connected to sensors, and communicating with other devices through CAN and I$^2$C.\\
 Control-Panel - UI interface running on a remote machine to visualize data and control pod \\
 Master Machine - RaspberryPi 3B computer running Waterloop's communication-system software \\
@@ -26,12 +27,12 @@ WHiL - Waterloop's Hardware in the Loop testing software \\
         \label{fig:meb-module}
     \end{figure}
 
-    \subsection{Main Embedded Board (MEB)}
+    \section{Main Embedded Board (MEB)}
     The Main Embedded Board (MEB) is the central hub for the Master Machines. For modularity and simplicity, the Raspberry Pis (RPis) are not integrated directly onto the MEB. Instead, three RPis are mounted (as described \reffig{fig:meb-rpi-mount}) onto the MEB (with insulation underneath the RPi. From there a board to board ribbon cable will be connected from the RPi to the MEB. Intergrated onto the MEB will be the MCP2515 and MCP2551 IC's which will allow the RPis to connect to the CAN-BUS network. External I/O on the MEB will include all the CANH and CANL lines from the Hub Processing Boards (which are explained in depth below), as well as 5V power. The design of modular RPis was chosen due to the fact that a board will 3 RPis being integrated into a singular board would have been cost, resource, and manpower inefficient
 blown chip would have resulted in a waste of said resources. Thus it was decided to be more efficient to simply mount a OTS RPi onto the PCB as described above.
 
 
-    \subsection{Hub Processing Boards (HPB)}
+    \section{Hub Processing Boards (HPB)}
    	Hubs will be running embedded-systems software and will act as a data centralization point. Data collected from a series of grouped sensors will pass through an assigned Hub and will get packaged into CAN Data Packets for transmission to the Master Machines \textbf{See appendix blah-blah for details}.\\
 
 \begin{table}
@@ -64,8 +65,8 @@ After a comparison of different embedded boards (see \reftab{table:hub-board-com
     
     
 
-\subsection{Sensor and Control Hubs}
-\label{subsec:sensor-and-control-hubs}
+\section{Sensor and Control Hubs}
+\label{sec:sensor-and-control-hubs}
 To make electrical debugging  easier and for efficient cable management, sensors on the pod will be distributed between multiple hubs on the pod. Specifically, three sensors hubs will be installed in the front, center, and rear of the pod, while the main control hub will be located at the center of the pod. Below is a detailed description of all Hub hardware and sensors/control elements
 
 \begin{itemize}
@@ -165,8 +166,8 @@ In addition to the Hub-Sensor distribution, \reftab{tab:pod-sensor-list} contain
     \label{tab:pod-sensor-list}
 \end{table}
 
-\subsubsection{Sensors/Hubs Map}
-As described in \refsubsec{subsec:sensor-and-control-hubs}, all of the sensor and control data will be centralized and passed through Hubs on-board of the pod. With the importance of placement of electronic components on the pod, \reffig{fig:sensor-map} describes the mapping of all mounting locations.
+\subsection{Sensors/Hubs Map}
+As described in \refsec{sec:sensor-and-control-hubs}, all of the sensor and control data will be centralized and passed through Hubs on-board of the pod. With the importance of placement of electronic components on the pod, \reffig{fig:sensor-map} describes the mapping of all mounting locations.
 
   \begin{figure}
         \centering
@@ -175,12 +176,12 @@ As described in \refsubsec{subsec:sensor-and-control-hubs}, all of the sensor an
         \label{fig:sensor-map}
     \end{figure}
 
-    \subsection{Library \& Build Infrastructure}
+    \section{Library \& Build Infrastructure}
     To accommodate for unreliable nature of Arduino memory management libraries, Waterloop has developed a C++ library for use on AVR micro-controllers (Arduino and Raspberry Pi). While there are many alternatives available for memory management, libraries such as STL are overly complex which can result in unstable Arduino behavior. As a result, WLib is fast, memory efficient, has a small binary footprint, and is a safer alternative to STL. WLib uses a custom memory management solution with fixed-size memory blocks, preventing fragmentation and leaks. It provides basic data structures (lists, sets, maps, trees), and smart pointers (shared and unique). The library is open-sourced under MIT license and can be accessed though Waterloop's Github \url{https://teamwaterloop.github.io/waterloop-wlib/}
 
     Having no accessible building solutions that support Object Oriented Programing (OOP) for Arduino, Waterloop has also developed a custom Arduino build system with the use of Cosa. Cosa is an object-oriented AVR platform, that replaces standard Arduino libraries (\url{https://github.com/mikaelpatel/Cosa}) and provides faster performance and lower power consumption.
     
-   \subsubsection{WLib}
+   \subsection{WLib}
    WLib is the library team Waterloop has specifically developed for the embedded-systems. Library has been created  to minimize the use of memory in Arduino systems which are naturally limited. \reffig{list:wlib-classes} shows a current list of the main components of the library.
    \begin{figure}
    \begin{multicols}{4}
@@ -213,8 +214,8 @@ As described in \refsubsec{subsec:sensor-and-control-hubs}, all of the sensor an
         \label{list:wlib-classes}
     \end{figure}
    
-   \subsection{Hardware in the loop testing}
-   \subsubsection{HiL testing description}
+   \section{Hardware in the loop testing}
+   \subsection{HiL testing description}
    Hardware in the Loop (HiL) simulation allows the entire domain of sensor inputs to be mapped to a particular state. For the purpose of the competition team Waterloop has developed it's own software to run HiL tests called WHiL. Based on the reading of the sensor, the state could return extreme ($y = 1, -1$) or acceptable ($y = 0$). This ensures that there is no ambiguity in the state of the pod at any moment. These states are expressed through piecewise functions, one of which is depicted on \reffig{fig:hil-function}:
 
   \begin{figure}
@@ -297,7 +298,7 @@ When the function returns $[1:-1]$ (with x as the sensor input value) there exis
         \label{tab:hil-functions}
     \end{table}
 
-    \subsubsection{HiL testing setup}
+    \subsection{HiL testing setup}
     Desktop application has been created to easily test the embedded components of our system. Qt and C++ are the technologies Waterloop used to build an application that is capable of testing the different pins of an Arduino Mega boards with predefined inputs. The program transmits binary values to various digital pins and numerical values to analog pins.
    
     System is built by introducing three machines: (1) Input Machine. (2) Transmitter Machine, (3) Control Machine. \reffig{fig:hil-testing-rig} demonstrates the outline of the system.
@@ -318,7 +319,7 @@ When the function returns $[1:-1]$ (with x as the sensor input value) there exis
         \label{fig:hil-pin-selection}
    \end{figure}
    
-\subsection{Embedded Bill of Materials}
+\section{Embedded Bill of Materials}
     \reftab{tab:emb-bom} provides a complete cost breakdown of all on-board sensors and control elements. Most of the components will be purchased online with a few being reused from previous competitions. Sourcing strategy for all elements has been already developed and orders will be placed mid-January to have components delivered as soon as possible.
 
     

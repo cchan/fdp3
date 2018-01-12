@@ -1,5 +1,6 @@
-\section{Control Systems}
-\subsection{Overview}
+\chapter{Control Systems}
+\label{ch:control-systems}
+\section{Overview}
 \newcommand{\itc}{I$^2$C}
 The main goal of building the software systems around the pod, was creating a redundant yet lightweight and fast solution that would allow for safe communications with the vehicle and ensure complete control throughout pod launch.\\
 
@@ -8,7 +9,7 @@ Embedded-systems is responsible for all of the pod's internal interactions with 
 Communication-systems is responsible for the complete pod control and has the ability to safely shut down the pod in case of an emergency. It is also responsible for the transportation of information from the vehicle to the control-panel to allow for live data visualization and remote control of the pod. 
 Front-end is responsible for displaying all of the pod's vital readings and providing a control interface while the pod is in the tube. All code written for the software system of the pod is available for public access at \href{https://github.com/teamwaterloop}{Waterloop's GitHub Page} under MIT license.
 
-\subsubsection{System Overview}
+\subsection{System Overview}
 Two main design decisions of the Goose III's computational design are the parallelism of launch script execution and the Master-slave design. Waterloop has defined two clear computational layers - Master-Machines and Hubs. Master-machines are responsible for the complete control of the pod and the transfer of data from Hubs to the Control-Panel. While Control-panel provides with various control of the pod during the run, the entire launch script will be stored and executed by the Master Machines. By transferring launch script execution to on-board machines, network (WI-FI network provided by SpaceX for pod communications) inconsistencies are completely eliminated.
 
 \begin{itemize}
@@ -34,7 +35,7 @@ Based on \reffig{fig:software-diagram}, the entire system will incorporate 35 se
   \label{fig:software-diagram}
 \end{figure}
 
-\subsection{Communication System}
+\section{Communication System}
 Three major design decisions had to be made in order to develop a powerful, yet lightweight and fast communication pipeline to transfer packets from the low-level Hubs to a high-level Control-Panel.
 \begin{itemize}
     \item Selecting the best packet type to create a fast and reliable communication channel; packet loss vs. packet speed trade-off
@@ -43,8 +44,8 @@ Three major design decisions had to be made in order to develop a powerful, yet 
 \end{itemize}
 We have decided to use a custom packet structure to transfer data at minimum overhead costs between Slave and Master-machines and a Golang server with QUIC packet streams to transmit data to the Control-Panel wirelessly
 
-\subsubsection{Server and Network Protocols}
-\label{subsubsec:comm-protocols}
+\subsection{Server and Network Protocols}
+\label{subsec:comm-protocols}
 \textbf{Golang vs. Node.js Server:} Go allows for language level concurrency with Go routines and has faster raw performance than our previous event-based Node.js server, decreasing overall latency. The server acts as a 'middle-man' communication channel between the low level Embedded-systems hubs and the high level Control-panel.\\
 
 \noindent\textbf{TCP vs. QUIC Streams:} QUIC has built-in data reliability checks to eliminate packet loss and establishes connections much faster than TCP by removing the slow handshake process\footnote{\url{https://www.chromium.org/quic}}.
@@ -73,16 +74,16 @@ As a result of a series of tests (\reffig{fig:tcp_vs_quic}), QUIC streams will b
 \paragraph{CAN-BUS Protocol Description}
 CAN is a protocol that was designed for vehicle controller commutations to transmit information in a network without a host computer. It is a message based protocol with built-in priority and error checking. The priority allows for nodes to send higher priority messages, which places them higher in the message priority queue. Error checking allows for frames to check for losses and discard if they contain errors.
 
-\subsubsection{Communication-System redundancy measures}
+\subsection{Communication-System redundancy measures}
 \qquad\textbf{Parallel Master-Machines} In order to ensure instantaneous recovery options, Waterloop will run three identical Master-Machines, with one being active and the others inactive. The active machine will be responsible for execution of bidirectional communication and execution of all control commands, as well as the pod-launch script. In the mean time, the inactive machine will stay up to date with the state of the active machine. In case of the failure of the active machine, measures such as heartbeat will allow for instant detection of device failure and and a switch to one of the idle machines into an active state. Control-Panel, using heart-beat as well, will detect the change of active machine and will adjust by restarting the failed Master-machine and putting it into inactive state once the reboot is complete.\\
 
 \textbf{Distributed System} Communication-system's distributed system will be achieved by running three Raspberry Pi controllers at the same time using a Docker Swarm. This will use the Raft consensus algorithm with an internal distributed state store to determine validity of data for each node and verify consistent data across all three controllers. The nodes will communicate through \itc.\\
-    The Docker Swarm allows for two types of nodes, the manager node and worker node. Manager nodes distribute tasks among other worker nodes, and send data to the client through the communication protocols described in \refsubsubsec{subsubsec:comm-protocols}. Worker nodes perform the same tasks as other workers to reach consensus and can have tasks distributed among them.\\
+    The Docker Swarm allows for two types of nodes, the manager node and worker node. Manager nodes distribute tasks among other worker nodes, and send data to the client through the communication protocols described in \refsubsec{subsec:comm-protocols}. Worker nodes perform the same tasks as other workers to reach consensus and can have tasks distributed among them.\\
     Initially at runtime, the pod will have a single manager node and two worker nodes running concurrently, where in the case of a manager failure, one of the worker nodes will be promoted to a manager.\\
     Controller failure will be monitored through a heartbeat managed by Docker which uses a small timeout for nodes to respond.
     
-\subsection{Control Packet Format}
-    \subsubsection{JSON structure}
+\section{Control Packet Format}
+    \subsection{JSON structure}
     \label{subsec:json}
     All communications between on-board Master-machines and Control-panel are JSON packets serialized from Go structures in the following format:
 	\begin{minted}{go}
@@ -114,7 +115,7 @@ type CommPacketJson struct {
     "data": [0.00, 0.00, 0.00]
 }
     \end{minted}
-    \subsubsection{Binary Packet Structure}
+    \subsection{Binary Packet Structure}
     Communication between slaves (Arduino) and on-board masters (Raspberry Pi) consists of 64-bit CAN data packets, the structure of which is described below. Packets are checked with a CRC-8 checksum $(0$x$97 = x^8 + x^5 + x^3 + x^2 + 1)$.
     \begin{table}[H]
         \centering
@@ -158,9 +159,9 @@ type CommPacketJson struct {
         \caption{Structure of 18-bit float. Significand has 13 bits of precision with 12 explicitly stored.}
     \end{table}
     This representation follows from the IEEE specifications for half and full precision floating point numbers. This allows us a max value of \texttt{65504} and a minimum positive normal of about \texttt{1.5258789e-5} with approximately 4 significant digits.
-    \subsection{Communication Packet Types and Usage}
+    \section{Communication Packet Types and Usage}
     Packets can be exchanged between Embedded-systems and Controls-panel depending on type.
-    \subsubsection{Command}
+    \subsection{Command}
     Command packets are unidirectional from Control-panel to the control elements on the pod.
 \def\tabxmintinline#1#2{%
 \ifx\@footnotetext\TX@trial@ftn
@@ -186,7 +187,7 @@ type CommPacketJson struct {
         \caption{Control-panel to Pod command packet examples}
     \end{table}
 
-\subsubsection{Sensor}
+\subsection{Sensor}
     Sensor packets are unidirectional and are sent from pod's Embedded-system to the Control-panel where all data is visualized in series of graphs.
     \begin{table}[H]
         \centering
@@ -197,7 +198,7 @@ type CommPacketJson struct {
         \caption{}
     \end{table}
 
-\subsubsection{Log}
+\subsection{Log}
     Hubs and Master-machines are capable of sending Log messages that are displayed on the Control-panel and stored in Pod's non-volatile memory. The stored log messages can be accessed post-launch for launch analysis.
     \begin{table}[H]
         \centering
@@ -208,7 +209,7 @@ type CommPacketJson struct {
         \caption{Example of Log message packet}
     \end{table}
     
-\subsubsection{State}
+\subsection{State}
     Sent from Control-panel or Embedded-systems to update state of Master-Machines
     \begin{table}[H]
         \centering
@@ -219,12 +220,12 @@ type CommPacketJson struct {
         \caption{Example of state packet}
     \end{table}
  
-    \subsubsection{Data Logging and Blackbox}
+    \subsection{Data Logging and Blackbox}
     In the short-term, Generic data logging will be implemented by storing all transmitted sensor data and pod commands into JSON files onto the Raspberry Pi as a blackbox. Data from each sensor will be written to separate files to allow for future data processing and analysis of patterns.\\
     As a long-term data storage solution, Waterloop will use AWS S3 to store large amounts of data without sacrificing accessibility. For post-launch data analytics, a local Grafana UI will be built to provide quick and modular data visualization tools, thus allowing the team to debug every single pod launch.
        
         
-\subsection{Navigation System}
+\section{Navigation System}
 Navigation system will be running on all Master-machines and will use a variety of inputs to generate a precise location of the pod inside the tube. The system will be based on two IMUs, a Shaft Encoder and a Timer. Since raw data from accelerometers has a lot of variability due to the sensitivity of sensors, the IMU outputs will be passed through a Kalman filter. \reffig{fig:navigation-system} Describes the flow of data within the Navigation-system.
 
 \begin{figure}
