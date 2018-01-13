@@ -147,8 +147,9 @@ In addition to the Hub-Sensor distribution, \reftab{tab:pod-sensor-list} contain
     
     & & & \\
 	\textbf{Navigation Sensors} & & & \\ \midrule
-    IMU Front & 1 & LSM6DS3 & SDA, SCL \\
-    IMU Back & 1 & LSM6DS3 & \makecell{SDA, SCL, GND,\\ SD0M, SD0AG}\\
+    IMU Front & 1 & LSM6DS3 & \makecell{SDA, SCL, GND} \\
+    IMU Centre & 1 & LSM6DS3 & \makecell{SDA, SCL, GND} \\
+    IMU Back & 1 & LSM6DS3 & \makecell{SDA, SCL, GND}\\
     Shaft Encoder & 1 & Tamagawa TS2602N21E11 & GND, PW, ANALOG \\
     Electronic Speed Controller & 1 & UniTek Bamocar D3 & \makecell{+/-, M1, M2, M3, \\ CAN, I/O, RS232, Feedback}\\
     
@@ -211,9 +212,9 @@ As described in \refsec{sec:sensor-and-control-hubs}, all of the sensor and cont
             \item UniquePtr
         \end{itemize}
         \end{multicols}
-        \caption{WLib class list. A set of classes that is needed to support Embedded-systems software that will be running on HPBs. Additional subcomponents have been developed as support elements to classes listed above}
-        \label{list:wlib-classes}
-    \end{figure}
+        \caption{WLib class list. A set of classes that is needed to support Embedded-systems software that will be running on HPBs. Additional sub-components have been developed as support elements to classes listed above}
+	\label{list:wlib-classes}
+\end{figure}
    
    \section{Hardware in the loop testing}
    \subsection{HiL testing description}
@@ -236,7 +237,7 @@ Previous testing found that temperatures below 5 degrees or above 60 degrees Cel
     \end{minted}
 When the function returns $[1:-1]$ (with x as the sensor input value) there exists an extreme state. A full list of functions is given in \reftab{tab:hil-functions}.
 
-  	\begin{table}
+\begin{table}
         \centering
         \begin{tabular}{@{}lc@{}} \toprule
         Sensors & Piecewise-defined Function \\ \midrule

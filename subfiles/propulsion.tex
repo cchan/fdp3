@@ -143,7 +143,6 @@
         \label{fig:shaft-stress1}
     \end{figure}
 
-
 \reffig{shaft-stress1} shows the displacement result of the FEA, where the peak displacement of the shaft is \SI{0.15}{mm} at the tip of the shaft. In the image shown, it is at a 5\% model based displacement adjustment. %Author of next sentence please clarify% 
 The mesh was created with an average element size of 3\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 3 mesh refinements with a convergence tolerance of 5\%. Similar FEA was done on the other power transmission shaft that connects to the wheel. The result yielded less overall stress on the bolt holes due the shaft not having a hollowed core (\SI{220}{MPa}).\\
 
@@ -167,6 +166,7 @@ The propulsion system utilizes a single gear reduction in an open belt system, t
         \includegraphics[width=\linewidth]{images/belt.png}
         \caption{Section of a synchronous belt}
         \end{subfigure}
+        \caption{Pulley and Belt Drive}
         \label{fig:pulley}
 \end{figure}
 
@@ -191,7 +191,7 @@ With a belt pitch $P$ of \SI{8}{mm}, and a diameter $d$ of approximately \SI{62}
 Note that the actual diameter of the pulley would have to be slightly more than \SI{61}{mm} in this case, to let the number of teeth be a whole number.
 This meets GATES' recommended pulley size in order to maximize belt efficiency, safety and lifespan.
 
-Power will be transferred from one pulley to the other by the aforementioned GATES belt. The Poly Chain GT Carbon belt is a synchronous belt (timing belt) that satisfies the motor's high torque and power output, while reducing the requirement for a large thick belt and a high tension. These belts have a mechanical efficiency that can exceed 97\% when the belt is in well-maintained condition. It was chosen by consulting GATES about the pod's design requirements and through use of GATES's Design Flex Pro, an application that outputs a list of power transmission design solutions based on the expected RPM ranges, speed ratio and input loads. The belt is predicted to experience peak tension forces of approximately \SI{4500}{N}. The belt’s ultimate tensile strength is rated to handle \SI{22,700}{N} per inch of belt width. Since the chosen belt for the friction drive is around \SI{2.5}{in} wide, the belt is more than capable of handling its tensile loads.
+Power will be transferred from one pulley to the other by the aforementioned GATES belt. The Poly Chain GT Carbon belt is a synchronous belt (timing belt) that satisfies the motor's high torque and power output, while reducing the requirement for a large thick belt and a high tension. These belts have a mechanical efficiency that can exceed 97\% when the belt is in well-maintained condition. It was chosen by consulting GATES about the pod's design requirements and through use of GATES's Design Flex Pro, an application that outputs a list of power transmission design solutions based on the expected RPM ranges, speed ratio and input loads. The belt is predicted to experience peak tension forces of approximately \SI{4500}{N}. The belt’s ultimate tensile strength is rated to handle \SI{22700}{N} per inch of belt width. Since the chosen belt for the friction drive is around \SI{2.5}{in} wide, the belt is more than capable of handling its tensile loads.
 
 Using the expected pod mass and the motor's specifications, the pod is projected to reach speeds in excess of \SI{88}{m/s}.\\
 
@@ -229,7 +229,7 @@ Using the chosen pulley sizes, the belt length can be found.
 L = 2C\sin{(\frac{\beta_r}{2})}+{\frac{1}{2}}(\beta_rR_r)+{\frac{1}{2}}(\beta_nR_n)
 \end{equation}
 Where $\beta$ is the angle of wrap of the belt around a pulley, $C$ is the distance between pulley centres, and $r,n$ denote driver and driven pulleys, respectively.
-Using these numbers, the friction drive would require at least a 778mm belt.
+Using these numbers, the friction drive would require at least a \SI{778}{mm} belt.
 
     \paragraph{Vacuum Compatibility}
     We have identified two potential issues with the motor in vacuum, which we have discussed with the manufacturer EMRAX.
@@ -251,7 +251,7 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
 
 \begin{table}
 \centering
-  \begin{tabular}{c c c c c} \toprule
+  \begin{tabular}{@{}l l r r l@{}} \toprule
     Part Number & Type of Bearing & Limiting Speed & Dynamic Load Rating & Location \\ \midrule
     SKF D/W R8 R-2RZ & Deep Groove Ball Bearing & 30,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & 4.42 kN & Guide Wheel\\
     RLS 12 & Deep Groove Ball Bearing& 11,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & 30.7 kN & Motor Plate\\
@@ -281,7 +281,6 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
     \end{figure}
 
     \section{Cooling System}
-    Cooling system; heat transfer calcs results; thermal simulation would be nice [including ESC and motor]\\
 
     The cooling system is designed to be as safe as possible by offering ample cooling, while also making it easy to assemble and maintain. The EMRAX 268 specifies limits to the flow rate and pressure of the cooling loop with a flow rate of 8 litres per minute at 2 bar accounting for vacuum, the loop will be running at 7 litres per minute at 1.5 bar to stay under these limits. The cooling loop (\reffig{fig:cooling-loop}) is a series loop with no parallel lanes, allowing for a simple to install and clean path for a 25/75 glycol/water solution as coolant. The loop will be using multiple temperature and pressure sensors to ensure the coolant will never exceed the pressure or temperature limit of the motor of 2 bar, and motor inlet coolant temperature of \SI{50}{\celsius}. If the 2 bar pressure limit is reached, a solenoid valve will be opened to release some coolant into a release tank, allowing pressure inside the cooling loop to be lowered. In the event of the temperature limit being reached, the motor and controller settings will be lowered to allow for heat to be dissipated from the loop and the temperature to be lowered. A ball valve is also present in order to completely stop the flow of coolant when the power is off and the pod is not running.\\
 
@@ -368,7 +367,7 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
 	\begin{figure}
         \centering
         \includegraphics[width=\linewidth] {images/pcircuit}
-        \caption{CAD of pneumatic system}
+        \caption{CAD of Pneumatic System}
         \label{fig:pneumatic-cad}
     \end{figure}
     

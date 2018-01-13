@@ -160,7 +160,7 @@ type CommPacketJson struct {
     \end{table}
     This representation follows from the IEEE specifications for half and full precision floating point numbers. This allows us a max value of \texttt{65504} and a minimum positive normal of about \texttt{1.5258789e-5} with approximately 4 significant digits.
     \section{Communication Packet Types and Usage}
-    Packets can be exchanged between Embedded-systems and Controls-panel depending on type.
+    Packets can be exchanged between Embedded-systems and Controls-panel depending on type. There are four main types of packets that will be used (1) Command, (2) Sensor, (3) Log and (4) State Packets.
     \subsection{Command}
     Command packets are unidirectional from Control-panel to the control elements on the pod.
 \def\tabxmintinline#1#2{%
@@ -226,7 +226,7 @@ type CommPacketJson struct {
        
         
 \section{Navigation System}
-Navigation system will be running on all Master-machines and will use a variety of inputs to generate a precise location of the pod inside the tube. The system will be based on two IMUs, a Shaft Encoder and a Timer. Since raw data from accelerometers has a lot of variability due to the sensitivity of sensors, the IMU outputs will be passed through a Kalman filter. \reffig{fig:navigation-system} Describes the flow of data within the Navigation-system.
+Navigation system will be running on all Master-machines and will use a variety of inputs to generate a precise location of the pod inside the tube. The system will be based on two IMUs, a Shaft Encoder and a Timer. Since raw data from accelerometers has a lot of variability due to the sensitivity of sensors, the IMU outputs will be passed through a Kalman filter. In addition to a data filter, the three on-board IMUs can be used for correctness voting. Since there is an odd number of IMU sensors, a basic voting algorithm will allow for a simple consensus algortihm. \reffig{fig:navigation-system} Describes the flow of data within the Navigation-system.
 
 \begin{figure}
     \centering
@@ -280,7 +280,7 @@ Navigation system will be running on all Master-machines and will use a variety 
     With two types of machines used in the pod's Embedded-systems, ATMega and RPI, each one has a different approach to Watchdogs. Arduino has a built in Watchdog that can be configured and with it's non-volatile memory, a lot of the state information can be preserved and recovered after a reboot. RPI has an OS-level Watchdog as well, but having a much more complex OS to load, reboots will take longer. Exact number will be generated through a series of tests.
    
     \subsection{Single points of failure}
-    
+    By the physical nature of the CAN bus requiring two wires and being based bus topology if a bus wire is disconnected or breaks, the bus will lose all communications. If a device is disconnected from the bus this can cause errors as a CAN node that doesn't receive any acknowledgment for a packet it has sent, it will keep trying to send it forever, hence clogging the bus. Both cases will trigger a failure mode as not heartbeats will be received stopping the pod. Even with these failure cases the pod will still be able to come to a controlled stop. 
     
     \subsection {Failure scenarios and state diagram}
     

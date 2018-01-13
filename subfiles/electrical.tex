@@ -242,21 +242,7 @@ Main Battery & 12V 1 & 12V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes
     
     \subsection{Inhibits on Braking During Acceleration}
     A critical safety feature is the prevention of braking during the pod's acceleration phase. The primary failure mode for this situation would be the cutoff of current flow to the solenoids that hold the brakes (EC or friction) in the disengaged position. Potential failure mechanisms include a faulty connection or wire, or the control relay that enables current flow failing open. Both braking mechanisms have reed switch sensors which will inform the embedded computer of the brake's position. If the brakes become engaged during the acceleration phase, the control software can disable the friction drive.
-    \begin{itemize}
-        \item Main power loss immediately activates EC brakes and disables motors.
-        \item Software power loss does the same thing.
-    \end{itemize}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{@{}lll@{}} \toprule
-            & Operational & Failed\\ \midrule
-            EC Brakes & Normally open \& Brakes disengaged & Go to Normally Closed \& Brakes engage\\
-            Friction Brakes & Friction brake disengaged & If speed is below \_ m/s, engage friction brakes.\\
-            IMU & \makecell[l]{Powered by Arduino 3.3V line (which \\ will be powered via 24V battery).} & \makecell[l]{IMU (and associated Arduino) will be \\ powered via backup LiPo cell.}\\
-            Discharge Circuit & Not operational & \makecell[l]{Discharge battery through a capacitor and \\ power resistor.}\\ \bottomrule
-        \end{tabular}
-        \caption{Caption}
-    \end{table}
+
 
     
     
