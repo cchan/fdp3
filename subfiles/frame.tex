@@ -2,7 +2,7 @@
 \begin{document}
     \chapter{Frame}
     \label{ch:frame}
-   	 The ladder frame is the design that the team decided to go with, similar to the frame for Competition 2 design. It consists of two L-Beams facing towards each other with four I-Beam cross beams connecting them. There are a few major design changes that were made to adapt to changes in the pod subsystems. A longer frame was vital in the new design to accommodate the new friction drive propulsion system and the longer Eddy Current brakes. In addition, to avoid excessive torsional forces, as well as to simplify mounting of the friction drive and the shell, the frame was made narrower. For battery mounting, a flat plate was added parallel to the I-Beams. This flat plate is also vital for reducing deformities from the transverse forces of the EC Brakes.\\
+        The ladder frame is the design that the team decided to go with, similar to the frame for Competition 2 design. It consists of two L-Beams facing towards each other with four I-Beam cross beams connecting them. There are a few major design changes that were made to adapt to changes in the pod subsystems. A longer frame was vital in the new design to accommodate the new friction drive propulsion system and the longer Eddy Current brakes. In addition, to avoid excessive torsional forces, as well as to simplify mounting of the friction drive and the shell, the frame was made narrower. For battery mounting, a flat plate was added parallel to the I-Beams. This flat plate is also vital for reducing deformities from the transverse forces of the EC Brakes.\\
 
     An investigation was conducted to assess the feasibility of  a honeycomb plate with sections cut out as the frame. While this design would reduce overall mass, there are three major factors which made this design unfeasible. Firstly, a custom made honeycomb plate would have broken the philosophy of modularity for the Waterloop pod: if any parts needed to be modified, new holes would have to be cut into the honeycomb structure. Secondly, the honeycomb plate would have been around \$4000, about twice as expensive as the ladder frame design. Finally, due to the complex shape of the  composite, the honeycomb’s performance under load is difficult to analyze and simulate correctly, and after some attempts it was decided that there is insufficient technical expertise in the team to verify the feasibility of this design. For future competitions, we may reconsider the honeycomb frame.\\
 
@@ -25,12 +25,12 @@
     \section{Structural}
     The first 4 modes of vibration of this design accounting for subsystem weights and forces are as follows:
     \begin{enumerate}
-    	\item 94.81 Hz
-    	\item 94.83 Hz
-    	\item 96.6 Hz
-    	\item 125.7 Hz
+        \item \SI{94.81}{Hz}
+        \item \SI{94.83}{Hz}
+        \item \SI{96.6}{Hz}
+        \item \SI{125.7}{Hz}
     \end{enumerate}
-	To dampen the vibrations of the Friction Drive, there are 4 airbags installed directly to the frame that act as a suspension system.\\
+    To dampen the vibrations of the Friction Drive, there are 4 airbags installed directly to the frame that act as a suspension system.\\
     \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{images/frame1}
@@ -52,7 +52,7 @@
     \begin{itemize}
     \item The first loading scenario (\reffig{fig:frame1}) is a worst-case scenario in which the EC brakes actuate while friction drive is active. The lowest safety factor observed in the FEA model for this case is 4.176 on the bolts that the EC brakes would be attached to.
     \item The second loading scenario (\reffig{fig:frame2}) is where the friction drive system is active and providing forward propulsion to the pod. This case has a very high safety factor.
-	\item The final loading case (\reffig{fig:frame3}) we will look at is when the friction drive is not running and the EC brakes are activated. The safety factor here is at 4.771, where the highest stress is on the bolts that the EC brakes are connected to.
-	\item Pod structural design cases: at a minimum, this shall include initial acceleration, nominal deceleration, and a reasonably foreseeable off-nominal crash (FEA)
+    \item The final loading case (\reffig{fig:frame3}) we will look at is when the friction drive is not running and the EC brakes are activated. The safety factor here is at 4.771, where the highest stress is on the bolts that the EC brakes are connected to.
+    \item Pod structural design cases: at a minimum, this shall include initial acceleration, nominal deceleration, and a reasonably foreseeable off-nominal crash (FEA)
     \end{itemize}
 \end{document}
