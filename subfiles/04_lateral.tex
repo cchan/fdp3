@@ -7,29 +7,31 @@
     Lateral wheels were chosen for the final design as they allowed for a passive and lightweight lateral control system capable of supplying sufficient lateral forces to maintain stability.
 
     \section{Overall Design}
-    Full labelled detailed CAD\\
-    Mass, dimensions, etc.\\
-    Full cost breakdown, comments on manufacturability and production costs\\
-    “A full Bill of Materials can be found in Appendix C.”
+    \begin{figure}
+    	\centering
+        \includegraphics[width=\linewidth]{images/Lateral_Master}
+        \label{fig:lateralMaster}
+        \caption{The Lateral Subassembly.}
+    \end{figure}
+    The lateral control subassembly consists of an aluminum wheel being pressed against the web of the I-beam. The wheel and clevis assembly slides along a rail on a carriage. An adjustable damper is threaded into the clevis assembly on one end and fixed to the lateral mount on the other. The damper fits inside the spring and serves to dissipate the pod's lateral kinetic energy, while the spring serves to maintain the pod's equilibrium position.\\
+    A full Bill of Materials can be found in \reftab{tab:lateral-bom}.
 
     \section{Structural}
-    MATLAB simulations were created to ensure the lateral control system would maintain a close distance to the rail so as to prevent any pod component from entering a no-go zone or colliding with the rail. For example, the Eddy Current Brakes (when deployed) have a nominal distance to the rail of 19mm. As such, the lateral control system must always maintain a distance smaller than 19mm.\reffig{fig:RandDistToRail}\\
-    The MATLAB simulation is programmed with inputs of pod mass, pod acceleration, and spring and damper coefficients. The simulation models the pod's lateral position when subjected to rails which are offset by values two times those listed in the tube specification PDF. It is important to note that this simulation models the pods entire acceleration profile; it starts from rest and reaches the pod's top speed at the end of the graph, so the pod's lateral response behaviour appears to change along the graph. Because of this, the pod tends to return to equilibrium faster on the left portion of the graph. \\
-    The rails can either be oscillating back and forth or randomly arranged. They can also be angled to a degree specified in the tube specifications PDF. 
-     \begin{figure}[H]
+    \begin{figure}
     	\centering
         \includegraphics[width=\linewidth]{images/RandDistToRail}
         \label{fig:RandDistToRail}
-        \caption{The plot of the distance to the rail in when the rails are arranged in a random order. We see that the lowest pod-rail distance is less than 12 millimeters; for reference, the brakes are nominally at 19mm when deployed.}
+        \caption{The plot of the distance to the rail in when the rails are arranged in a random order. We see that the lowest pod-rail distance is less than 12 millimetres; for reference, the brakes are nominally at 19mm when deployed.}
     \end{figure}
-    \begin{figure}[H]
+    MATLAB simulations were created to ensure the lateral control system would maintain a close distance to the rail so as to prevent any pod component from entering a no-go zone or colliding with the rail. For example, the Eddy Current Brakes (when deployed) have a nominal distance to the rail of 19mm. As such, the lateral control system must always maintain a distance smaller than 19mm, seen on Figure 5.2 on page 63.\\
+    The MATLAB simulation is programmed with inputs of pod mass, pod acceleration, and spring and damper coefficients. The simulation models the pod's lateral position when subjected to rails which are offset by values two times those listed in the tube specification PDF. It is important to note that this simulation models the pods entire acceleration profile; it starts from rest and reaches the pod's top speed at the end of the graph, so the pod's lateral response behaviour appears to change along the graph. Because of this, the pod tends to return to equilibrium faster on the left portion of the graph. \\
+    The rails can either be oscillating back and forth or randomly arranged. They can also be angled to a degree specified in the tube specifications PDF.\\
+    \begin{figure}
         	\centering
         \includegraphics[width=\linewidth]{images/OscillatingMaxDistToRail}
         \label{fig:OMaxDistRail}
-        \caption{This plot is similar to \reffig{fig:RandDistToRail} except that the arrangement of the rail in this simulation is in alternating order. Again we can see that the closest the pod will get to the rail in less then 12mm }
+        \caption{This plot is similar to \reffig{fig:RandDistToRail} except that the arrangement of the rail in this simulation is in alternating order. The closest distance is again 12mm.}
     \end{figure}
-    
-    
     \begin{figure}[H]
     	\centering
         \includegraphics[width=\linewidth]{images/RandPodLateralResponse}
@@ -41,7 +43,7 @@
         \includegraphics[width=\linewidth]{images/OscillatingPodLateralResponse}
         \label{fig:OPodLateralRespnse}
         \caption{This simulation was done to show how the pod will respond to a rail. In this case the rail offsets were placed in alternating order.}
-    \end{figure}    
+    \end{figure}
     
     \section{Tests \& Validation }
     \subsection{Damper Coefficient Measurement}
@@ -53,8 +55,8 @@
     \]
 %     \end{equation}
     \subsection{Static Impulse Test}
-    The fully-assembled pod will be loaded on an in-house test track and subjected to an impulse. Sensor values and video will then be analyzed to ensure pod is sufficiently damped (i.e., the pod does not oscillate past its equilibrium point more than twice).
+    The fully-assembled pod will be loaded on an in-house test track and subjected to a lateral impulse. Sensor values and video will then be analyzed to ensure pod is sufficiently damped (i.e., the pod does not oscillate past its equilibrium point more than twice).
     \subsection{Dynamic Integration Test}
-    After unit testing is complete, the team plans on doing integration testing on the longest possible track within our capabilities. This track will be used to allow the pod to test its subsystems at nonzero speeds.\\
+    After unit testing is complete, the team plans on doing integration testing on the longest possible track within our capabilities. This track will be used to allow the pod to test its subsystems at speed.\\
     Lateral control will be tested by observing the pod's position when moving along a rail for which there is a deliberately placed offset at the joining of beams.
 \end{document}

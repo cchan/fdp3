@@ -168,6 +168,7 @@ Due to the University of Waterloo co-op system, our team rotates approximately e
 	 \item {Shun Rao}
      \item {Stefan Sing}
 	 \item {Stephanie Mills}
+     \item {Steven Kozachuk}
      \item {Turja Aninda}
 	 \item {Tushar Sekhri}
      \item {Tyler Zhang}
@@ -181,7 +182,6 @@ Due to the University of Waterloo co-op system, our team rotates approximately e
      \item {Yingning Gui}
 	 \item {Zhaoxin Zhang}
      \item {Ziyang Huang}
-	 \item {Steven Kozachuk}
 \end{itemize}
 \end{multicols}
 \newpage
@@ -358,7 +358,11 @@ We are grateful to many people and organizations that have helped make this poss
 
 \chapter{Top-Level Design}
 \label{ch:top-level-design}
-Labeled CAD (Exploded? Semitransparent? Color coded?)\\
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/jimmypictwopointoh.png}
+        \caption{CAD of Overall Design}
+    \end{figure}
 
 Our pod design process for Competition III began with the goal of building the fastest pod. Based purely on specific power and energy of lithium ion batteries (and perhaps supercapacitors), it is theoretically possible to achieve speeds above Mach 1 within the 1-mile Hyperloop test track. This year, our pod is designed to achieve 100 m/s, and we are gradually working towards higher and higher speeds for future competitions.
 
@@ -373,7 +377,7 @@ Our pod consists of the following major components:
 
 \subsection{Size and Mass}
 The size of the pod is primarily dictated by the size of the propulsion system and the size of the I-beam.\\
-  The mass of the pod depends on the individual mass of each subsystem, as seen in \reftab{table:mass}. The overall mass of the pod should be approximately 150 kilograms.
+  The mass of the pod depends on the individual mass of each subsystem, as seen in \reftab{table:mass}. The overall mass of the pod should be approximately 149 kilograms.
 
 \begin{table}[H]
 \centering
@@ -392,59 +396,25 @@ The size of the pod is primarily dictated by the size of the propulsion system a
   \label{table:mass}
 \end{table}
 
-Overall weight distribution/Centre of mass\\
-The cross-section of the pod is small enough that aerodynamic effects like the Kantrowitz limit\\
-are negligible (IS THIS SENTENCE OUT OF PLACE? TODO).\\
 
 \subsection{Energy Storage and Usage}
-Where is energy stored onboard the pod?
+Energy in the pod is stored in:
 \begin{itemize}
     \item Huge batteries
     \item Air tanks
-    \item Lateral/EC Brakes springs?
+    \item Lateral/EC Brakes springs
 \end{itemize}
-Where is energy used onboard the pod?
+Energy is used in the pod by:
 \begin{itemize}
     \item Friction drive
     \item Electronic systems (electrically isolated)
 \end{itemize}
 
-\subsection{Predicted Pod trajectory}
-\ref{fig:pod-position} describes the trajectory of the pod while braking.\\
 
 \subsection{Loading and Unloading Plan}
-Due to the pod being relatively lightweight – approximately 150 kilograms, the pod can simply be moved and lifted by 10 people. Therefore, moving to and away from the Hyperloop competition is not a large safety concern.
-
-\section{Scalability}
-\begin{itemize}
-    \item Air tanks
-    \item Lateral/EC Brakes springs?
-\end{itemize}
-
-Where is energy used onboard the pod?
-\begin{itemize}
-    \item Friction drive
-    \item Electronic systems (electrically isolated)
-\end{itemize}
-
-\subsection{Predicted Pod trajectory}
-\ref{fig:pod-position} describes the trajectory of the pod while braking.\\
-\subsection{Loading and Unloading Plan}
-Due to the pod being relatively lightweight – approximately 150 kilograms, the pod can simply be moved and lifted by 10 people. Therefore, moving to and away from the Hyperloop competition is not a large safety concern.
+Due to the pod being relatively lightweight – approximately 149 kilograms, the pod can simply be moved and lifted by 10 people. This distributes the mass to 15kg per person. Therefore, moving to and away from the Hyperloop competition is not a large safety concern.
 \section{Scalability}
 Our pod design seeks to be the simplest possible design for a Hyperloop. However, it is difficult to scale to high-subsonic speeds for several reasons.
-In order to fully do so, the team will eventually need to gain experience with high power systems, high speed stability, and braking systems on a larger scale.\\
-Preliminary analysis on scalability to an operational Hyperloop needs to be done with respect to:
-\begin{itemize}
-    \item System size (increased tube length, tube diameter, and Pod size)
-
-    \item Cost (both production and maintenance)
-    \item Estimated Pod mass and cost if built full-scale
-    \item Maintenance (e.g. not requiring specialized alignment tools, hot-swappable subsystems)
-    \item Power, cooling, safety, etc.
-
-    \item Propulsion effectiveness
-
-\end{itemize}
+In order to fully do so, the team will eventually need to gain experience with high power systems, high speed stability, and braking systems on a larger scale. The core concept of friction drive, that is, high-speed wheeled propulsion, is not very scalable. This is because the wheel rpm increases linearly with speed and centripetal force required increases with the square of the rpm. This means that at high speeds, the wheel faces very high stresses. This problem especially affects wheels of small radius, which have a higher rpm than wheels of a larger radius. However, the friction drive can be used for low speed control where other propulsion methods, such as a linear induction motor, are less efficient, or do not work outright. Additionally, there are sections of the friction drive that are still scalable to larger pod masses and velocities. The most prominent example is the suspension system, made up of a Watts linkage and airbag suspension units. Airbag suspensions are used in industrial applications where they bear high loads, such as in trains and semi trucks. The Watts linkage is a linkage used to allow vertical movement while restricting all other directions, and is used in older train suspension designs and off road trucks. The linkage is quite simple in design, and easy to implement in tight spaces. Since Waterloop is looking to use the friction drive as a segue into more speed-specific propulsion methods, such as a high speed LIM, its lack of scalability is not a particularly troublesome issue in our Hyperloop design.\\
 
 \end{document}

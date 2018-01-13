@@ -1,7 +1,7 @@
 \chapter{Control Systems}
 \label{ch:control-systems}
 \section{Overview}
-\newcommand{\itc}{I$^2$C}
+\newcommand{\itc}{I$^2$C }
 The main goal of building the software systems around the pod, was creating a redundant yet lightweight and fast solution that would allow for safe communications with the vehicle and ensure complete control throughout pod launch.\\
 
 The Software-system is built upon the Master-Slave design model to allow for maximum redundancy and safety at all times. The design is based on three components: Embedded-systems (Controls/Sensors Hub), Communication-systems (Master), and the Control-panel. 
@@ -297,7 +297,7 @@ Navigation system will be running on all Master-machines and will use a variety 
 \toprule 
  Source & Action\\
 \midrule
-Main Battery dies or fails & EC brakes engage based on circuit design, provide power to friction brakes if speed is less than \SI{10}{m/s}\\
+Main Battery dies or fails& EC brakes engage based on circuit design, provide power to friction brakes if speed is less than \SI{10}{m/s}\\
 % \hline
 Server side power wire is down& Case 1: One server dies, switch to the next server; Case 2: All servers die, Embedded loses heartbeat\\
 % \hline
@@ -315,9 +315,9 @@ Brakes overheat& Braking: Keep braking (Friction and EC brakes); Acceleration: C
 % \hline
 Friction drive slips on the rail&Use a filter if there is a spike (non-linear slope); If friction drive slips for less than 0.5 seconds, cut friction, stop accelerating; If 0.5 seconds or more, cut power and gradually increase to the original target; Else, check ESC reaction time and cut off power\\
 % \hline 
-Computer overheats & Shut down server\\
+Computer overheats& Shut down server\\
 % \hline
-Shortings, Current too high & Shut down associated battery; start braking\\
+Shortings, Current too high& Shut down associated battery; start braking\\
 % \hline 
 Temperature sensor malfunction & If 2/3 sensors are consistent, ignore the remaining 1/3 sensors\\
 % \hline
@@ -327,11 +327,11 @@ Photoelectric Distance sensor malfunction& If 1/4 sensors outside of tolerance o
 % \hline
 Acceleration sensor malfunction& If 1 sensor is wrong: ignore and read remaining sensor; Else: shutdown\\
 % \hline 
-Tilt sensor malfunction & Refer to IMU. If IMU is consistent with tilt sensor, brake \\
+Tilt sensor malfunction& Refer to IMU. If IMU is consistent with tilt sensor, brake \\
 % \hline
-RPM Sensor/ Shaft encoder malfunction & Refer to IMU for acceleration data \\
+RPM Sensor/ Shaft encoder malfunction& Refer to IMU for acceleration data \\
 % \hline 
-Reed Sensor malfunction & Refer to IMU for deceleration data \\
+Reed Sensor malfunction& Refer to IMU for deceleration data \\
 \bottomrule
 \end{tabular}
 \caption{Software Failure Scenarios}

@@ -29,9 +29,9 @@
 \usepackage{titlesec}
 \usepackage{incgraph,tikz}
 
-\titleformat{\chapter}[display]   
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
-\titlespacing*{\chapter}{0pt}{-20pt}{-10pt}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{}
+\titlespacing*{\chapter}{0pt}{-20pt}{0pt}
 
 \pagestyle{fancy}
 \renewcommand{\etocaftertitlehook}{\thispagestyle{fancy}}
@@ -57,7 +57,7 @@
 \newcommand{\refpara}[1]{\hyperref[#1]{Paragraph \ref*{#1} on page \pageref*{#1}}}
 \newcommand{\reffig}[1]{\hyperref[#1]{Figure \ref*{#1} on page \pageref*{#1}}}
 \newcommand{\reftab}[1]{\hyperref[#1]{Table \ref*{#1} on page \pageref*{#1}}}
-
+\newcommand{\refapp}[1]{\hyperref[#1]{Appendix \ref*{#1}} on page \pageref*{#1}}
 % \setlength{\parindent}{0pt}
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
@@ -90,19 +90,18 @@
     %%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
     \thispagestyle{empty}
     
-    \incgraph[documentpaper,
-  overlay={\node[red] at (page.center);}]
-  [width=\paperwidth,height=\paperheight]{images/front_off_top_level.png}
+    \incgraph[documentpaper]
+  [width=\paperwidth,height=\paperheight]{images/front_off-main_front.png}
 
     Revised \displaydate{date}\\
 
-    Prepared by the Waterloop Team.
+    Prepared by the Waterloop Hyperloop Team.
 
     Prepared for Space Exploration Technologies Corp. for the Hyperloop Pod Competition.\\
 
     \copyright \ 2018 by Waterloop.
 
-    All rights reserved. Not for public distribution.\\
+    All rights reserved. Not for public distribution. Yet.\\
 
     Document approved for submission by the Waterloop executive team on January 12, 2018.
 
@@ -111,15 +110,31 @@
 
 	% WE ARE NOT INCLUDING THE QUICK REFERENCE.
  	% \subfile{subfiles/00_quick_reference.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/intro.png}
     \subfile{subfiles/01_introduction.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/front_off_propulsion.png}
     \subfile{subfiles/02_propulsion.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/front_off_eddy.png}
     \subfile{subfiles/03_eddy_current_brakes.tex}
     \subfile{subfiles/04_lateral.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/front_off_frame.png}
     \subfile{subfiles/05_frame.tex}
     \subfile{subfiles/06_shell.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/front_off_electrical.png}
     \subfile{subfiles/07_electrical.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/front_off_embedded.png}
     \subfile{subfiles/08_embedded.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/front_off_control_system.png}
     \subfile{subfiles/09_control.tex}
+    \incgraph[documentpaper]
+  	[width=\paperwidth,height=\paperheight]{images/front_off_top-level.png}
     \subfile{subfiles/10_next_steps.tex}
 
     \begin{appendices}
