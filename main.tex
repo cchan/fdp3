@@ -32,7 +32,7 @@
 \renewcommand{\etocaftertochook}{\thispagestyle{fancy}}
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 \fancyhf{}
-\fancyhead[LE,RO]{Final Design Package}
+\fancyhead[LE,RO]{Competition 3 Final Design Package}
 \fancyhead[RE,LO]{Waterloop}
 \fancyfoot[LE,RO]{\thepage}
 \fancyfoot[CE,CO]{
@@ -132,7 +132,7 @@
     \subfile{subfiles/07_electrical.tex}
     \subfile{subfiles/08_embedded.tex}
     \subfile{subfiles/09_control.tex}
-    \subfile{subfiles/10next_steps.tex}
+    \subfile{subfiles/10_next_steps.tex}
 
     \begin{appendices}
         \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
@@ -189,9 +189,9 @@ intensify fire; oxidizer):\\
 \centering
 \caption{Electrical Failsafe Circuit}
 \label{my-label}
-\begin{tabular}{ccclcccc}
+\begin{tabular}{ccccccccc}
 \hline
-\multicolumn{3}{c}{Input}    &  & \multicolumn{4}{c}{Output}                                      \\ \hline
+\multicolumn{3}{c}{Inputs}    &  & \multicolumn{4}{c}{Outputs} \\ \hline
 Main Battery & 24V 1 & 24V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes & Friction Drive \\ \hline
 1            & 1     & 1     &  & 1                & 1         & 1               & 1              \\
 1            & 1     & 0     &  & 1                & 0         & 1               & 0              \\
@@ -214,22 +214,18 @@ Main Battery & 24V 1 & 24V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes
     \multirow{2}{*}{IMU} & Disconnection & Loss of acceleration/velocity data & 7 & Poor Connection/Wire Severed & Sensor Redundancy \\
     & Erroneous acceleration/velocity data & Inaccurate Pod State Estimation & 9 & Faulty hardware & Sensor Redundancy and Data Fusion \\
 
-    
-    
+
      \bottomrule
   \end{tabular}
   \caption{FMEA Electrical}
   \label{table:fmea-electrical}
 \end{table}
 
-\chapter{Procedures}
-        \chapter{Bill of Materials}
+\chapter{Bill of Materials}
         \label{app:bom}
         \subfile{subfiles/bom.tex}
-        \chapter{Part Drawings}
-        \chapter{Engineering Calculations?}
         \addtocontents{toc}{\endgroup}
-    \end{appendices}
+ \end{appendices}
 
 
 \end{document}

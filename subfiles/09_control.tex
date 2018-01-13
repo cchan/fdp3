@@ -241,17 +241,17 @@ Navigation system will be running on all Master-machines and will use a variety 
 	\centering
 	\begin{tabular}{@{}lll@{}} \toprule
     Sub-System & Test Description & Nominal Values \\ \midrule
-    Motor & Nominal Current Draw at ESC & \\
+    Motor & Nominal Current Draw at ESC & 0 Amps\\
     Motor & Nominal Temperature MOTOR & \\
     Motor & Nominal Temperature ESC & \\
     Motor & Cooling pump is active, cooling pressure less than & $< \SI{14.5}{psi}$ \\
     Friction & Pressure sensor & $< \SI{250}{psi}$ \\
     Friction & Solenoid control to turn on and off & TRUE \\
-    Batteries & Nominal Voltage and Current Main Battery & \\
+    Batteries & Nominal Voltage and Current Main Battery & 535 Volts \& 0 Amps \\
     Batteries & Nominal Temperature Main Battery & $20 < \textrm{Temp} < 50$ \\
     Batteries & Nominal Voltage and Current 24V Battery & 24 volts \\
     Batteries & Nominal Temperature 24V Battery & $20 < \textrm{Temp} < 50$ \\
-   	Batteries & Nominal Voltage from 25V to 5V step-down & 5 volts \\
+   	Batteries & Nominal Voltage from 24V to 5V step-down & 5 .3 volts \\
     Navigation & IMUs are functional and give normal values  & \SI{0}{m/s} acceleration \\
     Navigation & Shaft Encoder at \SI{0}{rpm} and Functional & Drive Test \\
     Navigation & Tilt sensors nominal values and online & $< 10 ^\circ$ \\

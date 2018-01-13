@@ -9,9 +9,12 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/EC_Pnuematic_Circuit.png}
-        \caption{The pneumatic circuit that we will be using to power the actuators of the brakes}
+        \caption{EC Brakes Pneumatic Circuit Schematic that describes the overall system using proprietary part numbers.}
         \label{fig:pneumatic-circuit}
     \end{figure}
+    
+    The pneumatic circuit provides the actuation of the EC Brakes, bringing them within effective range. Using two linear pneumatic actuators, the EC brakes are able to actuate along a axis towards the rail. The pneumatic actuator will be to retract and extend, ensuring that the brakes remained dormant whilst in the acceleration phase and activated during the braking phase. The pneumatic circuit is electrically failsafe, utilising solenoids to ensure that the brakes are extended and retracted during the correct velocity interval. The Pneumatic actuators need to handle a large amount of lateral force created from the Eddy Current effect while braking at high speeds. As such, pneumatic actuators are very well at doing so because they can produce very large forces at low resource costs and do not require large mechanical assemblies to do so, as it is a single component that achieves this. The pneumatic circuit is very similar in design to the one found in Friction Drive (\autoref{section:pneumatics}). The primary difference between these systems is that the actuators used in their assemblies are not the same.
+    The tank will contain high pressure air at 3000 psi and will contain the same safety and sensing elements as the pneumatic circuit seen on friction drive. As such, there will be a high-pressure tank and circuit that will be connected to a regulator which reduces the pressure into a low-pressure circuit. The MEOP of the high-pressure circuit will be 3000 psi and the MEOP of the low-pressure circuit will be 125 psi. Relief valves will be set at MEOP to ensure that the pressure does not exceed our expected values. This pneumatic circuit will also be Proof tested in order to certify the MAWP of the system – which should be 1.5x the MEOP.
     The overall brakes can be seen in \reffig{fig:EC-Assembly}. The piston is mounted to the frame through our piston mount which is attached to the magnet bar. Our brakes actuate back and forth in a straight line which is perpendicular to the rail. They keep their path due to a shaft that is also attached to the frame.
     \begin{figure}[H]
     	\centering
@@ -76,31 +79,11 @@
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\linewidth]{images/force_velocity_graph.png}
+        \includegraphics[width=\linewidth]{images/force_velocity_graph_16_magnets.png}
         \caption{Graph of the lift and drag forces experienced by the magnets, for one of the brakes}
         \label{fig:force-velocity-graph}
     \end{figure}
     Based on the graphs for force and velocity in \reffig{fig:force-velocity-graph}, we were able to determine the velocity profile (\reffig{fig:velocity-profile}), acceleration profile (\reffig{fig:accelation-profile}), and the distance profile (\reffig{fig:distance-profile}).\\
-
- 	\begin{figure}[H]
-        \centering
-        \includegraphics[width=\linewidth]{images/velocity_time_graph}
-        \caption{Velocity Profile During Braking}
-        \label{fig:velocity-profile}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\linewidth]{images/acceleration_time_graph}
-        \caption{Acceleration Profile During Braking}
-        \label{fig:accelation-profile}
-    \end{figure} 
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=\linewidth]{images/distance_time_graph}
-        \caption{the distance travelled in during braking}
-        \label{fig:distance-profile}
-    \end{figure}
-    
     From the force graphs it becomes evident that the pod will have to endure large forces when breaking. We can expect a maximum lift force of around 14000N and a maximum drag force of around \SI{4000}{N}. This means that the mounting to the frame and the position of the actuator need to be able to withstand these forces. The mounting points on the frame have been designed to be able to handle this force. The actuator is going to be oriented perpendicular to the magnets. Initially we thought about angling the actuator, this way the actuator would only experience some of the total force and not at its entirety. It was decided against this idea because this would require that we use an actuator with a larger stroke length. This would create a large bending moment which would not be ideal. As well the larger stroke length leads to the another problem of a large bending moment.
     From the acceleration time graph we can also see that at slower speeds, there is a spike in the drag force. This would create an acceleration of around 6Gs, which the pod is not designed to handle. Our pod has been designed to be able to safely handle 3Gs. To solve this problem we are going to be using our actuator to slowly retract the brakes at 10m/s at which point the low speed friction brakes would take over and slow the pod down to a complete stop. 
    Taking that into account as well as the expected propulsion we now have a complete idea of what our displacement, velocity and acceleration profiles will look like.
@@ -108,19 +91,19 @@
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/totalvelocityprofile}
-        \caption{Velocity Profile for the entire journey of the pod}
+        \caption{Velocity Profile for the entire journey of the pod.}
         \label{fig:total-velocity-profile}
     \end{figure}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/totalaccelerationprofile}
-        \caption{Acceleration Profile During Braking}
+        \caption{The total acceleration profile for the pod. This includes the acceleration of the propulsion system all the way to the use of the friction brakes right at the end}
         \label{fig:total-accelation-profile}
     \end{figure} 
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/totaldistanceprofile}
-        \caption{the distance travelled in during braking}
+        \caption{The total distance that the pod travels through all the phases of the trip. As seen the total travel is around 200 less then the actual length of the vacuum tube}
         \label{fig:distance-profile}
     \end{figure}
     

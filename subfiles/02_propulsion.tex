@@ -10,8 +10,13 @@
     However, later calculations based on commercially available LIMs showed that off-the-shelf products would be abysmally unsuited for the Hyperloop competition; most such LIMs have a very narrow operating range of velocity, outside of which the motor becomes extremely inefficient. First-principles analysis based on research papers showed some promise, but this would require a ground-up design of a variable-pitch linear induction motor, which still resides on the current cutting edge of linear motor research.\\
 
    \textbf{ [some kind of diagram or numbers about this @Ben]}\\
+% * <halb3880@mylaurier.ca> 2018-01-13T01:33:51.276Z:
+% 
+% TODO
+% 
+% ^ <halb3880@mylaurier.ca> 2018-01-13T01:34:14.171Z.
 
-    We decided to table the LIM design, due to the relative inexperience of our team with electromagnetic propulsion, as well as the very high mass and cost. We do, however, plan to continue researching this to be ready for next year’s competition. Friction drive, though it does not scale well to Hyperloop speeds, will still allow us to gain experience with high power systems and high speed stability and braking systems.\\
+    We decided to table the LIM design, due to the relative inexperience of our team with electromagnetic propulsion, as well as the very high mass and cost. We do, however, plan to continue researching this to be ready for next year’s competition. Friction Drive, though it does not scale well to Hyperloop speeds, will still allow us to gain experience with high power systems,high speed stability, and braking systems.\\
 
     \section{Overall Design}
     Full labelled detailed CAD\\
@@ -33,7 +38,7 @@
         \caption{Spring constant of a. 100,000, b. 250,000, c. 500,000, and d. 1,000,000}
         \label{fig:spring2}
     \end{figure}
-    In order to simulate how the pod will react to imperfections in the track, we performed two separate vibrational analyses, in the vertical and horizontal directions, with two separate vibrational damping systems (\reffig{fig:spring1} and \reffig{fig:spring2}). Based on the construction of the track, the horizontal direction will likely be by far the most problematic; this analysis is detailed in the Lateral subsystem. The vertical damping system is closely integrated into the friction drive system, and so is described here.\\
+    In order to simulate how the pod will react to imperfections in the track, we performed two separate vibrational analyses, in the vertical and horizontal directions, with two separate vibrational damping systems (\reffig{fig:spring1} and \reffig{fig:spring2}). Based on the construction of the track, the horizontal direction will likely be by far the most problematic; this analysis is detailed in the Lateral subsystem. The vertical damping system is closely integrated into the Friction Drive system, and so is described here.\\
 
     To determine design parameters of the springs and dampers, several simulations were performed. Different spring constants were chosen, and simulations for each were created using MatLab. The simulated pod was excited with a sinusoidal displacement, with amplitude as the maximum I-beam height tolerance and frequency matching the rate of I-beams passing by the pod. The magnitude of the maximum resulting pod displacement from the beam was plotted for each value of damping coefficient and speed (\ref{fig:spring1}). This series of plots shows the most dangerous combinations of damping coefficient and velocity. For each value of the spring coefficient, as the damping is increased, the vibrations become less intense. It was decided that a value of damping coefficient between [0.5 - 1.0] would be optimal in order to reduce pod vibrations.  Moving forward with this analysis, the response of the pod to a sudden displacement step was measured for a damping coefficient of 0.5 with varying spring constants. This is shown in \ref{fig:spring2}. It can be seen that as the spring coefficient is increased, the pod returns to the initial position much faster, which is shown by the red line. Also, as the spring coefficient is increased, the maximum displacement also decreases. Therefore, it was decided that the spring coefficient and damping coefficient should have values of \SI{500000}{N/m} and 0.5, respectively. \\
 
@@ -46,11 +51,16 @@
 
     The material for structural members of the friction drive is Aluminum 6061-T6, chosen for its ease of machinability and high strength to weight ratio. The disadvantages of aluminum are its difficulty of welding however, this was not an issue as the structure was not designed to have welded joints.\\
 
-    Add FEA, explain forces and BC\\
+    \textbf{Add FEA, explain forces and BC\\
     Maybe add properties of 6061? AZ did it\\
-    There’s some calcs we can do with max tension / compression of those linkage rods\\
+    There’s some calcs we can do with max tension / compression of those linkage rods}\\
 
    \textbf{ Mention factors of safety for everything}
+% * <halb3880@mylaurier.ca> 2018-01-13T01:33:28.523Z:
+% 
+% TODO
+% 
+% ^.
 
     \section{Motor}
     A number of different types of electric motors were investigated to select one that was best suited for our applications, primarily AC induction motors and DC brushless motors. Specifically, axial flux motors were favoured due to their high power density and efficiency. These motors are very light and can provide high torque and power with low heat loss.\\
@@ -143,15 +153,14 @@
         \label{fig:shaft-stress1}
     \end{figure}
 
-\reffig{shaft-stress1} shows the displacement result of the FEA, where the peak displacement of the shaft is \SI{0.15}{mm} at the tip of the shaft. In the image shown, it is at a 5\% model based displacement adjustment. %Author of next sentence please clarify%
-The mesh was created with an average element size of 3\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 3 mesh refinements with a convergence tolerance of 5\%. Similar FEA was done on the other power transmission shaft that connects to the wheel. The result yielded less overall stress on the bolt holes due the shaft not having a hollowed core (\SI{220}{MPa}).\\
+\reffig{shaft-stress1} shows the displacement result of the FEA, where the peak displacement of the shaft is \SI{0.15}{mm} at the tip of the shaft. In the image shown, it is at a 5\% model based displacement adjustment. The mesh was created with an average element size of 3\% of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 3 mesh refinements with a convergence tolerance of 5\%. Similar FEA was done on the other power transmission shaft that connects to the wheel. The result yielded less overall stress on the bolt holes due the shaft not having a hollowed core (\SI{220}{MPa}).\\
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig15}
         \caption{Meshing of the Shaft FEA}
     \end{figure}
-    The mesh was created with an average element size of 3\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 4 mesh refinements with a convergence tolerance of 5\%.
+    The mesh was created with an average element size of 3\%  of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 4 mesh refinements with a convergence tolerance of 5\%.
 
     \subsection{Pulley and Belt Drive}
 The propulsion system utilizes a single gear reduction in an open belt system, that incorporates an idler pulley to maintain constant tension on the system. Many different power transmission options were investigated, including a multi-gear system and a continuously variable transmission (CVT) system. However, these options were not chosen due to the overall complexity that these systems would have, and the cost, research, and development time involved in developing these systems would be far beyond the timeline allocated for the competition. Thus, a single gear reduction with the open belt system was chosen for the simplicity of design and testing, and the reduction of overall costs to integrate this power transmission system onto the pod.\\
@@ -206,7 +215,7 @@ Using the expected pod mass and the motor's specifications, the pod is projected
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.75\linewidth]{images/pulleythree.png}
+    \includegraphics[width=0.75\linewidth]{images/pulley3.png}
     \caption{Small pulley FEA results}
     \label{fig:pulley3}
 \end{figure}
@@ -272,8 +281,7 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
      	\textit{Angular velocity} (\omega) \times \frac{60}{2\pi} = \textit{RPM}\\
      	\textit{Power} (P) = \textit{Torque} (\tau)  \times \textit{Angular velocity} (\omega)\\
      \end{gather*}
-    %why is there a random picture of a wheel?
-
+     
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig17}
@@ -387,6 +395,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     The proof testing process will be carried out by filling the system at 1.5 MEOP for 10 minutes. Leaks and pressure gauges will be checked throughout the test to verify the system's functionality.\\
 
      \subsection{Pneumatic Circuit Explosive Calculations}
+     \label{section:pneumatics}
     Explosive calculations were done to check the potential energy of the tank filled with compressed air. To calculate the potential energy of the pneumatic pressure vessel the following equation is used:\\
     \begin{center}
         \[
@@ -486,6 +495,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
 
     \subsection{Failsafes}
     The solenoid that controls the brake master cylinder will be on an electrically failsafe circuit. In case of power loss, there will be a reserve battery to make sure that the calipers are actuated at the correct speeds. In addition, these brakes are mechanically failsafe. In the case of complete electrical power loss, the solenoid holding the calipers opens will be a normally open valve and will automatically actuate.
+    
 
     \section{Tests \& Validation (completed and planned)}
     Test rig (see Next Steps as well)\\

@@ -146,7 +146,7 @@
             24 & 2.04 & 48.04\\
             12 & 0.75 & 9 \\
             5 & 2.31 & 11.55 \\
-            3.3 & 0.01 & 0.02 \\
+            3.3 & 0.01 & 0.02 \\ \bottomrule
         \end{tabular}
         \caption{Power Consumption of Each Operating Voltage. As seen in table 24V systems drew the most power, which led to the selection of a 24V battery, to reduce power lost as heat when regulating voltage.}
     \end{table}
@@ -196,7 +196,7 @@
     \section{Failsafes}
     In the event of an electrical systems failure, precautions have been taken to ensure the pod will respond in a safe, controlled and repeatable fashion. The following sections describe how critical subsystems like the friction drive, braking systems, and embedded control hardware handle an electrical failure.
     \subsection{Battery}
-    The three main power sources on the pod are the high voltage battery for the friction drive, the 12V battery for powering software and braking functionality, and a backup 12V for redundancy.  If the main battery stops functioning, the EC brakes will activate, and the software system will safely bring the pod to a stop (by engaging friction brakes at speeds lower than 10 m/s). If one of the 12V batteries stops functioning, the EC brakes will activate, and the other battery will continue to power the Arduinos and sensors. To avoid a loss of power to software during the battery switch, a capacitor connected in parallel will briefly supply the current for the Arduino hubs. Once the EC brakes are activated, the software system will safely bring the pod to a stop. The battery failsafe circuit is pictured below, and all the outcomes are listed in \reffig{tab:efailsafe}. In the table, it is important to note that a status of 1 represents a voltage present. Since the friction brakes and EC brakes are in a normally closed state, they are engaged when their status is 0.
+    The three main power sources on the pod are the high voltage battery for the friction drive, the 24V battery for powering software and braking functionality, and a backup 24V for redundancy.  If the main battery stops functioning, the EC brakes will activate, and the software system will safely bring the pod to a stop (by engaging friction brakes at speeds lower than 10 m/s). If one of the 24V batteries stops functioning, the EC brakes will activate, and the other battery will continue to power the Arduinos and sensors. To avoid a loss of power to software during the battery switch, a capacitor connected in parallel will briefly supply the current for the Arduino hubs. Once the EC brakes are activated, the software system will safely bring the pod to a stop. The battery failsafe circuit is pictured below, and all the outcomes are listed in \reffig{tab:efailsafe}. In the table, it is important to note that a status of 1 represents a voltage present. Since the friction brakes and EC brakes are in a normally closed state, they are engaged when their status is 0.
     
 \begin{table}[H]    
 \centering
@@ -204,7 +204,7 @@
 %\hline
 \multicolumn{3}{c}{Input} &  & \multicolumn{4}{c}{Output}                                    \\ 
 \midrule
-Main Battery & 12V 1 & 12V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes & Friction Drive \\ \midrule
+Main Battery & 24V 1 & 24V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes & Friction Drive \\ \midrule
 1            & 1     & 1     &  & 1                & 0         & 1               & 1              \\
 1            & 1     & 0     &  & 1                & 1         & 1               & 0              \\
 1            & 0     & 1     &  & 1                & 1         & 1               & 0              \\
@@ -219,7 +219,7 @@ Main Battery & 12V 1 & 12V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes
 
     \begin{figure}[H]
         \centering
-        \includegraphics[scale = 0.5]{images/Failsafe}
+        \includegraphics[scale = 0.5]{images/SafetyCircuitFinal.PNG}
         \caption{Electrical Failsafe Circuit }
         \label{Failsafe}
     \end{figure} 
