@@ -4,9 +4,9 @@
 \newcommand{\itc}{I$^2$C }
 The main goal of building the software systems around the pod, was creating a redundant yet lightweight and fast solution that would allow for safe communications with the vehicle and ensure complete control throughout pod launch.\\
 
-The Software-system is built upon the Master-Slave design model to allow for maximum redundancy and safety at all times. The design is based on three components: Embedded-systems (Controls/Sensors Hub), Communication-systems (Master), and the Control-panel. 
-Embedded-systems is responsible for all of the pod's internal interactions with the sensors and various health checks. 
-Communication-systems is responsible for the complete pod control and has the ability to safely shut down the pod in case of an emergency. It is also responsible for the transportation of information from the vehicle to the control-panel to allow for live data visualization and remote control of the pod. 
+The Software-system is built upon the Master-Slave design model to allow for maximum redundancy and safety at all times. The design is based on three components: Embedded-systems (Controls/Sensors Hub), Communication-systems (Master), and the Control-panel.
+Embedded-systems is responsible for all of the pod's internal interactions with the sensors and various health checks.
+Communication-systems is responsible for the complete pod control and has the ability to safely shut down the pod in case of an emergency. It is also responsible for the transportation of information from the vehicle to the control-panel to allow for live data visualization and remote control of the pod.
 Front-end is responsible for displaying all of the pod's vital readings and providing a control interface while the pod is in the tube. All code written for the software system of the pod is available for public access at \href{https://github.com/teamwaterloop}{Waterloop's GitHub Page} under MIT license.
 
 \subsection{System Overview}
@@ -25,7 +25,7 @@ Two main design decisions of the Goose III's computational design are the parall
 \end{figure}
 
 Based on \reffig{fig:software-diagram}, the entire system will incorporate 35 sensors, an ESC and a BMS, that will allow for a complete control over the pod and a live stream of data from all sensors.
-% > 35 
+% > 35
 % finalize # of sensors
 
 \begin{figure}
@@ -81,7 +81,7 @@ CAN is a protocol that was designed for vehicle controller commutations to trans
     The Docker Swarm allows for two types of nodes, the manager node and worker node. Manager nodes distribute tasks among other worker nodes, and send data to the client through the communication protocols described in \refsubsec{subsec:comm-protocols}. Worker nodes perform the same tasks as other workers to reach consensus and can have tasks distributed among them.\\
     Initially at runtime, the pod will have a single manager node and two worker nodes running concurrently, where in the case of a manager failure, one of the worker nodes will be promoted to a manager.\\
     Controller failure will be monitored through a heartbeat managed by Docker which uses a small timeout for nodes to respond.
-    
+
 \section{Control Packet Format}
     \subsection{JSON structure}
     \label{subsec:json}
@@ -122,7 +122,7 @@ type CommPacketJson struct {
         \begin{tabulary}{\textwidth}{@{}LLlll@{}} \toprule
             {[0:2]} & {[3:9]} & {[10:27]} & {[28:45]} & {[46:63]}\\ \midrule
             3 bits & 7 bits & 18 bits & 18 bits & 18 bits\\
-            Packet Type & Packet Name & Data value 1 & Data value 2 & Data value 3\\ 
+            Packet Type & Packet Name & Data value 1 & Data value 2 & Data value 3\\
             \\
             see \ref{par:packet-name-repr} & see \ref{par:packet-name-repr} & & see \ref{par:data-repr} \\ \bottomrule
         \end{tabulary}
@@ -208,7 +208,7 @@ type CommPacketJson struct {
         \end{tabular}
         \caption{Example of Log message packet}
     \end{table}
-    
+
 \subsection{State}
     Sent from Control-panel or Embedded-systems to update state of Master-Machines
     \begin{table}[H]
@@ -219,12 +219,12 @@ type CommPacketJson struct {
         \end{tabular}
         \caption{Example of state packet}
     \end{table}
- 
+
     \subsection{Data Logging and Blackbox}
     In the short-term, Generic data logging will be implemented by storing all transmitted sensor data and pod commands into JSON files onto the Raspberry Pi as a blackbox. Data from each sensor will be written to separate files to allow for future data processing and analysis of patterns.\\
     As a long-term data storage solution, Waterloop will use AWS S3 to store large amounts of data without sacrificing accessibility. For post-launch data analytics, a local Grafana UI will be built to provide quick and modular data visualization tools, thus allowing the team to debug every single pod launch.
-       
-        
+
+
 \section{Navigation System}
 Navigation system will be running on all Master-machines and will use a variety of inputs to generate a precise location of the pod inside the tube. The system will be based on two IMUs, a Shaft Encoder and a Timer. Since raw data from accelerometers has a lot of variability due to the sensitivity of sensors, the IMU outputs will be passed through a Kalman filter. In addition to a data filter, the three on-board IMUs can be used for correctness voting. Since there is an odd number of IMU sensors, a basic voting algorithm will allow for a simple consensus procedure. \reffig{fig:navigation-system} Describes the flow of data within the Navigation-system.
 
@@ -277,24 +277,24 @@ Navigation system will be running on all Master-machines and will use a variety 
       \item Hub $\rightarrow$ Master-machine Heartbeat
       \item Sensor $\rightarrow$ Hub Heartbeat
     \end{itemize}
-    
+
     In case of any of the heartbeat failing, the master that is being reported to, is capable of restarting a slave i.e. triggering the watchdog procedure.
-    
+
     \subsection{Watchdogs}
     With two types of machines used in the pod's Embedded-systems, ATMega and RPI, each one has a different approach to Watchdogs. Arduino has a built in Watchdog that can be configured and with it's non-volatile memory, a lot of the state information can be preserved and recovered after a reboot. RPI has an OS-level Watchdog as well, but having a much more complex OS to load, reboots will take longer. Exact number will be generated through a series of tests.
-   
+
     \subsection{Single points of failure}
     By the physical nature of the CAN-BUS requiring two wires for communication and being bus based topology if a bus wire is disconnected or breaks, the nodes will lose all communications and the last sent packet will be damaged and lost. Disconnecting device from the bus will cause errors as a CAN node that doesn't receive any acknowledgement for a packet it has sent, will keep trying to send it indefinitely, hence clogging the bus pipeline. Both cases will trigger a failure mode as heartbeats will not be received stopping the pod. Thus, even with these failure cases the pod will still be able to come to a controlled stop.
-    
+
     \subsection {Failure scenarios and state diagram}
   In the event of pod failures, the control system will respond accordingly to ensure no harm is caused to the pod, the team, the test track, or the environment. If a system fails, the pod is designed to ensure it is just as safe as when it was operating correctly.\\
   The following table below lists the failure modes and effects according to specific failure scenarios. The software failure scenarios include, but are not limited to: the main battery, embedded system, braking, navigation, friction drive, and sensors.
   The software failure state diagram \reffig{fig:pod-failure-state-diagram} shows the behaviour and flow of the control systems. In addition, \reftab{tlb:fail-table} shows all of the possible failure scenarios and according software actions that are taken as a consequence.\\
-  
+
 \begin{table}[p]
 \centering
 \begin{tabular}{@{}p{3cm}p{13cm}@{}}
-\toprule 
+\toprule
  Source & Action\\
 \midrule
 Main Battery dies or fails& EC brakes engage based on circuit design, provide power to friction brakes if speed is less than \SI{10}{m/s}\\
@@ -304,33 +304,33 @@ Server side power wire is down& Case 1: One server dies, switch to the next serv
 Embedded subsystem dies& Active server will ground the pod\\
 % \hline
 Friction subsystem dies& Activate braking, cut off power to motor\\
-% \hline 
+% \hline
 Braking subsystem dies& Keep navigation active; Keep safety mechanisms on; Shut down other systems\\
 % \hline
-Navigation subsystem dies& Brakes: Keep braking; Acceleration: Cut off acceleration, activate EC/friction brakes; If speed is greater than 10 m/s, do not activate friction\\
-% \hline 
+Navigation subsystem dies& Brakes: Keep braking; Acceleration: Cut off acceleration, activate EC/friction brakes; If speed is greater than \SI{10}{m/s}, do not activate friction\\
+% \hline
 Brakes overheat& Braking: Keep braking (Friction and EC brakes); Acceleration: Cut off acceleration, activate EC/Friction brakes\\
 % \hline
-24V battery dies or fails&Case 1: 1 battery dies: Brakes engage; Provide power to friction drive if speed is less than 10 m/s; Case 2: both batteries die:  Lose all 3 servers, Embedded loses heartbeat; Brakes engage\\
+24V battery dies or fails&Case 1: 1 battery dies: Brakes engage; Provide power to friction drive if speed is less than \SI{10}{m/s}; Case 2: both batteries die:  Lose all 3 servers, Embedded loses heartbeat; Brakes engage\\
 % \hline
 Friction drive slips on the rail&Use a filter if there is a spike (non-linear slope); If friction drive slips for less than 0.5 seconds, cut friction, stop accelerating; If 0.5 seconds or more, cut power and gradually increase to the original target; Else, check ESC reaction time and cut off power\\
-% \hline 
+% \hline
 Computer overheats& Shut down server\\
 % \hline
 Shortings, Current too high& Shut down associated battery; start braking\\
-% \hline 
+% \hline
 Temperature sensor malfunction & If 2/3 sensors are consistent, ignore the remaining 1/3 sensors\\
 % \hline
 Voltage / Current sensor malfunction& If voltage or current sensors outside of tolerance, engage braking\\
-% \hline 
+% \hline
 Photoelectric Distance sensor malfunction& If 1/4 sensors outside of tolerance or zero, ignore and read the remaining 3/4 sensors; If 2/4 sensors are wrong: refer to IMU regarding gyroscope\\
 % \hline
 Acceleration sensor malfunction& If 1 sensor is wrong: ignore and read remaining sensor; Else: shutdown\\
-% \hline 
+% \hline
 Tilt sensor malfunction& Refer to IMU. If IMU is consistent with tilt sensor, brake \\
 % \hline
 RPM Sensor/ Shaft encoder malfunction& Refer to IMU for acceleration data \\
-% \hline 
+% \hline
 Reed Sensor malfunction& Refer to IMU for deceleration data \\
 \bottomrule
 \end{tabular}
@@ -347,7 +347,7 @@ Reed Sensor malfunction& Refer to IMU for deceleration data \\
 
     \subsection{Tests \& Validation}
     \begin{itemize}
-    \item \textbf{Vacuum Test.} All of the electrical components located on-board of the pod (such as MEB, HPB). While RPIs and ATMega has been tested in a vacuum chamber last year, it is important to test functionality of the entire system, since significant changes have been made. Important points of observation is the machine (RPI and Arduino) and sensor (for a complete sensor list refer to \reffig{tab:pod-sensor-list}) temperature. 
+    \item \textbf{Vacuum Test.} All of the electrical components located on-board of the pod (such as MEB, HPB). While RPIs and ATMega has been tested in a vacuum chamber last year, it is important to test functionality of the entire system, since significant changes have been made. Important points of observation is the machine (RPI and Arduino) and sensor (for a complete sensor list refer to \reffig{tab:pod-sensor-list}) temperature.
     \item \textbf{Independent Sensor Test.} Validate functionality of all sourced components. Confirm sensor refresh rate and optimal mounting positions.
     \item \textbf{Navigation system test.} Series of HiL tests to simulate pod movement and Unit-test software elements. drive pod without power and measure navigation. Then drive pod with power and measure navigation again
     \item \textbf{Communication System Test.} Stress test entire communication pipeline from sensors to Control-Panel. Goal of test is to find at what network load, the data transfer rate slows down to an unsafe conditions.
