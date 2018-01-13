@@ -29,22 +29,22 @@
         \caption{Main Battery Specifications}
         \label{tab:main-bat-specs}
     \end{table}
-    
+
     LiPo cells were chosen to power the friction drive motor because of their ability to continuously discharge large amounts of current. This means that we don't have to connect any cells in parallel, cutting weight and saving money.
-    
-    
-    
+
+
+
     To ensure that we have enough capacity for sufficient testing we will manufacture the housing to make installing/uninstalling the modules as easy as possible. This will allow us to replace and charge discharged modules with as little down time as possible.
 
     To achieve a voltage of 567V the main battery (see \reftab{tab:main-bat-specs} for specifications) will be an assembly of 27 modules (see \reftab{tab:module-specs} for specifications and \reffig{fig:module-model} for model). Each module housing 5 LiPo cells giving a total of 135 cells.\\
-    
+
      \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/cell_module}
         \caption{Cell Module Model}
         \label{fig:module-model}
     \end{figure}
-    
+
     \begin{table}[H]
         \centering
         \begin{tabular}{@{}lr@{}} \toprule
@@ -67,7 +67,7 @@
     Each cell (see \reftab{tab:cell-specs} for specifications and \reffig{fig:cell-model} for model) has a peak voltage of 4.2V and a capacity of 3750mAh. A high discharge rate of 90C (manufacturer spec) means the battery will be capable of supplying up to 337.5A.\\
 
     The 135 cells will be connected in series for a peak of \SI{567}{V} and \SI{337.5}{A}, meaning a maximum power of \SI{191}{kW}.\\
-    
+
     \begin{table}[H]
         \centering
         \begin{tabular}{@{}lr@{}} \toprule
@@ -85,21 +85,21 @@
         \caption{LiPo Cell Specifications}
         \label{tab:cell-specs}
     \end{table}
-    
+
     This battery will be able to adequately power the main battery. The voltage of the battery was determined due to the minimum required voltage of \SI{467}{V} to achieve top speed. Accounting for voltage drop due to internal resistance, if the motor were operating at \SI{193}{A} or \SI{51}{C} (required current to achieve desired top speeds) would result in at \SI{31}{V} drop from the peak battery capacity of \SI{567}{V}. This sets the voltage range of each individual cell from approximately \SI{4.00}{V} - \SI{3.50}{V} in order to stay within desired speeds. Thus the total voltage of the battery pack will range from \SI{536}{V} - \SI{472.5}{V}. Based on approximate discharge curves for a LiPo cell at approximately \SI{50}{C}, the main battery should be capable of providing sufficient power to the Friction Drive over the approximately 12 second long acceleration. However further testing that is outlined later in this document will be required to validate these estimates, as discharge rates of LiPo cells will vary slightly from product to product.\\
-    
+
      \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/Discharge.jpg}
         \caption{Discharge Curve of a LiPo cell.}
         \label{fig:Discharge.jpg}
     \end{figure}
-    
 
-   
-    
- 
-	
+
+
+
+
+
     \subsection{\textbf{\SI{24}{V}} Battery}
     \begin{table}[H]
         \centering
@@ -162,46 +162,46 @@
 
     \subsection{Battery Management System}
     \subsubsection{Main Battery}
-   	The main battery will use Elithion's Lithiumate Pro BMS, which monitors voltage and current output, as well as the temperature of each cell. The Lithiumate Pro is often used by electric vehicle enthusiasts, so it is a highly reputable system. 
-    
+   	The main battery will use Elithion's Lithiumate Pro BMS, which monitors voltage and current output, as well as the temperature of each cell. The Lithiumate Pro is often used by electric vehicle enthusiasts, so it is a highly reputable system.
+
     The BMS is being supplied by Elithion, who has a reputation for building reliable Battery Management Systems for many different prototypes and student design teams.
-    
+
 
      \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/lithiumate_pro}
         \caption{The Lithiumate Pro BMS Master}
         \label{fig:bms-master}
-    \end{figure}   
- 
+    \end{figure}
+
  	The BMS master above connects to the cells via "cell boards".  Cell boards measure the voltage and temperature measurement of each cell. There are 16 ports on the BMS which connect to strings of cells daisy-chained together - in our case, we'll have 15 strings of 10 cells and one of 5 (135 cells in total). The cell boards will be put inside the modules as shown in the following exploded view of the battery module. We'll have 2 modules per string (except the last one) as each module only holds 5 cells.
-     
+
      \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/ExplodedModule}
         \caption{Exploded Cell Module With BMS Cell Boards (green) and Spacers Visible}
         \label{fig:exploded-cell}
     \end{figure}
-     
+
 	The BMS will also come with a current sensor to ensure we are drawing the correct amount of current.
-	The Lithiumate Pro can communicate via the CAN bus, so that's how the important battery information will be sent to the on-board computers for analysis.     
-     
+	The Lithiumate Pro can communicate via the CAN bus, so that's how the important battery information will be sent to the on-board computers for analysis.
+
     \subsubsection{24V Battery}
 	The 24V battery will use a commercially available 6S BMS. In order to ensure the BMS works as advertised, basic tests will be conducted (e.g. try to draw current above what BMS is restricted to).
-    
+
 	\subsection{Battery Charging}
-    \subsubsection{Main Battery} 
+    \subsubsection{Main Battery}
 	The modules of the main battery will be disconnected and charged individually, eliminating the need for a high voltage battery charger. Individual 21V (4.2V x 5 cells) chargers will be used to charge the modules of the battery.
     \subsubsection{24V Battery}
     The 24V battery will be charged using off the shelf LiPo cell chargers, which are already owned by the team.
-    
+
     ESC, how power will be transferred and ensured for safety
 
     \section{Failsafes}
     In the event of an electrical systems failure, precautions have been taken to ensure the pod will respond in a safe, controlled and repeatable fashion. The following sections describe how critical subsystems like the friction drive, braking systems, and embedded control hardware handle an electrical failure.
     \subsection{Battery}
-    The three main power sources on the pod are the high voltage battery for the friction drive, the 24V battery for powering software and braking functionality, and a backup 24V for redundancy.  If the main battery stops functioning, the EC brakes will activate, and the software system will safely bring the pod to a stop (by engaging friction brakes at speeds lower than 10 m/s). If one of the 24V batteries stops functioning, the EC brakes will activate, and the other battery will continue to power the Arduinos and sensors. To avoid a loss of power to software during the battery switch, a capacitor connected in parallel will briefly supply the current for the Arduino hubs. Once the EC brakes are activated, the software system will safely bring the pod to a stop. The battery failsafe circuit is pictured below, and all the outcomes are listed in \reffig{tab:efailsafe}. In the table, it is important to note that for Friction Brakes, a 1 indicates current flow, which means the solenoid is powered, and the brakes are disengaged.
-    
+    The three main power sources on the pod are the high voltage battery for the friction drive, the 24V battery for powering software and braking functionality, and a backup 24V for redundancy.  If the main battery stops functioning, the EC brakes will activate, and the software system will safely bring the pod to a stop (by engaging friction brakes at speeds lower than \SI{10}{m/s}). If one of the 24V batteries stops functioning, the EC brakes will activate, and the other battery will continue to power the Arduinos and sensors. To avoid a loss of power to software during the battery switch, a capacitor connected in parallel will briefly supply the current for the Arduino hubs. Once the EC brakes are activated, the software system will safely bring the pod to a stop. The battery failsafe circuit is pictured below, and all the outcomes are listed in \reffig{tab:efailsafe}. In the table, it is important to note that for Friction Brakes, a 1 indicates current flow, which means the solenoid is powered, and the brakes are disengaged.
+
 \begin{table}[H]
 \centering
 \begin{tabular}{@{}p{1.5cm}p{1.5cm}p{1.5cm}|p{2cm}p{2cm}p{2cm}p{2cm}p{2cm}@{}}
@@ -226,15 +226,15 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
         \includegraphics[scale = 0.5]{images/SafetyCircuitFinal.PNG}
         \caption{Electrical Failsafe Circuit }
         \label{Failsafe}
-    \end{figure} 
-    
+    \end{figure}
+
     \begin{figure}[H]
         \centering
         \includegraphics[scale = 0.5]{images/Voltmeter}
         \caption{Voltmeter circuit from Electrical Failsafe Circuit}
         \label{Voltmeter}
-    \end{figure} 
-    
+    \end{figure}
+
     \subsection{BMS}
     One of the pod safety specfications stipulated by SpaceX is the isolation of the battery during overtemperature conditions.The cell boards output a temperature reading that is measured by the BMS master. An overtemperature condition will result in a fault being set on the CAN bus. Once the fault is observed from the on board computer, the battery is galvanically isolated via a contactor switch, as shown in \reffig{fig:contactor}. The EVC 250-800 is an automotive grade contactor manufactured by TE Connectivity, and is rated for 800V and 250A (continuous).
     \begin{figure}[H]
@@ -242,16 +242,16 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
         \includegraphics[scale = 0.5]{images/contactor}
         \caption{TE Connectivity EVC 250-800 - Automotive Contactor }
         \label{fig:contactor}
-    \end{figure}  
-    
+    \end{figure}
+
     \subsection{Inhibits on Braking During Acceleration}
     A critical safety feature is the prevention of braking during the pod's acceleration phase. The primary failure mode for this situation would be the cutoff of current flow to the solenoids that hold the brakes (EC or friction) in the disengaged position. Potential failure mechanisms include a faulty connection or wire, or the control relay that enables current flow failing open. Both braking mechanisms have reed switch sensors which will inform the embedded computer of the brake's position. If the brakes become engaged during the acceleration phase, the control software can disable the friction drive.
 
 
-    
-    
+
+
     \section{Testing}
-    Since different cell chemistries (even similar ones) react differently to various incidents (i.e. puncturing the cell), it was determined that the most effective way to show the battery design will be safe would be to experimentally test various components of the batteries to varying  extents, and using experimentally derived results to determine safe operating ranges for the batteries. The 3.7 V batteries used as backup power for the Arduino and Raspberry Pi have already been tested previously by our team in a vacuum, drawing expected current draw with no issues. Outlined in \refsec{subsec:testing-proc} are general testing plans for the main and 24V battery. They will be furthered expanded upon once details of testing have been finalized.
+    Since different cell chemistries (even similar ones) react differently to various incidents (i.e. puncturing the cell), it was determined that the most effective way to show the battery design will be safe would be to experimentally test various components of the batteries to varying  extents, and using experimentally derived results to determine safe operating ranges for the batteries. The \SI{3.7}{V} batteries used as backup power for the Arduino and Raspberry Pi have already been tested previously by our team in a vacuum, drawing expected current draw with no issues. Outlined in \refsec{subsec:testing-proc} are general testing plans for the main and 24V battery. They will be furthered expanded upon once details of testing have been finalized.
     \subsection{Purpose of Testing}
     To determine the absolute limits of batteries and to determine expected range of values for battery including temperature, current, and voltage under various different conditions.
     \subsection{Parameters of Testing}
@@ -260,7 +260,7 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
     Temperature sensors (both IR and contactless) will be used to monitor temperature of batteries in all tests. A shunt resistor and arduino will be used to measure current and voltage at all times, in all tests. Impact testing and hydraulic press testing will most likely be performed at university facilities, however facilities have not been confirmed. Vibration testing will be performed at Infinity Testing Solutions, however use of facilities for Goose III have not been confirmed.
     \subsection{Testing Procedure}
     \label{subsec:testing-proc}
-    Side Note: Testing will be broken into three “levels”; cell testing, module testing and battery testing. This testing is specifically with regards to the 535V battery. While the other batteries (24V and 3.7 V) will be tested, the 535V battery will be tested to the most rigorous degree, as a failure of this battery would lead to a significantly more catastrophic outcome than the other ones.
+    Side Note: Testing will be broken into three “levels”; cell testing, module testing and battery testing. This testing is specifically with regards to the 535V battery. While the other batteries (24V and \SI{3.7}{V}) will be tested, the 535V battery will be tested to the most rigorous degree, as a failure of this battery would lead to a significantly more catastrophic outcome than the other ones.
 
     \subsubsection{Level One: Cell Testing}
     This level of testing is where the most destructive testing will occur, since cells are relatively cheap in comparison to modules and the full battery. The cells being tested on will be from the Turnigy’s Nano-tech Ultimate  7500 mAh 2S2P. Since the battery comes in a variety of different capacities, all cell level testing will be done on both the 3750 mAh cells as well as the 1300 mAh cells, to determine the consistency of the specific cell chemistry. This will help the team, in the instance our power demands change and a change in capacity is required. The cell level tests include:
@@ -291,8 +291,8 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
         \end{enumerate}
         \item \textbf{Over Charging Damage}
         \begin{enumerate}
-            \item \textbf{What: }Charge cell to increasing levels of voltage above 4.2 V max charge rating.
-            \item \textbf{Why: }To test the maximum manufacturer rating for the battery, and to see how far above it the battery can go (or if it is even capable of reaching 4.2 V). Batteries used in competition will not be charged about maximum manufacturer rating nor will they have been previously charged above this value. The overcharge component of the test is purely for testing purposes.
+            \item \textbf{What: }Charge cell to increasing levels of voltage above \SI{4.2}{V} max charge rating.
+            \item \textbf{Why: }To test the maximum manufacturer rating for the battery, and to see how far above it the battery can go (or if it is even capable of reaching \SI{4.2}{V}). Batteries used in competition will not be charged about maximum manufacturer rating nor will they have been previously charged above this value. The overcharge component of the test is purely for testing purposes.
         \end{enumerate}
         \item \textbf{Cycle Testing}
         \begin{enumerate}
