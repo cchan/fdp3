@@ -38,7 +38,14 @@
 
     The 135 cells will be connected in series for a peak of \SI{567}{V} and \SI{337.5}{A}, meaning a maximum power of \SI{191}{kW}.\\
     
-    This battery will be able to adequately power the main battery. The voltage of the battery was determined due to the minimum required voltage of \SI{467}{V} to achieve top speed. Accounting for voltage drop due to internal resistance, if the motor were operating at \SI{193}{A} or \SI{51}{C} (required current to achieve desired top speeds) would result in at \SI{31}{V} drop from the peak battery capacity of \SI{567}{V}. This sets the voltage range of each individual cell from approximately \SI{4.00}{V} - \SI{3.50}{V} in order to stay within desired speeds. Thus the total voltage of the battery pack will range from \SI{536}{V} - \SI{472.5}{V}.\\
+    This battery will be able to adequately power the main battery. The voltage of the battery was determined due to the minimum required voltage of \SI{467}{V} to achieve top speed. Accounting for voltage drop due to internal resistance, if the motor were operating at \SI{193}{A} or \SI{51}{C} (required current to achieve desired top speeds) would result in at \SI{31}{V} drop from the peak battery capacity of \SI{567}{V}. This sets the voltage range of each individual cell from approximately \SI{4.00}{V} - \SI{3.50}{V} in order to stay within desired speeds. Thus the total voltage of the battery pack will range from \SI{536}{V} - \SI{472.5}{V}. Based on approximate discharge curves for a LiPo cell at approximately \SI{50}{C}, the main battery should be capable of providing sufficient power to the Friction Drive over the approximately 12 second long acceleration. However further testing that is outlined later in this document will be required to validate these estimates, as discharge rates of LiPo cells will vary slightly from product to product.\\
+    
+     \begin{figure}[H]
+        \centering
+        \includegraphics[width=\linewidth]{images/cell}
+        \caption{LiPo Cell Model}
+        \label{fig:Discharge.jpg}
+    \end{figure}
     
     \begin{figure}[H]
         \centering
@@ -118,18 +125,16 @@
             Contact Temp. & 8 & 5 & 0.00005 & 0.0004 & 0.002 &\\
             IR Temp & 8 & 3.3 & 0.00024 & 0.00192 & 0.006336 &\\
             PED & 4 & 24 & 0.1 & 0.4 & 9.6 &\\
-            IMU & 2 & 3.3 & 0.0016 & 0.0032 & 0.01056 &\\
+            IMU & 3 & 3.3 & 0.0016 & 0.0048 & 0.01584 &\\
             Tilt & 1 & 24 & 0.0015 & 0.0015 & 0.36 &\\
             Shaft Encoder & 1 & 7 & 0.05 & 1 & 0.35 &\\
             Liquid Pressure Sensor & 2 & 5 & 0.003 & 0.006 & 0.03 &\\
             Water Pump & 1 & 12 & 0.75 & 0.75 & 9 &\\
-            DPR & 1 & 3.3 & 24 & 0.04 & 0.96 &\\
-            DPR Control & 1 & 5 & 0.004 & 0.004 & 0.02 &\\
             Pressure Transducer & 2 & 24 & 0.04 & 0.08 & 1.92 &\\
             Pneumatic Solenoid & 6 & 24 & 0.1 & 0.6 & 14.4 &\\
             Reed Switch & 4 & 5 & 0.01 & 0.04 & 0.2 &\\
             ESC & 1 & 24 & 0.9 & 0.9 & 21.6 & \makecell{Inrush \\ current of 4A}\\ \midrule
-            Total & & & & 3.05592 & 39.970896 &\\ \bottomrule
+            Total & & & & 5.15 & 68.99 &\\ \bottomrule
         \end{tabular}
         \caption{Power/Current Consumption of Components}
     \end{table}
@@ -138,7 +143,7 @@
         \centering
         \begin{tabular}{@{}lrr@{}} \toprule
             \makecell{Operating \\ Voltage (V)} & \makecell{Current \\ Draw (A)}  &  \makecell{Power \\ Draw (W)} \\ \midrule
-            24 & 2.08 & 49.04 \\
+            24 & 2.04 & 48.04\\
             12 & 0.75 & 9 \\
             5 & 2.31 & 11.55 \\
             3.3 & 0.01 & 0.02 \\

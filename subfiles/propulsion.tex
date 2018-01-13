@@ -35,7 +35,7 @@
     \end{figure}
     In order to simulate how the pod will react to imperfections in the track, we performed two separate vibrational analyses, in the vertical and horizontal directions, with two separate vibrational damping systems (\reffig{fig:spring1} and \reffig{fig:spring2}). Based on the construction of the track, the horizontal direction will likely be by far the most problematic; this analysis is detailed in the Lateral subsystem. The vertical damping system is closely integrated into the friction drive system, and so is described here.\\
 
-    To determine design parameters of the springs and dampers, several simulations were performed. Different spring constants were chosen, and simulations for each were created using MatLab. The simulated pod was excited with a sinusoidal displacement, with amplitude as the maximum I-beam height tolerance and frequency matching the rate of I-beams passing by the pod. The magnitude of the maximum resulting pod displacement from the beam was plotted for each value of damping coefficient and speed (\ref{fig:spring1}). This series of plots shows the most dangerous combinations of damping coefficient and velocity. For each value of the spring coefficient, as the damping is increased, the vibrations become less intense. It was decided that a value of damping coefficient between [0.5 - 1.0] would be optimal in order to reduce pod vibrations.  Moving forward with this analysis, the response of the pod to a sudden displacement step was measured for a damping coefficient of 0.5 with varying spring constants. This is shown in \ref{fig:spring2}. It can be seen that as the spring coefficient is increased, the pod returns to the initial position much faster, which is shown by the red line. Also, as the spring coefficient is increased, the maximum displacement also decreases. Therefore, it was decided that the spring coefficient and damping coefficient should have values of 500,000 $\frac{\mathrm{N}}{\mathrm{m}}$ and $0.5$, respectively. \\
+    To determine design parameters of the springs and dampers, several simulations were performed. Different spring constants were chosen, and simulations for each were created using MatLab. The simulated pod was excited with a sinusoidal displacement, with amplitude as the maximum I-beam height tolerance and frequency matching the rate of I-beams passing by the pod. The magnitude of the maximum resulting pod displacement from the beam was plotted for each value of damping coefficient and speed (\ref{fig:spring1}). This series of plots shows the most dangerous combinations of damping coefficient and velocity. For each value of the spring coefficient, as the damping is increased, the vibrations become less intense. It was decided that a value of damping coefficient between [0.5 - 1.0] would be optimal in order to reduce pod vibrations.  Moving forward with this analysis, the response of the pod to a sudden displacement step was measured for a damping coefficient of 0.5 with varying spring constants. This is shown in \ref{fig:spring2}. It can be seen that as the spring coefficient is increased, the pod returns to the initial position much faster, which is shown by the red line. Also, as the spring coefficient is increased, the maximum displacement also decreases. Therefore, it was decided that the spring coefficient and damping coefficient should have values of \SI{500000}{N/m} and 0.5, respectively. \\
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{images/fig3}
@@ -373,7 +373,7 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
     \end{figure}
     
   \subsection{Mass Flow Choking}
-The pneumatic circuit was also designed to ensure that mass flow choking would not be an issue if in case the regulator fails. To check this condition, the mass flow choking conditions were calculated at the manual on/off valve and the low-pressure relief valve. This was calculated with the mass flow choking equation:\\
+The pneumatic circuit was also designed to ensure that mass flow choking would not be an issue if the regulator fails. To check this condition, the mass flow choking conditions were calculated at the manual on/off valve and the low-pressure relief valve. This was calculated with the mass flow choking equation:\\
 \begin{center}
         \[
         {m} = \frac{AP_t}{\sqrt{T_t}} \sqrt{\frac{\gamma}{R}}M(1+\frac{\gamma-1}{2}{M^2})^{-\frac{\gamma+1}{2(\gamma-1)}}
@@ -396,10 +396,9 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
 	\end{center}
 	where ${P_1}=\SI{3000}{psia}$, ${P_2}=\SI{14.7}{psia}$, and ${V_1}=\SI{48}{in^3}$, the total energy calculated is \SI{281230.4209}{in-lb} (\SI{31774.77103}{J}) or the  TNT equivalent of \SI{1.44E-02}{lb} (\SI{6.55E-03}{kg}). From this, in can be concluded that this pneumatic system is relatively safe with a line of sight of \SI{37.42}{ft} (\SI{11.40666067}{m}). However with this calculation, extra precaution will be taken when filling up the tank for safety procedures.
    
-
     \subsection{Finite Element Analysis}
     
-    A finite element analysis (\reffig{fig:drive-wheel-stress}) was conducted, in Autodesk Fusion 360, by placing a compressive load onto the wheel equivalent to the weight of the pod plus the force that the pneumatic actuators would provide, in order to create the required traction force. The track was grounded and fixed in all orthogonal directions and the wheel fixed via the bolt fixtures within the aluminum core.\\
+    A finite element analysis (\reffig{fig:drive-wheel-stress}) was conducted in Autodesk Fusion 360 by placing a compressive load onto the wheel equivalent to the weight of the pod plus the force that the pneumatic actuators would provide in order to create the required traction force. The track was grounded and fixed in all orthogonal directions and the wheel fixed via the bolt fixtures within the aluminum core.\\
     
 \begin{figure}
         \centering
@@ -408,15 +407,16 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
         \label{fig:drive-wheel-stress}
     \end{figure}
     
-    At a speed of \SI{100}{m/s}, the aluminum core only experiences a peak stress of \SI{34}{MPa}, which is significantly lower than the yield strength of the material, \SI{275}{MPa}, and provides a safety factor of over 8. At the same speed, the \SI{0.826}{g} of polyurethane tread will be subject to 10204 $g$ of radial acceleration equivalent to \SI{8427}{N} of force.\\
+    At a speed of \SI{100}{m/s}, the aluminum core only experiences a peak stress of \SI{34}{MPa}, which is significantly lower than the yield strength of the material, \SI{275}{MPa}, and provides a safety factor of over 8. At the same speed, the total mass of polyurethane tread, \SI{0.826}{g}, will be subject to 10204 $g$ of radial acceleration, equivalent to \SI{8427}{N} of force.\\
+    
     \begin{center}
-    At \SI{100}{rad/s}, the outer portion of the \SI{0.2}{m} diameter wheel will experience a radial acceleration as follows:
+    At \SI{100}{m/s}, the outer portion of the \SI{0.2}{m} diameter wheel will experience a radial acceleration as follows:
     	\[
   		\alpha=r\omega^2=\SI{0.2}{m}\times (\SI{100}{rad/s})^2 \times \frac{g}{\SI{9.81}{m/s^2}}= 10204\ g
    		\]
     \end{center}
     
-    The polyurethane tread is a hardness of \SI{90}{A} on the Shore hardness scale.The tensile pressure exerted from the radial acceleration on the tread will be of \SI{6.636}{MPa}, lower than the polyurethane's tensile strength of \SI{21.46}{MPa}. The bonding agent between the aluminum wheel and the tread selected is ``3M™ Marine Adhesive Sealant 5200''. This material is rated for above \SI{4.83}{MPa}. More than 40 times higher than the \SI{0.1173}{MPa} calculated tensile threshold. Additionally, the bond between the wheel and tread will be subject to \SI{1500}{N} of shear force from the torque generated by the motor. This equates to \SI{0.021}{MPa} of shear stress on the bond. The 3M adhesive is rated for \SI{2.69}{MPa}, giving for a safety factor of 128. \\
+    The polyurethane tread is a hardness of \SI{90}{A} on the Shore hardness scale. The tensile pressure exerted from the radial acceleration on the tread will be \SI{6.636}{MPa}, lower than the polyurethane's tensile strength of \SI{21.46}{MPa}. The bonding agent between the aluminum wheel and the tread selected is ``3M™ Marine Adhesive Sealant 5200''. This material is rated for above \SI{4.83}{MPa}. More than 40 times higher than the \SI{0.117}{MPa} calculated tensile threshold. Additionally, the bond between the wheel and tread will be subject to \SI{1500}{N} of shear force from the torque generated by the motor. This equates to \SI{0.021}{MPa} of shear stress on the bond. The 3M adhesive is rated for \SI{2.69}{MPa}, giving for a safety factor of 128. \\
 
     The \SI{0.127}{m} wide and \SI{0.01}{m} thick tread has a cross-sectional area of \SI{0.00127}{m^2}.\\
     This is used to calculate the tensile stress on the tread.
@@ -428,7 +428,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     	\[
         P_{\textrm{tensile}}=\frac{F}{A_{\textrm{contact}}}=\frac{\SI{8427}{N}}{\SI{0.0718}{m^2}} \times 10^{-6}=\SI{0.1173}{MPa}
         \]
-    The torque exerted on the driveshaft will be of \SI{135}{Nm}.\\
+    The torque exerted on the driveshaft will be \SI{135}{Nm}.\\
     By finding the shear force acting between the two components of the wheel, we calculate the shear force the bond must withstand.
     	\begin{gather*}
         F_{\textrm{shear}}=\frac{\tau_{\textrm{drive}}}{r}=\frac{\SI{135}{Nm}}{\SI{0.09}{m}}=\SI{1500}{N}\\
@@ -440,20 +440,20 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
         \caption{Caption needed}
         \label{fig:mesh}
     \end{figure}
-    The mesh (\reffig{fig:mesh}) was created with an average element size of 2\% of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 6 mesh refinements with a convergence tolerance of 5\%.
+    The mesh (\reffig{fig:mesh}) was created with an average element size of 2\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 6 mesh refinements with a convergence tolerance of 5\%.
 
     \subsection{Wheel balancing}
-    TODO
+    \textbf{TODO}
     \section{Friction Braking Calipers}
     \label{sec:friction-braking-calipers}
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig23}
-        \caption{Caption needed}
+        \caption{Caliper design for friction brakes}
     \end{figure}
 
     \subsection{Motivation}
-    Due to Eddy Current Brakes (\refsec{sec:eddy-current-brakes}) being ineffective at speeds below \SI{5}{m/s}, the pod required a secondary braking source to bring it to a complete stop. Friction brake calipers were determined to be the most simple and effective solution, with many off-the-shelf components available. The brakes are not required to perform at high speeds, and as such, do not require large brake rotors or high performance calipers/pads in order to stop the vehicle  As such, there is no requirement to create a custom braking system and the cost associated with creating such a braking system are minimal. It is easily integrated into the original design, requiring little to no alteration to major drivetrain components.\\
+    Due to Eddy Current Brakes (\refsec{ch:eddy-current-brakes}) being ineffective at speeds below \SI{5}{m/s}, the pod required a secondary braking source to bring it to a complete stop. Friction brake calipers were determined to be the most simple and effective solution, with many off-the-shelf components available. The brakes are not required to perform at high speeds, and as such, do not require large brake rotors or high performance calipers/pads in order to stop the vehicle  As such, there is no requirement to create a custom braking system and the cost associated with creating such a braking system are minimal. It is easily integrated into the original design, requiring little to no alteration to major drivetrain components.\\
 
     \subsection{Heating}
     The kinetic energy before friction brake is activated is approximately given by:\\

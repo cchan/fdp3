@@ -20,17 +20,23 @@ We are excited to build cutting-edge technology with the potential to revolution
 \subsection{Team Members Fall 2017}
 Due to the UWaterloo co-op system, our team rotates approximately every four months.
 
-\begin{multicols}{2}
+\begin{multicols}{3}
 	\centering{\large{Directors}}
     \begin{itemize}[label={},noitemsep]
-        \item Clive Chan, Technical Director
-        \item Jason Pan, Administrative Director
+        \item Clive Chan, Technical
+        \item Jason Pan, Administrative
     \end{itemize}
     \columnbreak
     \centering{\large{Advisors}}
     \begin{itemize}[label={},noitemsep]
         \item Serhiy Yarusevych, Faculty Advisor
         \item Victor Qian, Alumnus/Advisor
+    \end{itemize}
+    \columnbreak
+    \centering{\large{Integration Leads}}
+    \begin{itemize}[label={},noitemsep]
+        \item Ben, Faculty Advisor
+        \item Jimbo, Alumnus/Advisor
     \end{itemize}
 \end{multicols}
 \centering{\LARGE{Technical Teams}}
@@ -71,9 +77,18 @@ Due to the UWaterloo co-op system, our team rotates approximately every four mon
     \end{itemize}
 \end{multicols}
 \begin{itemize}
-    \item Administrative Leads: Nicholas Jelich, Natalia Zigante, Nafee Hasan, Aditya Arora
+    \item Administrative Leads: Nicholas Jelich, Natalia Zigante, Nafee Hasan, Aditya Arora, Emile Patry
     \item Technical Leads: William Ngana, Deep Dhillon, Ruslan Nikolaevra, Urooj Khaleeli, Jimmy Zhou, Benjamin Tonita, Chawthri Kanagarasa, Lily Hwang
 \end{itemize}
+
+\begin{multicols}{3}
+ \begin{itemize}[label={},noitemsep]
+     \item \textbf{AAA}
+     \item \textbf{BBB}
+     \item \textbf{CCC}
+ \end{itemize}
+\end{multicols}
+
 \begin{flushleft}
 \subsection{Sponsors}
 Thanks to all our sponsors, past and present
@@ -81,13 +96,7 @@ Thanks to all our sponsors, past and present
 \begin{multicols}{3}
     \begin{itemize}[label={},noitemsep]
     \item \textbf{Babylon VR}
-    \end{itemize}
-    \columnbreak
-    \begin{itemize}[label={},noitemsep]
     \item \textbf{BALLUFF}
-    \end{itemize}
-    \columnbreak
-    \begin{itemize}[label={},noitemsep]
     \item \textbf{Boko}
     \end{itemize}
 \end{multicols}
@@ -388,6 +397,7 @@ Thanks to all our sponsors, past and present
 \end{itemize}
 
 \chapter{Top-Level Design}
+\label{ch:top-level-design}
 Labeled CAD (Exploded? Semitransparent? Color coded?)\\
 
 Our pod design process for Competition III began with the goal of building the fastest possible pod. Based purely on specific power and energy of lithium ion batteries (and perhaps supercapacitors), it is theoretically possible to achieve speeds above Mach 1 within the 1-mile Hyperloop test track. Our pod this year is designed to achieve 100 m/s, and we are gradually working towards higher and higher speeds for future competitions.
@@ -412,7 +422,7 @@ The size of the pod is primarily dictated by the size of the propulsion system a
 
 \begin{table}
 \centering
-\begin{tabular}{@{}lc@{}}
+\begin{tabular}{@{}lr@{}}
 	\toprule Subsystem & Mass of Subsystem (\si{kg}) \\ \midrule
     Friction Drive & 55.8 \\
     Frame & 19.0 \\
@@ -421,14 +431,14 @@ The size of the pod is primarily dictated by the size of the propulsion system a
     Shell & 12.0 \\ 
     Eddy Current Braking & 27.0 \\
     Lateral & 10.1 \\ 
-    \end{tabular}
+\end{tabular}
   \caption{Mass of individual subsystems}
   \label{table:mass}
 \end{table}
     
 Overall weight distribution/Centre of mass\\
 The cross-section of the pod is small enough that aerodynamic effects like the Kantrowitz limit\\
-are negligible (IS THIS SENTENCE OUT OF PLACE?).\\
+are negligible (IS THIS SENTENCE OUT OF PLACE? TODO).\\
 
 \subsection{Energy Storage and Usage}
 Where is energy stored onboard the pod?
@@ -444,24 +454,25 @@ Where is energy used onboard the pod?
 \end{itemize}
 
 \subsection{Overall pod thermal profile}
-How are various parts of the pod cooled? (summarize)
+How are various parts of the pod cooled? (summarize) TODO
 
 \subsection{Predicted Pod trajectory}
-Speed versus distance graph
-\begin{figure} [H]
-        \centering
+\reffig{fig:pod-trajectory-profile} describes the trajectory of the pod while braking.\\
+\begin{figure}
+	\centering
+	\begin{subfigure}{0.4\textwidth}
         \includegraphics[width=\linewidth]{images/velocity_time_graph}
         \caption{Velocity Profile During Braking}
         \label{fig:velocity-profile}
-    \end{figure}
-    
-    \begin{figure}[H]
-        \centering
+    \end{subfigure}
+    \begin{subfigure}{0.4\textwidth}
         \includegraphics[width=\linewidth]{images/distance_time_graph}
-        \caption{the distance travelled in during braking}
+        \caption{Distance Travelled During Braking}
         \label{fig:distance-profile}
-    \end{figure}
-
+    \end{subfigure}
+    \caption{Pod Trajectory Profile During Braking}
+    \label{fig:pod-trajectory-profile}
+\end{figure}
 \subsection{Loading and Unloading Plan}
 Due to the pod being relatively lightweight – approximately 150 kilograms, the pod can simply be moved and lifted by 10 people. Therefore, moving to and away from the Hyperloop competition is not a large safety concern.
 

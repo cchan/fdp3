@@ -12,7 +12,7 @@
         \caption{The pneumatic circuit that we will be using to power the actuators of the brakes}
         \label{fig:pneumatic-circuit}
     \end{figure}
-    The overall brakes can be seen in \reffig{fig:EC-Assembly}. The piston is mounted to the frame through our piston mount which is attached to the magnet bar The way the brakes actuates 
+    The overall brakes can be seen in \reffig{fig:EC-Assembly}. The piston is mounted to the frame through our piston mount which is attached to the magnet bar. Our brakes actuate back and forth in a straight line which is perpendicular to the rail. They keep their path due to a shaft that is also attached to the frame.
     \begin{figure}
     	\centering
         \includegraphics[width =\linewidth]{images/EC_Brake_Master_2018}
@@ -40,7 +40,7 @@
         \label{fig:MagnetBar}
         \caption{FEA of the Magnet Bar}
     \end{figure}
-    Above we have FEA for each specific component of the brakes that will be experiencing large forces. 
+    Above we have FEA for each specific component of the brakes that will be experiencing large forces. We did these cases based on the forces that we are expecting to see while we are braking.
     “A full Bill of Materials can be found in Appendix C.”
 
     \section{Physical Modeling}
@@ -126,7 +126,6 @@
     
     Since we are using magnets, that means that there will always be a force related at some separation from the track. That means that when the brakes are in an off state they need to be far enough from the track such that the force that they pod feels is minimal. In order to figure this out what we used the equation for drag force (\ref{eq:lift-force2}) and inputted separation values and determined the one that would give us the lowest maximum drag force that fit our design requirements. From that we found that the optimal distance was 0.049mm away from the track.    
     
- 
     \section{Thermal}
     One thing that we have to be careful of is the heating that the breaks would have. As stated in the table above the max operating temperature for the magnets is $80$C\textdegree this means that we need to make sure that that the brakes do not get to that level.\\
 

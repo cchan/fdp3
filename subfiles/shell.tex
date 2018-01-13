@@ -24,7 +24,7 @@
     & Overall Mass [\si{kg}] & 11.96 \\
     \bottomrule
   \end{tabular}
-  \caption{Shell Specifications}
+  \caption{Shell specifications}
   \label{table:shelltable}
 \end{table}
 
@@ -108,11 +108,12 @@ Drag Coefficient & 1.06 & 0.58\\
 \end{table}
 As shown in \reftab{table:aerotable2}, due to the near-vacuum pressure in the tube, the drag experienced from the pod is very low. The calculated drag coefficient is 0.58 with a drag force of 4.37N for the proposed shell. To prove the insignificance of this value, it is approximately equal to the weight exerted by 3.84 bananas. The overall drag will have a negligible effect on the performance so no further aerodynamic analysis was performed.
 
-In terms of the Kantrowitz limit, this can be calculated with the following equations:
+In terms of the Kantrowitz limit, this can be calculated with the following equation:
 \begin{equation}
 \frac{A_{\textrm{bypass}}}{A_{\textrm{tube}}}=\bigg[\frac{\gamma - 1}{\gamma + 1}\bigg]^{\frac{1}{2}}\bigg[\frac{2\gamma}{\gamma + 1}\bigg]^{\frac{1}{\gamma - 1}}\bigg[1 + \frac{2}{\gamma - 1}\frac{1}{M^{2}}\bigg]^{\frac{1}{2}}\bigg[1 - \frac{\gamma - 1}{2\gamma}\frac{1}{M^{2}}\bigg]^{\frac{1}{\gamma - 1}}
 \end{equation}
 When calculating the ratio of the tube area to the bypass area around the pod with $\gamma= 1.400$ and Mach 0.3, it was found the the equation is not valid. This is due to the fact that the equation is only valid for supersonic or near-supersonic velocities. More specifically, the equation is valid for Mach 0.378 or greater. Thus, it can be concluded that the Kantrowitz limit does not apply to our pod design and choked flow will not occur since the mach number experienced by our pod is only roughly 0.30.\\
+
     \subsection{Structural}
 To increase the stability and decrease the loading on the shell, the shell will be constructed with a foam core. This will then be mounted to the frame with rubber bushings added to mitigate any propagating vibrations. The shell will be constructed out of fibreglass due to the high strength and lightweight characteristics. The forces on the shell will then be due to the inertia of the shell, as well as aerodynamic forces from the remaining air in the tube. With the weight of the shell being roughly \SI{12}{kg}, maximum acceleration being about \SI{9}{m/s^2}, and the total aerodynamic drag of \SI{4}{N}, the total force on the shell is about \SI{120}{N}. It is reasonable to assume that the force will not cause any damage on the shell due to the materials chosen. 
 
