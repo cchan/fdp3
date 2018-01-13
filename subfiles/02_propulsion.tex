@@ -39,7 +39,7 @@
 \caption{CAD of air bag suspension}\label{fig:cad-air-bag}
 \end{figure}
 
-    The structure of the friction drive is designed to connect the various parts of the drive together and links it all to the frame. The main members of the structure are two vertical aluminum plates onto which all other parts are mounted. The plates are connected with four internally threaded aluminum rods. L-brackets are bolted to the front of the plates which give a horizontal surface for the airbag suspension system to rest upon. The motor is bolted to the right side plate, and the motor shaft is supported by a pillow block bearing bolted on the left plate. A Watts linkage was chosen to connect the friction drive to the frame, as it allows vertical freedom while restricting longitudinal and lateral movement in relation to the frame. The linkage is made up of four angled arms into which oil-embedded bushings are press fit to allow them to pivot about a bolt. Aluminum 6061 T6 was the chosen alloy for the structure, as it has a relatively high yield strength of 276 MPa \footnote{\url{http://asm.matweb.com/search/SpecificMaterial.asp?bassnum=ma6061t6}} and its easy machinability. The side and top views of a simplified friction drive model are shown in \autoref{fig:oll} and \autoref{fig:otl}.
+    The structure of the friction drive is designed to connect the various parts of the drive together and links it all to the frame. The main members of the structure are two vertical aluminum plates onto which all other parts are mounted. The plates are connected with four internally threaded aluminum rods. L-brackets are bolted to the front of the plates which give a horizontal surface for the airbag suspension system to rest upon. The motor is bolted to the right side plate, and the motor shaft is supported by a pillow block bearing bolted on the left plate. A Watts linkage was chosen to connect the friction drive to the frame, as it allows vertical freedom while restricting longitudinal and lateral movement in relation to the frame. The linkage is made up of four angled arms into which oil-embedded bushings are press fit to allow them to pivot about a bolt. Aluminum 6061 T6 was the chosen alloy for the structure, as it has a relatively high yield strength of \SI{276}{MPa} \footnote{\url{http://asm.matweb.com/search/SpecificMaterial.asp?bassnum=ma6061t6}} and its easy machinability. The side and top views of a simplified friction drive model are shown in \autoref{fig:oll} and \autoref{fig:otl}.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{images/OrthoLeftLabelled.png}
@@ -51,9 +51,9 @@
 \caption{Top view of the simplified friction drive structure.}\label{fig:otl}
 \end{figure}
 
-Three test cases were chosen for the finite element analysis of the friction drive structure. Two of the cases, acceleration and braking, were normal operation loading cases, while the lateral case was an edge case load. The analysis was done on ANSYS using imported models from Fusion 360. Bolts and nuts were unthreaded, and detail was removed. All contacts were frictional with a coefficient of static friction of 1.05 \footnote{\url{https://www.engineeringtoolbox.com/friction-coefficients-d_778.html}} corresponding to that of aluminum-aluminum contact, with the exception of press-fit parts, which had bonded contacts, and the oil-embedded bushings, which had a frictionless contact. A two step analysis was performed with the first step containing all the bolt pretensions and the second step containing the loadings. The pretension loading values were calculated to be a value which would either keep the bolt's factor of safety (FOS) over 2 or the part's FOS over 3, whichever one was lower was selected. One special case is the bolts which go through the oil-embedded bushings, which had to stay under half the bushing's axial load rating. For the M8 screws going through the motor, 5500 N was chosen, while other bolts had a clamping force of 6000 N. The bolts going through the bushings were pretensioned to 2250 N. The wheel was restricted to zero displacement in the vertical direction, and the frame connection points were limited in the longitudinal and lateral directions. Other forces included the force of the belt tension on the face of the pullies, the clamping force of the track clamps on their mounting holes, and the weight of the pod on the L-brackets.\\
+Three test cases were chosen for the finite element analysis of the friction drive structure. Two of the cases, acceleration and braking, were normal operation loading cases, while the lateral case was an edge case load. The analysis was done on ANSYS using imported models from Fusion 360. Bolts and nuts were unthreaded, and detail was removed. All contacts were frictional with a coefficient of static friction of 1.05 \footnote{\url{https://www.engineeringtoolbox.com/friction-coefficients-d_778.html}} corresponding to that of aluminum-aluminum contact, with the exception of press-fit parts, which had bonded contacts, and the oil-embedded bushings, which had a frictionless contact. A two step analysis was performed with the first step containing all the bolt pretensions and the second step containing the loadings. The pretension loading values were calculated to be a value which would either keep the bolt's factor of safety (FOS) over 2 or the part's FOS over 3, whichever one was lower was selected. One special case is the bolts which go through the oil-embedded bushings, which had to stay under half the bushing's axial load rating. For the M8 screws going through the motor, \SI{5500}{N} was chosen, while other bolts had a clamping force of \SI{6000}{N}. The bolts going through the bushings were pretensioned to \SI{2250}{N}. The wheel was restricted to zero displacement in the vertical direction, and the frame connection points were limited in the longitudinal and lateral directions. Other forces included the force of the belt tension on the face of the pullies, the clamping force of the track clamps on their mounting holes, and the weight of the pod on the L-brackets.\\
 
-In the acceleration case, an additional global acceleration of 8 m/s rearwards was added to simulate a phantom force created by the non-intertial frame of reference. A forwards force of 1500 N was added to the wheel. The solve gave a maximum stress of 119.7 MPa on a motor mounting screw and an overall minimum safety factor of 2.68 which occured on an oil-embedded bushing. The max stress region is shown in \autoref{fig:accelstress}. A maximum displacement of 1.3 mm was caused on the airbag support L-bracket, shown in \autoref{fig:acceldisp}.
+In the acceleration case, an additional global acceleration of 8 m/s rearwards was added to simulate a phantom force created by the non-intertial frame of reference. A forwards force of \SI{1500}{N} was added to the wheel. The solve gave a maximum stress of \SI{119.7}{MPa} on a motor mounting screw and an overall minimum safety factor of 2.68 which occured on an oil-embedded bushing. The max stress region is shown in \autoref{fig:accelstress}. A maximum displacement of 1.3 mm was caused on the airbag support L-bracket, shown in \autoref{fig:acceldisp}.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{images/AccelStressLabelled.png}
@@ -72,7 +72,7 @@ In the braking case, a global acceleration of \SI{30}{m/s} forwards was added, a
 \caption{Stresses on the friction drive structure during braking. The motor is hidden for clarity.}\label{fig:brakestress}
 \end{figure}
 
-In the lateral load case, a global acceleration of 10 m/s laterally was added. The wheel was fixed in the vertical direction, and the frame contact points were fixed in the three longitudinal directions. The solve gave a maximum stress of 123 MPa on a motor mounting screw and a minimum safety factor of 2.61. A maximum displacement of 1.5 mm was generated. 
+In the lateral load case, a global acceleration of 10 m/s laterally was added. The wheel was fixed in the vertical direction, and the frame contact points were fixed in the three longitudinal directions. The solve gave a maximum stress of \SI{123}{MPa} on a motor mounting screw and a minimum safety factor of 2.61. A maximum displacement of 1.5 mm was generated.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{images/LateralStress.png}
@@ -128,7 +128,7 @@ In the lateral load case, a global acceleration of 10 m/s laterally was added. T
         \includegraphics[width=\linewidth]{images/pod_position_vs_time_curve.png}
         \caption{Pod position during acceleration phase}\label{pod-position}
     \end{figure}
-    
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/pod_acceleration_velocity_vs_time_curve}
@@ -299,7 +299,7 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
      	\textit{Angular velocity} (\omega) \times \frac{60}{2\pi} = \textit{RPM}\\
      	\textit{Power} (P) = \textit{Torque} (\tau)  \times \textit{Angular velocity} (\omega)\\
      \end{gather*}
-     
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig17}
@@ -507,11 +507,11 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
 
     \subsection{Failsafes}
     The solenoid that controls the brake master cylinder will be on an electrically failsafe circuit. In case of power loss, there will be a reserve battery to make sure that the calipers are actuated at the correct speeds. In addition, these brakes are mechanically failsafe. In the case of complete electrical power loss, the solenoid holding the calipers opens will be a normally open valve and will automatically actuate.
-    
+
 
     \section{Tests \& Validation (completed and planned)}
 	The overall purpose of testing is to verify that the friction drive will be able to function as per design intent. This involves examining certain critical components that may have failure modes that will be detrimental to the functionality of the pod, on or off the track. Testing will also be done to validate certain principles that will be vital to ensuring that the function as per design intent. Some values or concepts are hard to obtain numerically or theoretically, and require empirical testing in order to obtain. Testing will also reveal flaws in design, and will allow us to fix these flaws, in order to be prepared and safe before we enter the competition.\\
-    
+
     Three different testings will be done:
     \begin{itemize}
         \item Motor dynamometer
@@ -526,7 +526,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
        \label{fig:motordyna}
    \end{figure}
     A test needs to be conducted with a motor dynamometer (\reffig{fig:motordyna}) to obtain empirical values on motor performance in terms of:
-    
+
     \begin{itemize}
         \item torque/power
         \item RPM ranges
@@ -535,9 +535,9 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
         \item ESC functionality
         \item power delivery efficiency
     \end{itemize}
-    
+
     Motor performance will be improved by analyzing power/torque curves and optimizing ESC control in order to create a custom map that fits our gear reduction system and acceleration profile. In addition, it allows us to discover and troubleshoot failure modes creates due to design specifications.\\
-    
+
     Moreover, a test to ensure a sufficient endurance level for the wheels is completed. It is crucial to verify that the wheels are able to handle our loads and RPM ranges. A tread wear analysis would be done during acceleration profile and braking phase. A vibration analysis will also be completed to testify that the wheels are two plane balanced.\\
 
     Furthermore, a vibration test (\reffig{fig:vibra}) will be conducted to test the damping and spring performance and characteristics of the system. This allows us to obtain empirical values of the pod acceleration and position. The analysis provides us with the needed information to tune the suspension to achieve critical damping, and to discover and troubleshoot suspension failure modes.\\
@@ -548,23 +548,23 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
        \caption{Vibration testing}
        \label{fig:vibra}
    \end{figure}
-    
+
     \subsection{Flywheel Test Rig}
     We do not yet have detailed design for the flywheel test rig, but it is currently underway. We expect the rig to be completed approximately at the same time as subsystems are completed and assembled.
-    
+
 	The main test rig involves a flywheel that comes into contact with the drive wheel, which is used to substitute the I-Beam track, in order to test the endurance of the wheel. This rig can also be used to test eddy current braking and lateral systems.\\
-    
+
     Unfortunately, initial investigation revealed that a full speed test (\SI{90}{m/s}) would require an unreasonably large and strong flywheel, which would be extremely expensive and dangerous to design. Therefore, the current design of the test rig is intended to conduct half-speed tests (\approx \SI{45}{m/s}). This provides a cheaper and more realistic design while still obtaining valuable real-world data from which we can test hypotheses and extrapolate useful conclusions.\\
-    
+
     The flywheel is composed of \SI{16}{in} diameter aluminum bar stock, which replicates the material of the I-Beam, along with additional \SI{12}{in} diameter cast iron bar stock that is used to increase the moment of inertia to the required level. The cost of the flywheel and the mount is approximately 1120 CAD in total. The concept design of the test rig is shown in \reffig{fig:testrig}.\\
-    
+
     \begin{figure}
            \centering
    \begin{subfigure}{0.4\textwidth}
        \includegraphics[width=\linewidth]{images/testrig1}
        \caption{}
        \label{fig:testrig1}
-       \end{subfigure}        
+       \end{subfigure}
        \begin{subfigure}{0.4\textwidth}
        \includegraphics[width=\linewidth]{images/testrig2}
        \caption{}
@@ -573,7 +573,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
        \caption{CAD views of conceptual test rig design}
        \label{fig:testrig}
    \end{figure}
-    
+
 	Since the test rig involves rotating heavy materials at high rotational velocities, safety is critical. A thick protective barrier will be built around the test rig to prevent accidents, such as wheels getting dislodged. In case of emergency, a band brake can be applied to the shaft, which is a simple and reliable solution for braking.\\
 
 \end{document}
