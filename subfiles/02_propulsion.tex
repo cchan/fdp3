@@ -2,7 +2,7 @@
 \begin{document}
     \chapter{Propulsion}
     \label{ch:propulsion}
-    Propulsion, the new challenge for Competition III, is the most challenging subsystem to design, and its design additionally dictates the design of every other component on the pod. To select the best possible method of propulsion given competition constraints, we conducted a series of preliminary analyses on possible propulsion designs, the most promising of which were the friction drive and Linear Induction Motor (LIM). We eventually chose to fully invest into the friction drive design, due to the complexity, mass, and cost of a LIM suited for competition accelerations. friction drive is a form of transmission that uses two rotating elements to propel one along a surface. In the case for the pod, power is transferred from the motor using a belt drive system, which is connected by two shafts along the wheel and motor’s central axis. Friction drive serves as a safe and reliable form of propulsion as it is well-researched and tested in many different fields.
+    Propulsion, the new challenge for Competition III, is the most challenging subsystem to design. Its design additionally dictates the design of every other component on the pod. To select the best possible method of propulsion given competition constraints, we conducted a series of preliminary analyses on possible propulsion designs, the most promising of which were the friction drive and Linear Induction Motor (LIM). We eventually chose to fully invest into the friction drive design, due to the complexity, mass, and cost of a LIM suited for competition accelerations. friction drive is a form of transmission that uses two rotating elements to propel one along a surface. In the case for the pod, power is transferred from the motor using a belt drive system, which is connected by two shafts along the wheel and motor’s central axis. Friction drive serves as a safe and reliable form of propulsion as it is well-researched and tested in many different fields.
 
     \section{Propulsion Feasibility \& Design Candidates}
     We investigated several different methods of propulsion, including chemical propulsion, railgun propulsion, air pressure propulsion, and others. For safety, mass, and cost reasons, our most promising designs were friction drive and linear induction motor. Our initial design, submitted for the Preliminary Design Package, included a LIM.\\
@@ -125,9 +125,10 @@ In the lateral load case, a global acceleration of 10 m/s laterally was added. T
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=\linewidth]{images/pod_position_vs_time_curve}
+        \includegraphics[width=\linewidth]{images/pod_position_vs_time_curve.png}
         \caption{Pod position during acceleration phase}\label{pod-position}
     \end{figure}
+    
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/pod_acceleration_velocity_vs_time_curve}
@@ -315,11 +316,11 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
         \caption{The cooling loop uses fittings and hoses in order to move from one component to the next seamlessly}
         \label{fig:cooling-loop}
     \end{figure}
-    The design parameters of the cooling system used worst-case-scenario heat dissipation numbers: the motor uses \SI{100}{kW} at peak, with specified minimum 92\% efficiency\footnote{EMRAX 268 Technical Data \url{http://emrax.com/wp-content/uploads/2017/01/emrax_268_technical_data_4.5.pdf}}, with the motor controller introducing a maximum of \SI{3}{kW}, so we must dissipate \SI{11}{kW} during a maximum run time of 20 seconds. Using these values and assuming no heat is dissipated through the cold plate and tubing, the total heat input to the loop was calculated using
-    \[
-    Q = mc \Delta T
-    \]
-    where $Q$ is \SI{220}{kJ}, $c$ is \SI{3.85}{kJ/kgK} for a 25/75 water/glycol solution at \SI{25}{\celsius}, $m$ is mass of coolant required, and $\Delta T$ is \SI{25}{\celsius}. The mass of coolant required is approximately \SI{2.3}{kg} or $\sim$\SI{2.3}{L}. A 2 litre reservoir was chosen to make up most of the required coolant with the volume of the tubing adding the rest and more. In addition, a cold plate is present in the loop as another safety and redundancy factor in the loop. With the tubing and cold plate dissipating heat, an extra 5 seconds of expected run time, and supplementary coolant mass, it can be estimated that the cooling loop will not exceed a delta temperature of \SI{25}{\celsius}, allowing for a safe acceleration and run of the pod.\\
+    The design parameters of the cooling system used worst-case-scenario heat dissipation numbers: the motor uses \SI{100}{kW} at peak, with specified minimum 92\% efficiency\footnote{EMRAX 268 Technical Data \url{http://emrax.com/wp-content/uploads/2017/01/emrax_268_technical_data_4.5.pdf}}, with the motor controller introducing a maximum of \SI{3}{kW}, so we must dissipate \SI{11}{kW} during a maximum run time of 20 seconds. Using these values and assuming no heat is dissipated through the cold plate and tubing, the total heat input to the loop was calculated using:
+\begin{equation}
+Q = mC\Delta T
+\end{equation}
+where $Q$ is \SI{220}{kJ}, $c$ is \SI{3.85}{kJ/kgK} for a 25/75 water/glycol solution at \SI{25}{\celsius}, $m$ is mass of coolant required, and $\Delta T$ is \SI{25}{\celsius}. The mass of coolant required is approximately \SI{2.3}{kg} or $\sim$\SI{2.3}{L}. A 2 litre reservoir was chosen to make up most of the required coolant with the volume of the tubing adding the rest and more. In addition, a cold plate is present in the loop as another safety and redundancy factor in the loop. With the tubing and cold plate dissipating heat, an extra 5 seconds of expected run time, and supplementary coolant mass, it can be estimated that the cooling loop will not exceed a delta temperature of \SI{25}{\celsius}, allowing for a safe acceleration and run of the pod.\\
 
     The cold plate will be attached to a beam on the ladder frame of the pod, acting as a metal block to absorb any heat that is created. With temperatures not exceeding \SI{50}{\celsius} in the loop before the addition of the coldplate, the aluminum beam will not experience any extreme heat, keeping the integrity of the frame and pod.
 
@@ -357,14 +358,12 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
 
     The wheel core will be machined from an aluminum billet on a CNC. This will be fairly simple to achieve and does not require any special tooling or machining processes to accomplish. In addition, this allows the balancing of the wheel to be easily achievable due to the lack of manufacturing errors that are produced by casting the wheel. In order to produce the polyurethane tread, we must create a mold and cast the polyurethane tread. This tread will then be chemically secured to the aluminum wheel via vacuum grade epoxy. This process takes the majority of the cost associated with producing the wheel; however, the possibility of machining the tread out of a solid block of polyurethane is currently being investigated as it as a vastly more cost effective solution.
 
-    A solution to our normal force deficit: Pneumatic Actuators\\
-
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig20}
-        \caption{Caption needed}
+        \caption{Pneumatic actuator system mounting to main friction drive structure.}
     \end{figure}
-    By utilizing a guide wheel under the I-beam and a pneumatic actuator fastened to a pivot arm to clamp down onto the I-beam flange, we are able to increase the theoretical normal force that the wheel can provide and thus increase our static frictional force. The pneumatic actuator allows us to modulate the traction force needed and dampen any impacts that the guide wheels will encounter while moving down the track.\\
+    A solution to our normal force deficit is pneumatic actuators. By utilizing a guide wheel under the I-beam and a pneumatic actuator fastened to a pivot arm to clamp down onto the I-beam flange, we are able to increase the theoretical normal force that the wheel can provide and thus increase our static frictional force. The pneumatic actuator allows us to modulate the traction force needed and dampen any impacts that the guide wheels will encounter while moving down the track.\\
 
     \section{Pneumatic Circuit}
 	The pneumatic circuit provides a damped clamping force for the guide wheels under the I-beam. Using a pneumatic actuator, the retraction and extension of the rod determines the clamping action of the wheels. The retraction of the piston cylinder will move the guide wheels upward to push against the top flange of the I-beam for clamping. In contrast, the extension of the piston cylinder will move the guide wheel downward, releasing the wheels away from the top flange of the I-beam. As calculated earlier, \SI{1400}{N} is provided by the drive wheel. With two guide wheels on either side of drive wheel under the top I-beam flange, \SI{700}{N} is required by each guide wheel for static equilibrium. The pneumatic actuator in the circuit will be a NITRA pneumatic air cylinder with a 2-inch bore diameter. Therefore, the pressurization required for this air cylinder to achieve \SI{700}{N} is calculated as follows:\\
@@ -465,8 +464,6 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     \end{figure}
     The mesh (\reffig{fig:mesh}) was created with an average element size of 2\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 6 mesh refinements with a convergence tolerance of 5\%.
 
-    \subsection{Wheel balancing}
-    \textbf{TODO}
     \section{Friction Braking Calipers}
     \label{sec:friction-braking-calipers}
     \begin{figure}[H]
@@ -513,11 +510,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     
 
     \section{Tests \& Validation (completed and planned)}
-    Fault tolerance, potential failure modes (FMEA)\\
-    How will we verify that the OTS motor is in fact working to spec?\\
-    How will we test all aspects of the motor?
-    
-    The overall purpose of testing is to verify that the friction drive will be able to function as per design intent. This involves examining certain critical components that may have failure modes that will be detrimental to the functionality of the pod, on or off the track. Testing will also be done to validate certain principles that will be vital to ensuring that the function as per design intent. Some values or concepts are hard to obtain numerically or theoretically, and require empirical testing in order to obtain. Testing will also reveal flaws in design, and will allow us to fix these flaws, in order to be prepared and safe before we enter the competition.\\
+	The overall purpose of testing is to verify that the friction drive will be able to function as per design intent. This involves examining certain critical components that may have failure modes that will be detrimental to the functionality of the pod, on or off the track. Testing will also be done to validate certain principles that will be vital to ensuring that the function as per design intent. Some values or concepts are hard to obtain numerically or theoretically, and require empirical testing in order to obtain. Testing will also reveal flaws in design, and will allow us to fix these flaws, in order to be prepared and safe before we enter the competition.\\
     
     Three different testings will be done:
     \begin{itemize}

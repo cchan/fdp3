@@ -24,14 +24,14 @@ Due to the University of Waterloo co-op system, our team rotates approximately e
 \begin{tabularx}{\linewidth}{@{}XXX@{}}
 	\begin{center}\large{Directors}\end{center}
     \begin{itemize}[label={},noitemsep]
-        \item Clive Chan, Technical
-        \item Jason Pan, Administrative
+        \item \textbf{Clive Chan}, Technical
+        \item \textbf{Jason Pan}, Administrative
     \end{itemize}
     &
     \begin{center}\large{Advisors}\end{center}
     \begin{itemize}[label={},noitemsep]
-        \item Serhiy Yarusevych, Faculty Advisor
-        \item Victor Qian, Alumnus/Advisor
+        \item \textbf{Serhiy Yarusevych}, Faculty
+        \item \textbf{Victor Qian}, Alumnus
     \end{itemize}
     &
     \begin{center}\large{Integration Leads}\end{center}
@@ -40,12 +40,15 @@ Due to the University of Waterloo co-op system, our team rotates approximately e
         \item Jimmy Zhou
     \end{itemize}
 \end{tabularx}
+\newpage
 \begin{center}\large{Technical Team Leads}\end{center}
 \begin{tabularx}{\linewidth}{@{}XXX@{}}
     \begin{center}\large{Mechanical}\end{center}
     \begin{itemize}[label={},noitemsep]
     \item \textbf{Jimmy Zhou}
     \item \textbf{Ben Tonita}
+    \item \textbf{Donovan Kwong, Friction~Drive}
+    \item \textbf{Dallyn Wynnychuk, Friction~Drive}
     \end{itemize}
     &
     \begin{center}\large{Software}\end{center}
@@ -229,24 +232,26 @@ Thanks to all our sponsors, past and present.
 
 \subsection{Acknowledgements}
 
-We are grateful to so many people and organizations that have helped made this possible:
+We are grateful to many people and organizations that have helped make this possible:
+\begin{itemize}
+	\item The University for its constant support of our mission, especially Sandra Banks and the Sedra Student Design Centre, who host our primary work location;
+    
+	\item All of our incredible sponsors from all industries, without whose monetary and in-kind support we'd have merely a fun idea with nothing to show for it;
 
-The University for its constant support of our mission, especially Sandra Banks and the Sedra Student Design Centre, who host our primary work location;
+	\item Student and faculty individuals and organizations from around the University for support in so many ways, including Waterloo Formula Electric, Techyon, EngSoc, MathSoc, and many more;
 
-All of our incredible sponsors from all industries, without whose monetary and in-kind support we'd have merely a fun idea with nothing to show for it;
+	\item and finally SpaceX, Elon Musk, and the Hyperloop Competition volunteers for organizing an event that will go down in history as starting a transportation revolution.
 
-Student and faculty individuals and organizations from around the University for support in so many ways, including Waterloo Formula Electric, Techyon, EngSoc, MathSoc, and many more;
+	\item Additionally, we acknowledge that we live and work on the traditional territory of the Attawandaron (Neutral), Anishinaabeg and Haudenosaunee peoples. The University of Waterloo is situated on the Haldimand Tract, the land promised to the Six Nations that includes ten kilometers on each side of the Grand River.
+\end{itemize}
 
-and finally SpaceX, Elon Musk, and all the Hyperloop Competition volunteers, for organizing an event that will go down in history as starting a transportation technology revolution.
-
-Additionally, we acknowledge that we live and work on the traditional territory of the Attawandaron (Neutral), Anishinaabeg and Haudenosaunee peoples. The University of Waterloo is situated on the Haldimand Tract, the land promised to the Six Nations that includes ten kilometers on each side of the Grand River.
 \newpage
 \section{History}
 \begin{itemize}
 
 \item Summer 2015:
 \begin{itemize}
-    \item Assemble the Team.
+    \item Formation of the team.
     \item Officially registered as a University of Waterloo Student Engineering Team.
 \end{itemize}
 
@@ -345,7 +350,6 @@ Additionally, we acknowledge that we live and work on the traditional territory 
     \item Tuning speed controllers for Magnetic Wheels.
     \item Finalizing internal wiring of the pod.
     \item Completing required administrative arrangements for the competition and transportation of the pod to SpaceX headquarters in California.
-    %\item Major Mcdonald's run.
     \item Shipping the pod to California.
     \item Attending SpaceX Competition 2.
 \end{itemize}
@@ -356,7 +360,7 @@ Additionally, we acknowledge that we live and work on the traditional territory 
 \label{ch:top-level-design}
 Labeled CAD (Exploded? Semitransparent? Color coded?)\\
 
-Our pod design process for Competition III began with the goal of building the fastest possible pod. Based purely on specific power and energy of lithium ion batteries (and perhaps supercapacitors), it is theoretically possible to achieve speeds above Mach 1 within the 1-mile Hyperloop test track. Our pod this year is designed to achieve 100 m/s, and we are gradually working towards higher and higher speeds for future competitions.
+Our pod design process for Competition III began with the goal of building the fastest pod. Based purely on specific power and energy of lithium ion batteries (and perhaps supercapacitors), it is theoretically possible to achieve speeds above Mach 1 within the 1-mile Hyperloop test track. This year, our pod is designed to achieve 100 m/s, and we are gradually working towards higher and higher speeds for future competitions.
 
 \section{Summary of design}
 Our pod consists of the following major components:
@@ -372,6 +376,7 @@ The size of the pod is primarily dictated by the size of the propulsion system a
   The mass of the pod depends on the individual mass of each subsystem, as seen in \reftab{table:mass}. The overall mass of the pod should be approximately 150 kilograms.
 
 \begin{table}[H]
+\centering
 \begin{tabular}{@{}lr@{}} 
 	\toprule Subsystem & Mass of Subsystem (\si{kg}) \\ \midrule
     Friction Drive & 55.8 \\
@@ -411,16 +416,35 @@ Where is energy used onboard the pod?
 Due to the pod being relatively lightweight – approximately 150 kilograms, the pod can simply be moved and lifted by 10 people. Therefore, moving to and away from the Hyperloop competition is not a large safety concern.
 
 \section{Scalability}
+\begin{itemize}
+    \item Air tanks
+    \item Lateral/EC Brakes springs?
+\end{itemize}
+
+Where is energy used onboard the pod?
+\begin{itemize}
+    \item Friction drive
+    \item Electronic systems (electrically isolated)
+\end{itemize}
+
+\subsection{Predicted Pod trajectory}
+\ref{fig:pod-position} describes the trajectory of the pod while braking.\\
+\subsection{Loading and Unloading Plan}
+Due to the pod being relatively lightweight – approximately 150 kilograms, the pod can simply be moved and lifted by 10 people. Therefore, moving to and away from the Hyperloop competition is not a large safety concern.
+\section{Scalability}
 Our pod design seeks to be the simplest possible design for a Hyperloop. However, it is difficult to scale to high-subsonic speeds for several reasons.
 In order to fully do so, the team will eventually need to gain experience with high power systems, high speed stability, and braking systems on a larger scale.\\
-
 Preliminary analysis on scalability to an operational Hyperloop needs to be done with respect to:
 \begin{itemize}
     \item System size (increased tube length, tube diameter, and Pod size)
+
     \item Cost (both production and maintenance)
     \item Estimated Pod mass and cost if built full-scale
     \item Maintenance (e.g. not requiring specialized alignment tools, hot-swappable subsystems)
     \item Power, cooling, safety, etc.
+
     \item Propulsion effectiveness
+
 \end{itemize}
+
 \end{document}

@@ -5,7 +5,7 @@
 \usepackage{tocbibind}
 \usepackage{datetime}
 \usepackage{multicol}
-\usepackage[draft]{graphicx}
+\usepackage{graphicx}
 \usepackage{multirow}
 \usepackage{subcaption}
 \usepackage{float}
@@ -27,10 +27,11 @@
 \usepackage{lscape}
 \usepackage{enumitem}
 \usepackage{titlesec}
+\usepackage{incgraph,tikz}
 
 \titleformat{\chapter}[display]   
 {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
-\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
+\titlespacing*{\chapter}{0pt}{-20pt}{-10pt}
 
 \pagestyle{fancy}
 \renewcommand{\etocaftertitlehook}{\thispagestyle{fancy}}
@@ -88,29 +89,10 @@
     %
     %%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%---%%%
     \thispagestyle{empty}
-
-    {%%%
-    \centering
-    \Large
-
-    ~\vspace{\fill}
-
-    \vspace{2.5cm}
-
-    \includegraphics[width=200px]{images/waterloop_logo.png}
-
-    \includegraphics[width=\textwidth]{images/assembled_goose.png}
-
-    \vspace{3.5cm}
-    University of Waterloo
-
-    \vspace{\fill}
-
-    2017-2018
-
-    %%%
-    }%%%
-    \clearpage
+    
+    \incgraph[documentpaper,
+  overlay={\node[red] at (page.center);}]
+  [width=\paperwidth,height=\paperheight]{images/front_off_top_level.png}
 
     Revised \displaydate{date}\\
 
