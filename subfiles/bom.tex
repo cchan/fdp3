@@ -26,13 +26,13 @@
 \end{table}
 \section{Frame}
 \begin{table}[H]
-    \centering 
-    \begin{tabular}{cccc} 
+    \centering
+    \begin{tabular}{cccc}
 
-    \toprule 
+    \toprule
 
-    Item & Quantity & Price per Unit (CAD) & Cost (CAD) \\ 
-    \midrule 
+    Item & Quantity & Price per Unit (CAD) & Cost (CAD) \\
+    \midrule
 
     I-Beam 7075-T6 & 6ft & 88.68/ft & 532.08\\
     L-Beam 6061-T6 & 20ft & 127.80 & 127.80\\
@@ -41,7 +41,7 @@
 \midrule
 Total & & & 708.17\\
     \bottomrule
-    
+
 	\end{tabular}
     \caption{Frame BOM}
     \label{table:frame-bom}
@@ -122,7 +122,7 @@ Total & & & 708.17\\
 	Lateral C Clip & 1 & 6.65 & 6.65 \\
 	Lateral Spring & 4 & 14.34 & 57.36 \\
     Lateral Damper & 4 & 60.83 & 243.32 \\
-    Lateral Rail & 4 & 70.40 & 281.60 \\ 
+    Lateral Rail & 4 & 70.40 & 281.60 \\
     Lateral Carriage & 4 & 125.45 & 501.80 \\
     Lateral Wheel Assy Bolt & 8 & 1.95 & 15.60 \\
 	Lateral Wheel Assy Nut & 1 & 8.43 & 8.43 \\ \midrule
@@ -142,6 +142,7 @@ Total & & & 708.17\\
             &  &  \textbf{Total Cost:} & \textbf{\$378.38} \\ \bottomrule
         \end{tabular}
         \caption{Eddy Current Brakes Bill of Materials}
+        \label{tab:eddy-current-brakes-bom}
 \end{table}
 
 \section{Embedded}
@@ -174,18 +175,18 @@ Total & & & 708.17\\
         Sensor & Quantity & Price per Unit (CAD) & Cost (CAD) \\ \midrule
         Turnigy Nano-Tech LiPo Cells& 200 & 16.57 & 3314.00 \\
         Battery Module Terminals& 74 & Included w. Cells & 0 \\
-        10 AWG Stranded Wire (100mm Lengths) & 74 & Included w. Cells & 0\\
-        16 AWG Stranded Wire (1m) & 10 & Included w. Cells & 0 \\
-        2/0 AWG Stranded Wire (3m) & 1 & 21.40 & 21.40 \\
-        1kg ABS Printing Filament (1.75mm)& 3 & 25.00 & 75.00 \\
+        10 AWG Stranded Wire (\SI{100}{mm} Lengths) & 74 & Included w. Cells & 0\\
+        16 AWG Stranded Wire (\SI{1}{m}) & 10 & Included w. Cells & 0 \\
+        2/0 AWG Stranded Wire (\SI{3}{m}) & 1 & 21.40 & 21.40 \\
+        1kg ABS Printing Filament (\SI{1.75}{mm})& 3 & 25.00 & 75.00 \\
         Anderson SB175 Connector& 4 & 12.50 &50.00 \\
         XT90 Connector& 2 & 12.00 & 24.00 \\
         6 pin Circular Connector& 30 &  2.00 &  60.00\\
         Aluminum Plate& 1 & 40.00 & 40.00 \\
         Aluminum Sheet& 1 & 60.00 & 60.00 \\
         Polyurethane Sheet& 1 & 60.00 & 60.00 \\
-        Bolt (M10 x 45mm x 1.5)& 10 & 0.47 & 4.70 \\
-        Spring Washer (M10 x 1.5mm)& 10 & 0.12 & 1.20 \\
+        Bolt (M10 x \SI{45}{mm} x \SI{1.5}{mm})& 10 & 0.47 & 4.70 \\
+        Spring Washer (M10 x \SI{1.5}{mm})& 10 & 0.12 & 1.20 \\
         Nylock Lock Nut& 10 & 0.48 & 4.80\\
         Boost Converter& 8 & 9.95 & 76 \\
         Main Battery BMS& 1 & 3191.06 & 3191.06 \\
@@ -193,18 +194,18 @@ Total & & & 708.17\\
         Contactor& 1 & 130.15 & 130.15 \\
         Service Plug& 1 & 305.00 & 305.00 \\
         5V Relay & 3 & 7.49 & 22.47 \\
-        75mV Shunt& 2 & 9.49 & 9.49 \\
+        \SI{75}{mV} Shunt& 2 & 9.49 & 9.49 \\
         24V BMS& 10 & 11.36 & 34.08 \\
         20 Gauge Wire (50 feet)& 1 & 59.10 & 59.10 \\
         Voltage Regulator& 3 & 17.99 & 53.97 \\
         PCB fabrication \& Components Estimate& 1 & 200 & 200 \\
         Molex Minifit Jr. & 50 & .75 & 37.5 \\
-        2*20 Shrouded Header& 4 & 2.36 & 9.44 \\
+        $2\times 20$ Shrouded Header& 4 & 2.36 & 9.44 \\
         \midrule
         &  &  \textbf{Total Cost:} & \textbf{\$8257.16} \\ \bottomrule
       \end{tabular}
       \caption{Electrical Bill of Materials: Includes Battery, Enclosure BMS, all PCB (including PCBs designed for other subsystems), and wiring}
-      \label{tab:emb-bom}
+      \label{tab:electrical-bom}
 \end{table}
 
 \section{Pod Cost Breakdown}
@@ -222,7 +223,7 @@ Total & & & 708.17\\
         \textbf{Total Cost:} & \textbf{\$48113.78} \\ \bottomrule
       \end{tabular}
       \caption{Pod Cost Breakdown.}
-      \label{tab:emb-bom}
+      \label{tab:pod-bom}
 \end{table}
 
 \end{document}
