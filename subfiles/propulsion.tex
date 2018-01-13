@@ -256,7 +256,7 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
     SKF D/W R8 R-2RZ & Deep Groove Ball Bearing & 30,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & \SI{4.4}2{kN} & Guide Wheel\\
     RLS 12 & Deep Groove Ball Bearing& 11,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & \SI{30.7}{kN} & Motor Plate\\
     NKS 25 & Needle Roller & 17,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & \SI{27.5}{kN} & Front Wheel\\
-v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & \SI{7.2}8{kN} & Tensioner \\
+    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & \SI{7.2}8{kN} & Tensioner \\
     1209 EKTN9 & Self-Aligning Ball Bearing & 11,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & \SI{22.9}{kN} & Pillow Block \\  \bottomrule
   \end{tabular}
   \caption{Bearing Specifications}
@@ -290,7 +290,7 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
         \caption{The cooling loop uses fittings and hoses in order to move from one component to the next seamlessly}
         \label{fig:cooling-loop}
     \end{figure}
-    The design parameters of the cooling system used worst-case-scenario heat dissipation numbers: the motor uses 100 kW at peak, with specified minimum 92\% efficiency\footnote{EMRAX 268 Technical Data \url{http://emrax.com/wp-content/uploads/2017/01/emrax_268_technical_data_4.5.pdf}}, with the motor controller introducing a maximum of 3 kW,  so we must dissipate 11 kW during a maximum run time of 20 seconds. Using these values and assuming no heat is dissipated through the cold plate and tubing, the total heat input to the loop was calculated using
+    The design parameters of the cooling system used worst-case-scenario heat dissipation numbers: the motor uses \SI{100}{kW} at peak, with specified minimum 92\% efficiency\footnote{EMRAX 268 Technical Data \url{http://emrax.com/wp-content/uploads/2017/01/emrax_268_technical_data_4.5.pdf}}, with the motor controller introducing a maximum of \SI{3}{kW}, so we must dissipate \SI{11}{kW} during a maximum run time of 20 seconds. Using these values and assuming no heat is dissipated through the cold plate and tubing, the total heat input to the loop was calculated using
     \[
     Q = mc \Delta T
     \]
@@ -393,7 +393,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
         U = \frac{P_1 v_1}{k\pm{1}} [1\pm(\frac{P_2}{P_1})^ \frac{k\pm{1}}{k}]
         \]
 	\end{center}
-	where ${P_1}=\SI{3000}{psia}$, ${P_2}=\SI{14.7}{psia}$, and ${V_1}=\SI{48}{in^3}$, the total energy calculated is \SI{281230.4209}{in-lb} (\SI{31774.77103}{J}) or the  TNT equivalent of \SI{1.44E-02}{lb} (\SI{6.55E-03}{kg}). From this, in can be concluded that this pneumatic system is relatively safe with a line of sight of \SI{37.42}{ft} (\SI{11.40666067}{m}). However with this calculation, extra precaution will be taken when filling up the tank for safety procedures.
+	where ${P_1}=\SI{3000}{psia}$, ${P_2}=\SI{14.7}{psia}$, and ${V_1}=\SI{48}{in^3}$, the total energy calculated is \SI{281230.4209}{in}-lb (\SI{31774.77103}{J}) or the  TNT equivalent of \SI{1.44E-02}{lb} (\SI{6.55E-03}{kg}). From this, in can be concluded that this pneumatic system is relatively safe with a line of sight of \SI{37.42}{ft} (\SI{11.40666067}{m}). However with this calculation, extra precaution will be taken when filling up the tank for safety procedures.
 
     \subsection{Finite Element Analysis}
 

@@ -107,15 +107,15 @@
             Nominal Voltage & \SI{22.2}{V}\\
             Minimum Voltage & \SI{19.2}{V}\\
             Capacity & \SI{7.5}{Ah}\\
-            Current Draw & \SI{5.19}{A}\\
-            Power Draw & \SI{70.0}{W}\\
+            Current Draw & \SI{5.15}{A}\\
+            Power Draw & \SI{68.99}{W}\\
             Discharge Rate & \SI{0.69}{C}\\
             Time to Discharge & \SI{87}{mins}\\ \bottomrule
         \end{tabular}
         \caption{24V Battery Specifications}
         \label{tab:24V-bat-specs}
     \end{table}
-    The \SI{24}{V} battery (see \reftab{tab:24V-bat-specs} for specifications) will be constructed of the same cells as the main battery. This decision was made to be resource and cost efficient, since designs and materials from the main battery can be carried over. The battery will be contained within the same housing as the main battery. The cell arrangement is 6S2P, and will be built from the same cells as the main battery. The \SI{24}{V} battery will power the embedded system, including all sensors (including ESC’s additional functions). In the instance the 24V battery fails, there will be a backup battery with identical specs, but with half the capacity (6S1P configuration). This backup battery will be held isolated from the other batteries in  a location identified in the sensor map (in embedded section). This location was chosen due to the short distance from friction and EC brakes, which would need to be activated in case of an emergency. The backup battery would immediately send a disengage the Friction Drive and engage EC brakes. The backup battery is essential since, if the main \SI{24} {V} battery failed, it would cause the friction brakes to engage at high speeds.
+    The \SI{24}{V} battery (see \reftab{tab:24V-bat-specs} for specifications) will be constructed of the same cells as the main battery. This decision was made to be resource and cost efficient, since designs and materials from the main battery can be carried over. The battery will be contained within the same housing as the main battery. The cell arrangement is 6S2P, and will be built from the same cells as the main battery. The \SI{24}{V} battery will power the embedded system, including all sensors (including ESC’s additional functions). In the instance the 24V battery fails, there will be a backup battery with identical specs, but with half the capacity (6S1P configuration). This backup battery will be held isolated from the other batteries in  a location with a short distance from friction and EC brakes, which would need to be activated in case of an emergency. The backup battery would immediately send a disengage the Friction Drive and engage EC brakes. The backup battery is essential since, if the main \SI{24} {V} battery failed, it would cause the friction brakes to engage at high speeds.
     \begin{table}[H]
         \centering
         \begin{tabular}{@{}lrrrrrc@{}} \toprule
@@ -196,7 +196,7 @@
     \section{Failsafes}
     In the event of an electrical systems failure, precautions have been taken to ensure the pod will respond in a safe, controlled and repeatable fashion. The following sections describe how critical subsystems like the friction drive, braking systems, and embedded control hardware handle an electrical failure.
     \subsection{Battery}
-    The three main power sources on the pod are the high voltage battery for the friction drive, the 12V battery for powering software and braking functionality, and a backup 12V for redundancy.  If the main battery stops functioning, the EC brakes will activate, and the software system will safely bring the pod to a stop (by engaging friction brakes at speeds lower than 10 m/s). If one of the 12V batteries stops functioning, the EC brakes will activate, and the other battery will continue to power the Arduinos and sensors. To avoid a loss of power to software during the battery switch, a capacitor connected in parallel will briefly supply the current for the Arduino hubs. Once the EC brakes are activated, the software system will safely bring the pod to a stop. The battery failsafe circuit is pictured in ---------> MISSING FIGURE <---------, and all the outcomes are listed in \reffig{tab:efailsafe}. In the table, it is important to note that a status of 1 represents a voltage present. Since the friction brakes and EC brakes are in a normally closed state, they are engaged when their status is 0.
+    The three main power sources on the pod are the high voltage battery for the friction drive, the 12V battery for powering software and braking functionality, and a backup 12V for redundancy.  If the main battery stops functioning, the EC brakes will activate, and the software system will safely bring the pod to a stop (by engaging friction brakes at speeds lower than 10 m/s). If one of the 12V batteries stops functioning, the EC brakes will activate, and the other battery will continue to power the Arduinos and sensors. To avoid a loss of power to software during the battery switch, a capacitor connected in parallel will briefly supply the current for the Arduino hubs. Once the EC brakes are activated, the software system will safely bring the pod to a stop. The battery failsafe circuit is pictured below, and all the outcomes are listed in \reffig{tab:efailsafe}. In the table, it is important to note that a status of 1 represents a voltage present. Since the friction brakes and EC brakes are in a normally closed state, they are engaged when their status is 0.
     
 \begin{table}[H]    
 \centering
@@ -349,6 +349,6 @@ Main Battery & 12V 1 & 12V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes
         \end{enumerate}
     \end{enumerate}
     \paragraph{General Next Steps (this includes tests marked N/A)}
-    An initial Battery Safety 101 will be conducted with all members who participate in testing. Furthermore, all results from level one and two testing will be incorporated into a secondary Battery Safety Training which provide all necessary info on what to do with a cell, module or battery in any given instance.Training will be given to all members involved in battery construction, as well as the Integration leads. If at any point of testing, the batteries are deemed to be “too dangerous” (i.e. vacuum testing shows that cells will burst when drawing expected discharge rate of 55C), the team must go back to the drawing board and determine a new potential cell candidate.
+    An initial Battery Safety 101 will be conducted with all members who participate in testing. Furthermore, all results from level one and two testing will be incorporated into a secondary Battery Safety Training which provide all necessary info on what to do with a cell, module or battery in any given instance. Training will be given to all members involved in battery construction, as well as the Integration leads. If at any point of testing, the batteries are deemed to be “too dangerous” (i.e. vacuum testing shows that cells will burst when drawing expected discharge rate of 55C), the team must go back to the drawing board and determine a new potential cell candidate.
 
 \end{document}
