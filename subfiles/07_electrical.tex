@@ -251,7 +251,7 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
 
 
     \section{Testing}
-    Since different cell chemistries (even similar ones) react differently to various incidents (i.e. puncturing the cell), it was determined that the most effective way to show the battery design will be safe would be to experimentally test various components of the batteries to varying  extents, and using experimentally derived results to determine safe operating ranges for the batteries. The 3.7 V batteries used as backup power for the Arduino and Raspberry Pi have already been tested previously by our team in a vacuum, drawing expected current draw with no issues. Outlined in \refsec{subsec:testing-proc} are general testing plans for the main and 24V battery. They will be furthered expanded upon once details of testing have been finalized.
+    Since different cell chemistries (even similar ones) react differently to various incidents (i.e. puncturing the cell), it was determined that the most effective way to show the battery design will be safe would be to experimentally test various components of the batteries to varying  extents, and using experimentally derived results to determine safe operating ranges for the batteries. The \SI{3.7}{V} batteries used as backup power for the Arduino and Raspberry Pi have already been tested previously by our team in a vacuum, drawing expected current draw with no issues. Outlined in \refsec{subsec:testing-proc} are general testing plans for the main and 24V battery. They will be furthered expanded upon once details of testing have been finalized.
     \subsection{Purpose of Testing}
     To determine the absolute limits of batteries and to determine expected range of values for battery including temperature, current, and voltage under various different conditions.
     \subsection{Parameters of Testing}
@@ -260,7 +260,7 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
     Temperature sensors (both IR and contactless) will be used to monitor temperature of batteries in all tests. A shunt resistor and arduino will be used to measure current and voltage at all times, in all tests. Impact testing and hydraulic press testing will most likely be performed at university facilities, however facilities have not been confirmed. Vibration testing will be performed at Infinity Testing Solutions, however use of facilities for Goose III have not been confirmed.
     \subsection{Testing Procedure}
     \label{subsec:testing-proc}
-    Side Note: Testing will be broken into three “levels”; cell testing, module testing and battery testing. This testing is specifically with regards to the 535V battery. While the other batteries (24V and 3.7 V) will be tested, the 535V battery will be tested to the most rigorous degree, as a failure of this battery would lead to a significantly more catastrophic outcome than the other ones.
+    Side Note: Testing will be broken into three “levels”; cell testing, module testing and battery testing. This testing is specifically with regards to the 535V battery. While the other batteries (24V and \SI{3.7}{V}) will be tested, the 535V battery will be tested to the most rigorous degree, as a failure of this battery would lead to a significantly more catastrophic outcome than the other ones.
 
     \subsubsection{Level One: Cell Testing}
     This level of testing is where the most destructive testing will occur, since cells are relatively cheap in comparison to modules and the full battery. The cells being tested on will be from the Turnigy’s Nano-tech Ultimate  7500 mAh 2S2P. Since the battery comes in a variety of different capacities, all cell level testing will be done on both the 3750 mAh cells as well as the 1300 mAh cells, to determine the consistency of the specific cell chemistry. This will help the team, in the instance our power demands change and a change in capacity is required. The cell level tests include:
@@ -291,8 +291,8 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
         \end{enumerate}
         \item \textbf{Over Charging Damage}
         \begin{enumerate}
-            \item \textbf{What: }Charge cell to increasing levels of voltage above 4.2 V max charge rating.
-            \item \textbf{Why: }To test the maximum manufacturer rating for the battery, and to see how far above it the battery can go (or if it is even capable of reaching 4.2 V). Batteries used in competition will not be charged about maximum manufacturer rating nor will they have been previously charged above this value. The overcharge component of the test is purely for testing purposes.
+            \item \textbf{What: }Charge cell to increasing levels of voltage above \SI{4.2}{V} max charge rating.
+            \item \textbf{Why: }To test the maximum manufacturer rating for the battery, and to see how far above it the battery can go (or if it is even capable of reaching \SI{4.2}{V}). Batteries used in competition will not be charged about maximum manufacturer rating nor will they have been previously charged above this value. The overcharge component of the test is purely for testing purposes.
         \end{enumerate}
         \item \textbf{Cycle Testing}
         \begin{enumerate}
