@@ -116,7 +116,7 @@
         \includegraphics[width=\linewidth]{images/fig11}
         \caption{EMRAX 268 Motor Specifications\protect\footnote{\url{http://emrax.com/wp-content/uploads/2017/01/emrax_268_technical_data_4.5.pdf}}}
     \end{figure}
-    
+
     \section{Power Delivery}
     The EMRAX 268 has a variety of shaft mounting solutions. The most practiced ones are bolted flange shafts or a shaft within the splined hub of the motor. The flanged shaft was the choice for the design because of the ease at which one can assemble and perform maintenance on the powertrain and the versatility to alter shaft lengths and dimensions. In addition, in order to secure pulleys onto this shaft, the option of splining a shaft is available, which provides the most secure and efficient method of doing so. The shaft is made out of hardened steel (42CrMo4QT) which is commonly used to make driveshafts, turbocharger gears, crankshafts, etc.\\
 
@@ -126,7 +126,7 @@
         \caption{Stress Analysis on motor shaft}
     \end{figure}
     \subsection{Motor Shaft}
-    
+
     Static stress FEA was performed in Autodesk Fusion 360 on the shaft in order to analyze stress concentrations and possible failures. The shaft was fixed via the bolt holes within the flange and the load was equivalent to the tension force that the pulley and belt system would exhibit at peak loads. In addition, an angular load was placed onto the shaft, equivalent to the maximum possible RPM range the motor could produce, which is equivalent to \SI{575}{rad/s}.\\
 
     The shaft experiences a peak stress of \SI{220}{MPa}, located at the bolt holes on the flange. This raises concern regarding bolts that fasten the shaft to the motor. Reaction force was measured to be a peak of around \SI{400}{N} on the bolt, which means based on the cross sectional area of the bolt, shear force and moment, it would experience a peak of \SI{338}{MPa}. This is within the yield strength of the bolt which is less than \SI{965}{MPa} yield strength, resulting in a safety factor of approximately 3.\\
@@ -143,7 +143,7 @@
         \label{fig:shaft-stress1}
     \end{figure}
 
-\reffig{shaft-stress1} shows the displacement result of the FEA, where the peak displacement of the shaft is \SI{0.15}{mm} at the tip of the shaft. In the image shown, it is at a 5\% model based displacement adjustment. %Author of next sentence please clarify% 
+\reffig{shaft-stress1} shows the displacement result of the FEA, where the peak displacement of the shaft is \SI{0.15}{mm} at the tip of the shaft. In the image shown, it is at a 5\% model based displacement adjustment. %Author of next sentence please clarify%
 The mesh was created with an average element size of 3\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 3 mesh refinements with a convergence tolerance of 5\%. Similar FEA was done on the other power transmission shaft that connects to the wheel. The result yielded less overall stress on the bolt holes due the shaft not having a hollowed core (\SI{220}{MPa}).\\
 
     \begin{figure}[H]
@@ -152,7 +152,7 @@ The mesh was created with an average element size of 3\% \textbf{units?} of the 
         \caption{Meshing of the Shaft FEA}
     \end{figure}
     The mesh was created with an average element size of 3\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 4 mesh refinements with a convergence tolerance of 5\%.
-    
+
     \subsection{Pulley and Belt Drive}
 The propulsion system utilizes a single gear reduction in an open belt system, that incorporates an idler pulley to maintain constant tension on the system. Many different power transmission options were investigated, including a multi-gear system and a continuously variable transmission (CVT) system. However, these options were not chosen due to the overall complexity that these systems would have, and the cost, research, and development time involved in developing these systems would be far beyond the timeline allocated for the competition. Thus, a single gear reduction with the open belt system was chosen for the simplicity of design and testing, and the reduction of overall costs to integrate this power transmission system onto the pod.\\
 \begin{figure}[H]
@@ -161,7 +161,7 @@ The propulsion system utilizes a single gear reduction in an open belt system, t
         \includegraphics[width=\linewidth]{images/fig16}
         \caption{Timing belt pulley}
         \end{subfigure}
-        
+
         \begin{subfigure}{0.25\textwidth}
         \includegraphics[width=\linewidth]{images/belt.png}
         \caption{Section of a synchronous belt}
@@ -172,11 +172,11 @@ The propulsion system utilizes a single gear reduction in an open belt system, t
 
 Two of the most common open belt configurations that exist are V-belts and synchronous or timing belts. The V-belt is a smooth belt, and relies on the friction between itself and the pulleys to transfer forces. It a cross-section shaped like a V, which runs through pulleys with a groove. This shape gives a V-belt a much higher coefficient of friction than a regular flat belt, and thus it can transfer more power. The other belt option to consider was a timing belt. It consists of a flat belt with small ridges lining the inner surface. The pulleys, called sprockets, have notches in which the belt's ridges fit. The ridges eliminate the reliance on friction, and unlike a friction belt it will not slip under high loads unless the belt fails mechanically.
 
-After consulting GATES, a reputable corporation that manufactures power transmission components, it was recommended that a timing belt be used based on the high power and high angular velocity of the motor. Another advantage of timing belts is that they have a smaller minimum bend diameter due to their flat cross-section. This is significant since the pulleys' sizes are restricted by the friction drive and frame design. The driving and driven pulleys had to be small enough to fit, but large enough to exceed the minimum bend diameter of the belt. Lastly, timing belts are generally able to handle more power than friction belts. 
+After consulting GATES, a reputable corporation that manufactures power transmission components, it was recommended that a timing belt be used based on the high power and high angular velocity of the motor. Another advantage of timing belts is that they have a smaller minimum bend diameter due to their flat cross-section. This is significant since the pulleys' sizes are restricted by the friction drive and frame design. The driving and driven pulleys had to be small enough to fit, but large enough to exceed the minimum bend diameter of the belt. Lastly, timing belts are generally able to handle more power than friction belts.
 
 Both of the pulleys are to be made out of AL 6061-T6511; chosen because of the high yield strength and low density that 6061-T6 possesses while being a cost-effective solution. The pulleys will both be splined onto the shaft to ensure that the pulley does not slip on the shaft while transferring power. In addition, the pulley face itself will be slotted along the outside to fit a synchronous belt (timing belt) of the GATES Poly Chain GT Carbon series, which was recommended to us by the manufacturer.
 
-GATES recommends a minimum of 22 teeth for a sprocket\footnote{``Preventative Maintenance and Safety Manual - GATES Corp.''\url{https://safety.gates.com/wp-content/uploads/2016/04/Gates-Corporation-Preventive-Maintenance-Safety-for-Belt-Drives-Guide.pdf}}. 
+GATES recommends a minimum of 22 teeth for a sprocket\footnote{``Preventative Maintenance and Safety Manual - GATES Corp.''\url{https://safety.gates.com/wp-content/uploads/2016/04/Gates-Corporation-Preventive-Maintenance-Safety-for-Belt-Drives-Guide.pdf}}.
 \begin{equation}
 C = \pi d \textrm{ and } C=\frac{\textrm{number of teeth}}{P}
 \end{equation}
@@ -201,16 +201,16 @@ Using the expected pod mass and the motor's specifications, the pod is projected
         \caption{Large pulley FEA results}
         \label{fig:pulley2}
     \end{figure}
-    
+
     Static stress FEA, completed using Autodesk Fusion 360 software, assured us that the pulley will be able to withstand the peak compressive forces from the belt tension (\SI{4500}{N}) and the calculated RPM ranges for the drive pulley (0-\SI{3000}{RPM}). The pulley, made out of Aluminum 6061-T6, has a yield strength of \SI{275}{MPa}. The peak stress experienced by the drive pulley is about \SI{22}{MPa}, which is significantly lower than the material’s yield strength. This high safety factor is necessary due to the fatigue cycles that the pulley will experience. The fatigue strength of 6061-T6 is about \SI{96}{MPa} after $5\times 10^8$ cycles\footnote{``Aluminum 6061-T6 - ASM Material Data Sheet - MatWeb.'' \url{http://asm.matweb.com/search/SpecificMaterial.asp?bassnum=ma6061t6}}. With our RPM ranges, where one whole rotation of the pulley can be considered a complete cycle going through a crest and trough of peak stress, the pulley will reach this fatigue strength after 2700 hours of running the pulley at a sustained peak RPM.\\
-    
+
 \begin{figure}
     \centering
     \includegraphics[width=0.75\linewidth]{images/pulleythree.png}
     \caption{Small pulley FEA results}
     \label{fig:pulley3}
 \end{figure}
-    
+
 	The driven pulley experiences the same loading characteristics as the drive pulley. Both are suitable for the loads and speeds that our design intent requires. In addition, the fatigue strength AL 6061-T6 will be sufficient for our loads and will not exhibit any failing. However, the pulleys will be replaced after 2700 hours for redundancy and safety. To reduce vibrations during high speed operation and acceleration phase, the pulleys will be produced via CNC and then two plane balanced in order to alleviate said issue.\\
 
 	The Poly Chain GT Carbon belt is a synchronous belt (timing belt) that satisfies our high torque and power output, while reducing the requirement for a large thick belt and a high tension. The belts are have very high mechanical efficiency, with it being above 97\% when the belt is in well-maintained condition \footnote{``Timing Belt Advantages \& Disadvantages | Pfeifer Industries.'' \url{http://www.pfeiferindustries.com/timing-belt-advantages-disadvantages-i-15-l-en.html}}. This was chosen the Design Flex Pro Program provided by GATES which finds a suitable belt for a given set of operating conditions. The peak tension forces that are expected to be experienced by the belt would be 4500N. The belt’s ultimate tensile strength can handle 22700N, if assuming a belt width of an inch\footnote{Synchronous Belt Data Summary -cloudfront.net.\url{https://dpk3n3gg92jwt.cloudfront.net/domains/bbman2/trumotionsyncdata_final_3-8-07.pdf}}. Since the belt that we have specified is around \SI{2.5}{in} wide, the belt is more than capable of handling our tensile loads.\\
@@ -253,11 +253,11 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
 \centering
   \begin{tabular}{@{}l l r r l@{}} \toprule
     Part Number & Type of Bearing & Limiting Speed & Dynamic Load Rating & Location \\ \midrule
-    SKF D/W R8 R-2RZ & Deep Groove Ball Bearing & 30,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & 4.42 kN & Guide Wheel\\
-    RLS 12 & Deep Groove Ball Bearing& 11,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & 30.7 kN & Motor Plate\\
-    NKS 25 & Needle Roller & 17,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & 27.5 kN & Front Wheel\\
-v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & 7.28 kN & Tensioner \\
-    1209 EKTN9 & Self-Aligning Ball Bearing & 11,000 $\frac{\mathrm{rev}}{\mathrm{min}}$ & 22.9 kN & Pillow Block \\  \bottomrule
+    SKF D/W R8 R-2RZ & Deep Groove Ball Bearing & \SI{30,000}{rev/min} & 4.42 kN & Guide Wheel\\
+    RLS 12 & Deep Groove Ball Bearing& \SI{11,000}{rev/min} & 30.7 kN & Motor Plate\\
+    NKS 25 & Needle Roller & \SI{17,000}{rev/min} & 27.5 kN & Front Wheel\\
+v    RLS 4 & Deep Groove Ball Bearing & \SI{32,000}{rev/min} & 7.28 kN & Tensioner \\
+    1209 EKTN9 & Self-Aligning Ball Bearing & \SI{11,000}{rev/min} & 22.9 kN & Pillow Block \\  \bottomrule
   \end{tabular}
   \caption{Bearing Specifications}
   \label{table:bearingtable}
@@ -273,7 +273,7 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
      	\textit{Power} (P) = \textit{Torque} (\tau)  \times \textit{Angular velocity} (\omega)\\
      \end{gather*}
     %why is there a random picture of a wheel?
-   
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig17}
@@ -299,7 +299,7 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
     The cold plate will be attached to a beam on the ladder frame of the pod, acting as a metal block to absorb any heat that is created. With temperatures not exceeding \SI{50}{\celsius} in the loop before the addition of the coldplate, the aluminum beam will not experience any extreme heat, keeping the integrity of the frame and pod.
 
     \section{Wheel \& Slip}
-    
+
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig19}
@@ -354,15 +354,15 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
       \textrm{Pressure} = \frac{\textrm{Force}}{\textrm{Area}} = \frac{\SI{700}{N}}{\SI{0.00202683}{m^2}} = \SI{50.09}{psi}
         \]
 	\end{center}
-    
+
 	Each cylinder must be pressurized \SI{50.09}{psi} on the piston side in order to provide \SI{700}{N} against the wheel. To achieve this, a pressurized tank and pneumatic circuit will be used, as seen in \reffig{fig:pneumatic-diagram} and \reffig{fig:pneumatic-cad}. The tank will contain high pressure air at \SI{3000}{psi}. The high-pressure transmitter will be placed at the tank outlet to provide pressure readings of the tank’s outlet pressure. After the pressure transmitter, a high-pressure relief valve is set to \SI{3000}{psi} to ensure that the high-pressure supply does not exceed the pressure limits of the tank, as well as, the regulator that is placed at the outlet of the PRV. This pressure-reducing regulator will decrease the pressure to \SI{50.09}{psi}. The on/off valve is placed after as a manual fail-safe mechanism. Another pressure transmitter will provide the pressure readings of the low-pressure side of the pneumatic circuit. The pressure relief valve will also be set to \SI{50.09}{psi} to ensure that the pistons are not over-pressurized. The manifold will consist of three tees in order to pressurize the four piston cylinders.  Since the piston cylinders are double-acting, solenoid-operated directional control valves are implemented for each piston. The solenoids will be operated such that the pistons retract to push up the wheels prior to the acceleration phase, and extend to release the wheels after the pod run is complete.\\
-      
+
 	\begin{figure}
         \centering
         \includegraphics[width=\linewidth] {images/Pneumatic_Circuit}
         \caption{Pneumatic Circuit Schematic Diagram}
         \label{fig:pneumatic-diagram}
-    \end{figure} 
+    \end{figure}
 
 	\begin{figure}
         \centering
@@ -370,7 +370,7 @@ v    RLS 4 & Deep Groove Ball Bearing & 32,000 $\frac{\mathrm{rev}}{\mathrm{min}
         \caption{CAD of Pneumatic System}
         \label{fig:pneumatic-cad}
     \end{figure}
-    
+
   \subsection{Mass Flow Choking}
 The pneumatic circuit was also designed to ensure that mass flow choking would not be an issue if the regulator fails. To check this condition, the mass flow choking conditions were calculated at the manual on/off valve and the low-pressure relief valve. This was calculated with the mass flow choking equation:\\
 \begin{center}
@@ -378,43 +378,43 @@ The pneumatic circuit was also designed to ensure that mass flow choking would n
         {m} = \frac{AP_t}{\sqrt{T_t}} \sqrt{\frac{\gamma}{R}}M(1+\frac{\gamma-1}{2}{M^2})^{-\frac{\gamma+1}{2(\gamma-1)}}
         \]
 	\end{center}
-    
-The mass flow rate when the flow is choked at the on/off valve was calculated to be \SI{0.409}{kg/s}. 
+
+The mass flow rate when the flow is choked at the on/off valve was calculated to be \SI{0.409}{kg/s}.
 As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure relief valve was designed to a high capacity valve with a mass flow capacity of \SI{0.564}{kg/s}.\\
 
-    \subsection{Pneumatic Circuit Proof Testing}    
+    \subsection{Pneumatic Circuit Proof Testing}
     In order to certify this pneumatic circuit's MAWP, this system will be hydro-tested at 1.5 MEOP. Since this pneumatic system has a high-pressure side and a low-pressure side, two different MEOP values will be tested. The high-pressure side will be tested to $\SI{800}{psi}\times 1.5=\SI{1200}{psi}$ and the low-pressure side will be tested to $50.09 \times 1.5=75.135$.\\
     The proof testing process will be carried out by filling the system at 1.5 MEOP for 10 minutes. Leaks and pressure gauges will be checked throughout the test to verify the system's functionality.\\
-    
+
      \subsection{Pneumatic Circuit Explosive Calculations}
-    Explosive calculations were done to check the potential energy of the tank filled with compressed air. To calculate the potential energy of the pneumatic pressure vessel the following equation is used:\\ 
+    Explosive calculations were done to check the potential energy of the tank filled with compressed air. To calculate the potential energy of the pneumatic pressure vessel the following equation is used:\\
     \begin{center}
         \[
         U = \frac{P_1 v_1}{k\pm{1}} [1\pm(\frac{P_2}{P_1})^ \frac{k\pm{1}}{k}]
         \]
 	\end{center}
 	where ${P_1}=\SI{3000}{psia}$, ${P_2}=\SI{14.7}{psia}$, and ${V_1}=\SI{48}{in^3}$, the total energy calculated is \SI{281230.4209}{in-lb} (\SI{31774.77103}{J}) or the  TNT equivalent of \SI{1.44E-02}{lb} (\SI{6.55E-03}{kg}). From this, in can be concluded that this pneumatic system is relatively safe with a line of sight of \SI{37.42}{ft} (\SI{11.40666067}{m}). However with this calculation, extra precaution will be taken when filling up the tank for safety procedures.
-   
+
     \subsection{Finite Element Analysis}
-    
+
     A finite element analysis (\reffig{fig:drive-wheel-stress}) was conducted in Autodesk Fusion 360 by placing a compressive load onto the wheel equivalent to the weight of the pod plus the force that the pneumatic actuators would provide in order to create the required traction force. The track was grounded and fixed in all orthogonal directions and the wheel fixed via the bolt fixtures within the aluminum core.\\
-    
+
 \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{images/fig21}
         \caption{Static Stress FEA, Peak compressive load on main drive wheel}
         \label{fig:drive-wheel-stress}
     \end{figure}
-    
+
     At a speed of \SI{100}{m/s}, the aluminum core only experiences a peak stress of \SI{34}{MPa}, which is significantly lower than the yield strength of the material, \SI{275}{MPa}, and provides a safety factor of over 8. At the same speed, the total mass of polyurethane tread, \SI{0.826}{g}, will be subject to 10204 $g$ of radial acceleration, equivalent to \SI{8427}{N} of force.\\
-    
+
     \begin{center}
     At \SI{100}{m/s}, the outer portion of the \SI{0.2}{m} diameter wheel will experience a radial acceleration as follows:
     	\[
   		\alpha=r\omega^2=\SI{0.2}{m}\times (\SI{100}{rad/s})^2 \times \frac{g}{\SI{9.81}{m/s^2}}= 10204\ g
    		\]
     \end{center}
-    
+
     The polyurethane tread is a hardness of \SI{90}{A} on the Shore hardness scale. The tensile pressure exerted from the radial acceleration on the tread will be \SI{6.636}{MPa}, lower than the polyurethane's tensile strength of \SI{21.46}{MPa}. The bonding agent between the aluminum wheel and the tread selected is ``3M™ Marine Adhesive Sealant 5200''. This material is rated for above \SI{4.83}{MPa}. More than 40 times higher than the \SI{0.117}{MPa} calculated tensile threshold. Additionally, the bond between the wheel and tread will be subject to \SI{1500}{N} of shear force from the torque generated by the motor. This equates to \SI{0.021}{MPa} of shear stress on the bond. The 3M adhesive is rated for \SI{2.69}{MPa}, giving for a safety factor of 128. \\
 
     The \SI{0.127}{m} wide and \SI{0.01}{m} thick tread has a cross-sectional area of \SI{0.00127}{m^2}.\\
@@ -467,21 +467,21 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     \[
     	\textrm{Total kinetic energy} = \SI{7500}{J} + \SI{197.85}{J} = \SI{7697.85}{J}
     \]
-    
+
     When the friction brake is activated, kinetic energy will be converted to heat, which will be transferred to the brake rotor disc and the brake pad.\\
-    
+
     Although the manufacturer did not specifically state the material composition, grey cast iron is the most common material for brake rotor discs. Based on the elemental composition of grey cast iron, the specific heat capacity of the brake disc can be estimated to be \SI{0.465}{J/(g\celsius)} and the mass to be 303.6 g.\\
-    
+
     Although the brake pad uses sintered metallic material, the material composition is kept confidential by the manufacturer. The composition is drastically different between manufacturers, thus it is rather hard to make an appropriate estimation. Some of the common primary materials are graphite, copper and iron. Carbon steel serves as a decent balance among the three materials, and thus is used to make an approximation.\\
 
     The density of carbon steel is \SI{0.00785}{g/mm^3}, with a specific heat capacity of \SI{0.49}{J/(g\celsius)}. The volume of the brake pad is \SI{5572}{mm^3}, which approximates the mass to be \SI{43.7}{g}.
 
     Using the heat transfer equation of $\Delta Q = mc \Delta T$,
-   	
+
     \begin{equation}
     	T=\frac{7697.85}{303.6 \times 0.465+43.7 \times 0.49}=\SI{47.3}{\celsius}
     \end{equation}
-   
+
     The brake rotor disc and the brake pad will gain approximately \SI{7697.85}{J} of energy, and the temperature will increase by \SI{47.3}{\celsius}.\\
 
     \subsection{Failsafes}
