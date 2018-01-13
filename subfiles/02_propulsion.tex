@@ -2,27 +2,19 @@
 \begin{document}
     \chapter{Propulsion}
     \label{ch:propulsion}
-    Propulsion, the new challenge for Competition III, is the most challenging subsystem to design, and its design additionally dictates the design of every other component on the pod. To select the best possible method of propulsion given competition constraints, we conducted a series of preliminary analyses on possible propulsion designs, the most promising of which were the Friction Drive and Linear Induction Motor (LIM). We eventually chose to fully invest into the Friction Drive design, due to the complexity, mass, and cost of a LIM suited for competition accelerations. Friction Drive is a form of transmission that uses two rotating elements to propel one along a surface. In the case for the pod, power is transferred from the motor using a belt drive system, which is connected by two shafts along the wheel and motor’s central axis. Friction drive serves as a safe and reliable form of propulsion as it is well-researched and tested in many different fields.
+    Propulsion, the new challenge for Competition III, is the most challenging subsystem to design, and its design additionally dictates the design of every other component on the pod. To select the best possible method of propulsion given competition constraints, we conducted a series of preliminary analyses on possible propulsion designs, the most promising of which were the friction drive and Linear Induction Motor (LIM). We eventually chose to fully invest into the friction drive design, due to the complexity, mass, and cost of a LIM suited for competition accelerations. friction drive is a form of transmission that uses two rotating elements to propel one along a surface. In the case for the pod, power is transferred from the motor using a belt drive system, which is connected by two shafts along the wheel and motor’s central axis. Friction drive serves as a safe and reliable form of propulsion as it is well-researched and tested in many different fields.
 
     \section{Propulsion Feasibility \& Design Candidates}
     We investigated several different methods of propulsion, including chemical propulsion, railgun propulsion, air pressure propulsion, and others. For safety, mass, and cost reasons, our most promising designs were friction drive and linear induction motor. Our initial design, submitted for the Preliminary Design Package, included a LIM.\\
 
     However, later calculations based on commercially available LIMs showed that off-the-shelf products would be abysmally unsuited for the Hyperloop competition; most such LIMs have a very narrow operating range of velocity, outside of which the motor becomes extremely inefficient. First-principles analysis based on research papers showed some promise, but this would require a ground-up design of a variable-pitch linear induction motor, which still resides on the current cutting edge of linear motor research.\\
 
-   \textbf{ [some kind of diagram or numbers about this @Ben]}\\
-% * <halb3880@mylaurier.ca> 2018-01-13T01:33:51.276Z:
-% 
-% TODO
-% 
-% ^ <halb3880@mylaurier.ca> 2018-01-13T01:34:14.171Z.
-
     We decided to table the LIM design, due to the relative inexperience of our team with electromagnetic propulsion, as well as the very high mass and cost. We do, however, plan to continue researching this to be ready for next year’s competition. Friction Drive, though it does not scale well to Hyperloop speeds, will still allow us to gain experience with high power systems,high speed stability, and braking systems.\\
 
-    \section{Overall Design}
-    Full labelled detailed CAD\\
-    Mass, power, etc.\\
-    Full cost breakdown, comments on manufacturability and production costs\\
-    “A full Bill of Materials can be found in Appendix C.”
+  \begin{figure}[H]
+\includegraphics[width=\textwidth]{images/friction_rear.png}
+\caption{Overall friction drive assembly}\label{fig:friction_rear}
+\end{figure}
 
     \section{Structural}
     \begin{figure}
@@ -38,7 +30,7 @@
         \caption{Spring constant of a. 100,000, b. 250,000, c. 500,000, and d. 1,000,000}
         \label{fig:spring2}
     \end{figure}
-    In order to simulate how the pod will react to imperfections in the track, we performed two separate vibrational analyses, in the vertical and horizontal directions, with two separate vibrational damping systems (\reffig{fig:spring1} and \reffig{fig:spring2}). Based on the construction of the track, the horizontal direction will likely be by far the most problematic; this analysis is detailed in the Lateral subsystem. The vertical damping system is closely integrated into the Friction Drive system, and so is described here.\\
+    In order to simulate how the pod will react to imperfections in the track, we performed two separate vibrational analyses, in the vertical and horizontal directions, with two separate vibrational damping systems (\reffig{fig:spring1} and \reffig{fig:spring2}). Based on the construction of the track, the horizontal direction will likely be by far the most problematic; this analysis is detailed in the lateral subsystem. The vertical damping system is closely integrated into the friction drive system, and so is described here.\\
 
     To determine design parameters of the springs and dampers, several simulations were performed. Different spring constants were chosen, and simulations for each were created using MatLab. The simulated pod was excited with a sinusoidal displacement, with amplitude as the maximum I-beam height tolerance and frequency matching the rate of I-beams passing by the pod. The magnitude of the maximum resulting pod displacement from the beam was plotted for each value of damping coefficient and speed (\ref{fig:spring1}). This series of plots shows the most dangerous combinations of damping coefficient and velocity. For each value of the spring coefficient, as the damping is increased, the vibrations become less intense. It was decided that a value of damping coefficient between [0.5 - 1.0] would be optimal in order to reduce pod vibrations.  Moving forward with this analysis, the response of the pod to a sudden displacement step was measured for a damping coefficient of 0.5 with varying spring constants. This is shown in \ref{fig:spring2}. It can be seen that as the spring coefficient is increased, the pod returns to the initial position much faster, which is shown by the red line. Also, as the spring coefficient is increased, the maximum displacement also decreases. Therefore, it was decided that the spring coefficient and damping coefficient should have values of \SI{500000}{N/m} and 0.5, respectively. \\
 
@@ -47,20 +39,45 @@
 \caption{CAD of air bag suspension}\label{fig:cad-air-bag}
 \end{figure}
 
-    The motor-wheel assembly is mounted to the frame using air bag suspension (\reffig{fig:cad-air-bag}) and a Watts linkage. Air bags were chosen for their easy adjustability via air pressure and their ability to take high loads.  A Watts linkage allows the unit to move in the normal axis relative to the frame while remaining secured in both the lateral and longitudinal axes.\\
+    The structure of the friction drive is designed to connect the various parts of the drive together and links it all to the frame. The main members of the structure are two vertical aluminum plates onto which all other parts are mounted. The plates are connected with four internally threaded aluminum rods. L-brackets are bolted to the front of the plates which give a horizontal surface for the airbag suspension system to rest upon. The motor is bolted to the right side plate, and the motor shaft is supported by a pillow block bearing bolted on the left plate. A Watts linkage was chosen to connect the friction drive to the frame, as it allows vertical freedom while restricting longitudinal and lateral movement in relation to the frame. The linkage is made up of four angled arms into which oil-embedded bushings are press fit to allow them to pivot about a bolt. Aluminum 6061 T6 was the chosen alloy for the structure, as it has a relatively high yield strength of 276 MPa \footnote{\url{http://asm.matweb.com/search/SpecificMaterial.asp?bassnum=ma6061t6}} and its easy machinability. The side and top views of a simplified friction drive model are shown in \autoref{fig:oll} and \autoref{fig:otl}.
 
-    The material for structural members of the friction drive is Aluminum 6061-T6, chosen for its ease of machinability and high strength to weight ratio. The disadvantages of aluminum are its difficulty of welding however, this was not an issue as the structure was not designed to have welded joints.\\
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/OrthoLeftLabelled.png}
+\caption{Left side view of the simplified friction drive structure.}\label{fig:oll}
+\end{figure}
 
-    \textbf{Add FEA, explain forces and BC\\
-    Maybe add properties of 6061? AZ did it\\
-    There’s some calcs we can do with max tension / compression of those linkage rods}\\
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/OrthoTopLabelled.png}
+\caption{Top view of the simplified friction drive structure.}\label{fig:otl}
+\end{figure}
 
-   \textbf{ Mention factors of safety for everything}
-% * <halb3880@mylaurier.ca> 2018-01-13T01:33:28.523Z:
-% 
-% TODO
-% 
-% ^.
+Three test cases were chosen for the finite element analysis of the friction drive structure. Two of the cases, acceleration and braking, were normal operation loading cases, while the lateral case was an edge case load. The analysis was done on ANSYS using imported models from Fusion 360. Bolts and nuts were unthreaded, and detail was removed. All contacts were frictional with a coefficient of static friction of 1.05 \footnote{\url{https://www.engineeringtoolbox.com/friction-coefficients-d_778.html}} corresponding to that of aluminum-aluminum contact, with the exception of press-fit parts, which had bonded contacts, and the oil-embedded bushings, which had a frictionless contact. A two step analysis was performed with the first step containing all the bolt pretensions and the second step containing the loadings. The pretension loading values were calculated to be a value which would either keep the bolt's factor of safety (FOS) over 2 or the part's FOS over 3, whichever one was lower was selected. One special case is the bolts which go through the oil-embedded bushings, which had to stay under half the bushing's axial load rating. For the M8 screws going through the motor, 5500 N was chosen, while other bolts had a clamping force of 6000 N. The bolts going through the bushings were pretensioned to 2250 N. The wheel was restricted to zero displacement in the vertical direction, and the frame connection points were limited in the longitudinal and lateral directions. Other forces included the force of the belt tension on the face of the pullies, the clamping force of the track clamps on their mounting holes, and the weight of the pod on the L-brackets.\\
+
+In the acceleration case, an additional global acceleration of 8 m/s rearwards was added to simulate a phantom force created by the non-intertial frame of reference. A forwards force of 1500 N was added to the wheel. The solve gave a maximum stress of 119.7 MPa on a motor mounting screw and an overall minimum safety factor of 2.68 which occured on an oil-embedded bushing. The max stress region is shown in \autoref{fig:accelstress}. A maximum displacement of 1.3 mm was caused on the airbag support L-bracket, shown in \autoref{fig:acceldisp}.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/AccelStressLabelled.png}
+\caption{Stresses on the friction drive structure during acceleration.}\label{fig:accelstress}
+\end{figure}
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/AccelDispLabelled.png}
+\caption{Displacements on the friction drive structure during acceleration.}\label{fig:acceldisp}
+\end{figure}
+
+In the braking case, a global acceleration of 30 m/s forwards was added, as well as a cumulative force of 1500 N on the frame connections. In this case, the wheel was fixed and the frame connections unfixed in the longitudinal direction. The solve gave a maximum stress of 113.4MPa on a motor mounting screw and a minimum safety factor of 2.70. The region of greatest stress is shown in \ref{fig:brakestress}. A maximum displacement of 1.2 mm was found in the same location as the previous case.
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/BrakingStress.png}
+\caption{Stresses on the friction drive structure during braking. The motor is hidden for clarity.}\label{fig:brakestress}
+\end{figure}
+
+In the lateral load case, a global acceleration of 10 m/s laterally was added. The wheel was fixed in the vertical direction, and the frame contact points were fixed in the three longitudinal directions. The solve gave a maximum stress of 123 MPa on a motor mounting screw and a minimum safety factor of 2.61. A maximum displacement of 1.5 mm was generated. 
+
+\begin{figure}[H]
+\includegraphics[width=\textwidth]{images/LateralStress.png}
+\caption{Stresses on the friction drive structure during the lateral edge case. The motor is hidden for clarity.}\label{fig:latstress}
+\end{figure}
 
     \section{Motor}
     A number of different types of electric motors were investigated to select one that was best suited for our applications, primarily AC induction motors and DC brushless motors. Specifically, axial flux motors were favoured due to their high power density and efficiency. These motors are very light and can provide high torque and power with low heat loss.\\
@@ -90,11 +107,11 @@
         \caption{Summary of EMRAX 268 Motor Technical Specifications \protect\footnote{https://paperpile.com/c/T85mA9/hmBQ}}
         \label{tab:emrax-specs}
     \end{figure}
-    %Do we really want to caption the figure like that? (below)
+
     \begin{figure}
         \centering
         \includegraphics[width=\textwidth]{images/fig6}
-        \caption{Axial Flux Motors are built similarly in the same fashion that regular permanent magnet motors are. However, the positions of the stator and rotors are reversed, where the outer casing is the rotor and the inner core is the stator. In addition, most electric motors are radial flux motors where the magnetic flux is oriented along the radial of the stator. Axial flux, as said in the name, orient their magnetic flux axially around the axis of the rotor \protect\footnote{\url{https://paperpile.com/c/T85mA9/rsJD}}}
+        \caption{Axial Flux Motors are built in the same fashion that regular permanent magnet motors are. However, the positions of the stator and rotors are reversed, where the outer casing is the rotor and the inner core is the stator. In addition, most electric motors are radial flux motors where the magnetic flux is oriented along the radial of the stator. Axial flux, as said in the name, orient their magnetic flux axially around the axis of the rotor\protect\footnote{\url{https://paperpile.com/c/T85mA9/rsJD}}.}
         \label{fig:axial-vs-radial}
     \end{figure}
     \begin{figure}
@@ -104,12 +121,12 @@
         \label{fig:emrax-efficiency}
     \end{figure}
     \subsection{Motor Performance}
-    The graph in \reffig{fig:emrax-efficiency} shows the torque, power and efficiency of the motor over RPM. As mentioned previously, the motor is capable of instantaneously producing torque with a peak of \SI{400}{Nm}. EMRAX states that the motor is capable of greater RPM ranges by utilizing MFW (magnetic field weakening). The effect of MFW is significant in reducing the decay of torque at higher RPM ranges, and producing higher mechanical power. This is accomplished by reducing the overall efficiency of the motor. However, the reduction is not significant (\textless8\% greater loss), and the gains in performance outweigh the loss in efficiency.\\
+    The graph in \reffig{fig:emrax-efficiency} shows the torque, power and efficiency of the motor over RPM. As mentioned previously, the motor is capable of instantaneously producing a peak torque of \SI{400}{Nm}. EMRAX states that the motor is capable of greater RPM ranges by utilizing MFW (magnetic field weakening). The effect of MFW is significant in reducing the decay of torque at higher RPM ranges, and producing higher mechanical power. This is accomplished by reducing the overall efficiency of the motor. However, the reduction is not significant (\textless8\% greater loss), and the gains in performance outweigh the loss in efficiency.\\
 
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/pod_position_vs_time_curve}
-        \caption{Pod position during acceleration phase}
+        \caption{Pod position during acceleration phase}\label{pod-position}
     \end{figure}
     \begin{figure}[H]
         \centering
@@ -128,7 +145,7 @@
     \end{figure}
 
     \section{Power Delivery}
-    The EMRAX 268 has a variety of shaft mounting solutions. The most practiced ones are bolted flange shafts or a shaft within the splined hub of the motor. The flanged shaft was the choice for the design because of the ease at which one can assemble and perform maintenance on the powertrain and the versatility to alter shaft lengths and dimensions. In addition, in order to secure pulleys onto this shaft, the option of splining a shaft is available, which provides the most secure and efficient method of doing so. The shaft is made out of hardened steel (42CrMo4QT) which is commonly used to make driveshafts, turbocharger gears, crankshafts, etc.\\
+    The EMRAX 268 has a variety of shaft mounting solutions. The most practiced ones are bolted flange shafts or a shaft within the splined hub of the motor. The flanged shaft was the choice for the design because of the ease at which one can assemble and perform maintenance on the powertrain and the versatility to alter shaft lengths and dimensions. In addition, in order to secure pulleys onto this shaft, the option of splining a shaft is available, which provides the most secure and efficient method of doing so. The shaft is made out of hardened steel (42CrMo4QT) which is commonly used to make driveshafts, turbocharger gears, and crankshafts.\\
 
     \begin{figure}[H]
         \centering
@@ -153,7 +170,7 @@
         \label{fig:shaft-stress1}
     \end{figure}
 
-\reffig{shaft-stress1} shows the displacement result of the FEA, where the peak displacement of the shaft is \SI{0.15}{mm} at the tip of the shaft. In the image shown, it is at a 5\% model based displacement adjustment. The mesh was created with an average element size of 3\% of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 3 mesh refinements with a convergence tolerance of 5\%. Similar FEA was done on the other power transmission shaft that connects to the wheel. The result yielded less overall stress on the bolt holes due the shaft not having a hollowed core (\SI{220}{MPa}).\\
+\ref{fig:shaft-stress1} shows the displacement result of the FEA, where the peak displacement of the shaft is \SI{0.15}{mm} at the tip of the shaft. In the image shown, it is at a 5\% model based displacement adjustment. The mesh was created with an average element size of 3\% of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 3 mesh refinements with a convergence tolerance of 5\%. Similar FEA was done on the other power transmission shaft that connects to the wheel. The result yielded less overall stress on the bolt holes due the shaft not having a hollowed core (\SI{220}{MPa}).\\
 
     \begin{figure}[H]
         \centering
@@ -240,7 +257,7 @@ L = 2C\sin{(\frac{\beta_r}{2})}+{\frac{1}{2}}(\beta_rR_r)+{\frac{1}{2}}(\beta_nR
 Where $\beta$ is the angle of wrap of the belt around a pulley, $C$ is the distance between pulley centres, and $r,n$ denote driver and driven pulleys, respectively.
 Using these numbers, the friction drive would require at least a \SI{778}{mm} belt.
 
-    \paragraph{Vacuum Compatibility}
+    \subsubsection{Vacuum Compatibility}
     We have identified two potential issues with the motor in vacuum, which we have discussed with the manufacturer EMRAX.
     \begin{itemize}
         \item Cooling of the motor may be designed for air environments, where air convection plays a role in addition to the liquid cooling system.
@@ -251,7 +268,7 @@ Using these numbers, the friction drive would require at least a \SI{778}{mm} be
         \item Outgassing of the epoxy used to secure the motor’s internal components could weaken these fastenings and also deposit epoxy on other parts of the motor.
         \begin{itemize}
             \item EMRAX has confirmed that the motor’s internal components are both mechanically and chemically secured, so that even with epoxy outgassing there will be no problems in fastening.
-            \item Deposition of epoxy could damage other parts within the motor. \textbf{[CAN WE ASK THEM WHAT THINGS THEY ARE USING THAT COULD OUTGAS?]}
+            \item Deposition of epoxy could damage other parts within the motor.
         \end{itemize}
     \end{itemize}
 
@@ -285,7 +302,7 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig17}
-        \caption{Caption needed}
+        \caption{UniTek Bamocar D3 ESC}
     \end{figure}
 
     \section{Cooling System}
@@ -311,11 +328,9 @@ All bearings used in Friction Drive have been sourced to exceed the required RPM
     \begin{figure}[H]
         \centering
         \includegraphics[width=\linewidth]{images/fig19}
-        \caption{Caption needed}
+        \caption{CAD of Drive Wheel}
     \end{figure}
     Our propulsion system requires strong wheels that are able to withstand high RPM ranges at a large variety of axial and thrust loads. The design was created with an aluminum 6061-T6511 core and a polyurethane wheel tread. Aluminum 6061-T6511 was chosen as the wheel’s core because of the yield strength and low density, as we would require the wheel to be lightweight in order to minimize inefficiency of transferring torque to the ground and the strength such that the wheel will not yield under peak loads. In addition, because this material is easily machined, there is no need for extensive tooling or custom extrusion techniques in order to produce the wheel. 6061-T6511 is a well known and common alloy and thus extensive research has been conducted on the fatigue behaviour of this wheel. Based on fatigue analysis\footnote{\url{https://www.osti.gov/scitech/servlets/purl/10157028}}, even when the wheel has done $10^6$ cycles, it will still be within design specifications and can be used safely.\\
-
-    \textbf{Testing for the wheel (balance issues?)}
 
     \subsection{Calculations for slip}
     By using first-principles of Newtonian physics, we can simplify our traction based on static friction. In order to translate angular movement into translational movement, we require that the wheel remain in traction with the track.\\
@@ -498,9 +513,74 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     
 
     \section{Tests \& Validation (completed and planned)}
-    Test rig (see Next Steps as well)\\
     Fault tolerance, potential failure modes (FMEA)\\
     How will we verify that the OTS motor is in fact working to spec?\\
     How will we test all aspects of the motor?
+    
+    The overall purpose of testing is to verify that the friction drive will be able to function as per design intent. This involves examining certain critical components that may have failure modes that will be detrimental to the functionality of the pod, on or off the track. Testing will also be done to validate certain principles that will be vital to ensuring that the function as per design intent. Some values or concepts are hard to obtain numerically or theoretically, and require empirical testing in order to obtain. Testing will also reveal flaws in design, and will allow us to fix these flaws, in order to be prepared and safe before we enter the competition.\\
+    
+    Three different testings will be done:
+    \begin{itemize}
+        \item Motor dynamometer
+        \item Wheel endurance testing
+        \item Vibration testing
+    \end{itemize}
+
+   \begin{figure}
+		\centering
+       \includegraphics[width=0.5\linewidth]{images/motordyna}
+       \caption{Motor Dynamometer}
+       \label{fig:motordyna}
+   \end{figure}
+    A test needs to be conducted with a motor dynamometer (\reffig{fig:motordyna}) to obtain empirical values on motor performance in terms of:
+    
+    \begin{itemize}
+        \item torque/power
+        \item RPM ranges
+        \item heat generation and thermal profile
+        \item power draw (voltage and current)
+        \item ESC functionality
+        \item power delivery efficiency
+    \end{itemize}
+    
+    Motor performance will be improved by analyzing power/torque curves and optimizing ESC control in order to create a custom map that fits our gear reduction system and acceleration profile. In addition, it allows us to discover and troubleshoot failure modes creates due to design specifications.\\
+    
+    Moreover, a test to ensure a sufficient endurance level for the wheels is completed. It is crucial to verify that the wheels are able to handle our loads and RPM ranges. A tread wear analysis would be done during acceleration profile and braking phase. A vibration analysis will also be completed to testify that the wheels are two plane balanced.\\
+
+    Furthermore, a vibration test (\reffig{fig:vibra}) will be conducted to test the damping and spring performance and characteristics of the system. This allows us to obtain empirical values of the pod acceleration and position. The analysis provides us with the needed information to tune the suspension to achieve critical damping, and to discover and troubleshoot suspension failure modes.\\
+
+     \begin{figure}
+           \centering
+       \includegraphics[width=0.5\linewidth]{images/vibra}
+       \caption{Vibration testing}
+       \label{fig:vibra}
+   \end{figure}
+    
+    \subsection{Flywheel Test Rig}
+    We do not yet have detailed design for the flywheel test rig, but it is currently underway. We expect the rig to be completed approximately at the same time as subsystems are completed and assembled.
+    
+	The main test rig involves a flywheel that comes into contact with the drive wheel, which is used to substitute the I-Beam track, in order to test the endurance of the wheel. This rig can also be used to test eddy current braking and lateral systems.\\
+    
+    Unfortunately, initial investigation revealed that a full speed test (~90m/s) would require an unreasonably large and strong flywheel, which would be extremely expensive and dangerous to design. Therefore, the current design of the test rig is intended to conduct half-speed tests (~45m/s). This provides a cheaper and more realistic design while still obtaining valuable real-world data from which we can test hypotheses and extrapolate useful conclusions.\\
+    
+    The flywheel is composed of \SI{16}{in} diameter aluminum bar stock, which replicates the material of the I-Beam, along with additional \SI{12}{in} diameter cast iron bar stock that is used to increase the moment of inertia to the required level. The cost of the flywheel and the mount is approximately 1120 CAD in total. The concept design of the test rig is shown in \reffig{fig:testrig}.\\
+    
+    \begin{figure}
+           \centering
+   \begin{subfigure}{0.4\textwidth}
+       \includegraphics[width=\linewidth]{images/testrig1}
+       \caption{}
+       \label{fig:testrig1}
+       \end{subfigure}        
+       \begin{subfigure}{0.4\textwidth}
+       \includegraphics[width=\linewidth]{images/testrig2}
+       \caption{}
+       \label{fig:testrig2}
+       \end{subfigure}
+       \caption{CAD views of conceptual test rig design}
+       \label{fig:testrig}
+   \end{figure}
+    
+	Since the test rig involves rotating heavy materials at high rotational velocities, safety is critical. A thick protective barrier will be built around the test rig to prevent accidents, such as wheels getting dislodged. In case of emergency, a band brake can be applied to the shaft, which is a simple and reliable solution for braking.\\
 
 \end{document}

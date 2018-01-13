@@ -60,18 +60,18 @@ It is built on top of UDP and allows for multiplexing to provide extremely fast 
   \includegraphics[width=\linewidth]{images/streams-box-plots.png}
   \caption{Box Plots}
 \end{subfigure}
-	\caption{TCP vs. QUIC w/ no multiplexing vs. QUIC w/ multiplexing}
+    \caption{TCP vs. QUIC w/ no multiplexing vs. QUIC w/ multiplexing}
   \label{fig:tcp_vs_quic}
 \end{figure}
 As a result of a series of tests (\reffig{fig:tcp_vs_quic}), QUIC streams will be used to transmit control commands from the high level Control-panel (front-end client) and raw data back (from front-end client) to the on-board control elements. Multiple input and output streams can be opened across the server and client which allows for the simultaneous transmission of data packets from different sensors. The convention for all communications will be to use individual ordered output streams to transmit important sensor data packets that require ordered processing and individual input streams for all control packets coming in from the Control-panel.\\
 
 \noindent\textbf{CANBUS:} Raw data packaged into Waterloop's custom defined packet structure will be transmitted through a CAN-bus network for communication between low-level Hubs and the communication server. As an alternative, \itc with all Hubs and Masters connected in parallel has been considered to be used instead of the CAN-BUS network. Two main factors have been used to select CAN-BUS over an \itc network:
 \begin{itemize}
-	\item Distance limitation of the \itc network. Usually used for internal PCB components, not for vehicle long communication.
+    \item Distance limitation of the \itc network. Usually used for internal PCB components, not for vehicle long communication.
     \item Speed limitation of the \itc network. CAN-BUS can allow up to \SI{1}{Mbps} packet transfer speed on much longer distances\footnote{\url{http://www.can-wiki.info/doku.php}}.
 \end{itemize}
 
-\paragraph{CAN-BUS Protocol Description}
+\subsubsection{CAN-BUS Protocol Description}
 CAN is a protocol that was designed for vehicle controller commutations to transmit information in a network without a host computer. It is a message based protocol with built-in priority and error checking. The priority allows for nodes to send higher priority messages, which places them higher in the message priority queue. Error checking allows for frames to check for losses and discard if they contain errors.
 
 \subsection{Communication-System redundancy measures}
@@ -86,7 +86,7 @@ CAN is a protocol that was designed for vehicle controller commutations to trans
     \subsection{JSON structure}
     \label{subsec:json}
     All communications between on-board Master-machines and Control-panel are JSON packets serialized from Go structures in the following format:
-	\begin{minted}{go}
+    \begin{minted}{go}
 type CommPacketJson struct {
     Time int64      `json:"time"`
     Type string     `json:"type"`
@@ -128,7 +128,7 @@ type CommPacketJson struct {
         \end{tabulary}
         \caption{Binary packet structure breakdown}
     \end{table}
-    \paragraph{Packet Type Representation}
+    \subsubsection{Packet Type Representation}
     \label{par:packet-type-repr}
     Each packet type is represented by 3 bit encoding
     \begin{table}[H]
@@ -143,11 +143,11 @@ type CommPacketJson struct {
         \caption{Packet types mapped to binary representation}
     \end{table}
 
-    \paragraph{Packet Name Representation}
+    \subsubsection{Packet Name Representation}
     \label{par:packet-name-repr}
     Each packet name is represented by 7 bits. All of the 35 sensors on-board of the pod will be represented using the 7 bit binary codes. Having $2^7=127$ possible sensor encodings, there are more than enough combinations to cover all on-board sensors of the Goose 3 pod.
 
-    \paragraph{Data representation}
+    \subsubsection{Data representation}
     \label{par:data-repr}
     Data values are floats represented by 18 bits as follows:
     \begin{table}[H]
@@ -171,7 +171,7 @@ type CommPacketJson struct {
 \fi}
 \makeatother
     \setmintedinline[json]{breaklines}
-	\begin{table}[H]
+    \begin{table}[H]
         \centering
         \begin{tabular}{@{}lllp{3.8in}@{}} \toprule
             Name & Code & Value(s) & Example\\ \midrule
@@ -238,31 +238,35 @@ Navigation system will be running on all Master-machines and will use a variety 
 \section{Safety of Embedded \& Communication Systems}
 \subsection{Pre-launch Tests}
 \begin{table}[H]
-	\centering
-	\begin{tabular}{@{}lll@{}} \toprule
+    \centering
+    \begin{tabular}{@{}lll@{}} \toprule
     Sub-System & Test Description & Nominal Values \\ \midrule
-    Motor & Nominal Current Draw at ESC & 0 Amps\\
-    Motor & Nominal Temperature MOTOR & \\
-    Motor & Nominal Temperature ESC & \\
-    Motor & Cooling pump is active, cooling pressure less than & $< \SI{14.5}{psi}$ \\
-    Friction & Pressure sensor & $< \SI{250}{psi}$ \\
-    Friction & Solenoid control to turn on and off & TRUE \\
-    Batteries & Nominal Voltage and Current Main Battery & 535 Volts \& 0 Amps \\
-    Batteries & Nominal Temperature Main Battery & $20 < \textrm{Temp} < 50$ \\
-    Batteries & Nominal Voltage and Current 24V Battery & 24 volts \\
-    Batteries & Nominal Temperature 24V Battery & $20 < \textrm{Temp} < 50$ \\
-   	Batteries & Nominal Voltage from 24V to 5V step-down & 5 .3 volts \\
-    Navigation & IMUs are functional and give normal values  & \SI{0}{m/s} acceleration \\
-    Navigation & Shaft Encoder at \SI{0}{rpm} and Functional & Drive Test \\
-    Navigation & Tilt sensors nominal values and online & $< 10 ^\circ$ \\
-    Navigation & Test Navigation system working (drive 1 meter) & Output 1 meter \\
-    Navigation & ESC output is nominal & Drive Test \\
-    EC-Brakes & Reed sensor state & \\
-    EC-Brakes & Nominal Temperature & \\
-    EC-Brakes & Solenoid Controls online & \\
-    Other & Photoelectric distance is Nominal & \\ \bottomrule
+    \multirow{4}{*}{Motor}
+    & Current Draw at ESC (speed 0) & 0 Amps\\
+    & Nominal Temperature & $20 < \textrm{Temp} < 50$\\
+    & Nominal Temperature ESC & $20 < \textrm{Temp} < 50$\\
+    & Cooling pump is active, cooling pressure less than & $< \SI{14.5}{psi}$ \\\midrule
+    \multirow{2}{*}{Friction}
+    & Pressure sensor & $< \SI{250}{psi}$ \\
+    & Solenoid control to turn on and off & TRUE \\\midrule
+    \multirow{5}{*}{Batteries}
+    & Nominal Voltage and Current Main Battery & 535 Volts \& 0 Amps \\
+    & Nominal Temperature Main Battery & $20 < \textrm{Temp} < 50$ \\
+    & Nominal Voltage and Current 24V Battery & 24 volts \\
+    & Nominal Temperature 24V Battery & $20 < \textrm{Temp} < 50$ \\
+    & Nominal Voltage from 24V to 5V step-down & 5 .3 volts \\\midrule
+    \multirow{5}{*}{Navigation}
+    & IMUs are functional and give normal values  & \SI{0}{m/s} acceleration \\
+    & Shaft Encoder at \SI{0}{rpm} and Functional & Drive Test \\
+    & Tilt sensors nominal values and online & $< 10 ^\circ$ \\
+    & Test Navigation system working (drive 1 meter) & Output 1 meter \\
+    & ESC output is nominal & Drive Test \\\midrule
+    \multirow{2}{*}{EC-Brakes}
+    & Reed sensor state & TRUE \\
+    & Nominal Temperature & $10 < \textrm{Temp} < 30$\\
+    \bottomrule
     \end{tabular}
-	\caption{Pre-Launch Self-Checks. Will be ran on pod before any launch. Described as System Health Check in pod state diagram \reffig{fig:pod-failure-state-diagram}}
+    \caption{Pre-Launch Self-Checks. Will be ran on pod before any launch. Described as System Health Check in pod state diagram \reffig{fig:pod-failure-state-diagram}}
     \label{tlb:prelaunch-tests}
 \end{table}
 
@@ -276,7 +280,7 @@ Navigation system will be running on all Master-machines and will use a variety 
     
     In case of any of the heartbeat failing, the master that is being reported to, is capable of restarting a slave i.e. triggering the watchdog procedure.
     
-	\subsection{Watchdogs}
+    \subsection{Watchdogs}
     With two types of machines used in the pod's Embedded-systems, ATMega and RPI, each one has a different approach to Watchdogs. Arduino has a built in Watchdog that can be configured and with it's non-volatile memory, a lot of the state information can be preserved and recovered after a reboot. RPI has an OS-level Watchdog as well, but having a much more complex OS to load, reboots will take longer. Exact number will be generated through a series of tests.
    
     \subsection{Single points of failure}

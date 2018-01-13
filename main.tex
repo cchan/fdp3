@@ -26,6 +26,11 @@
 \usepackage{etoolbox}
 \usepackage{lscape}
 \usepackage{enumitem}
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}
 
 \pagestyle{fancy}
 \renewcommand{\etocaftertitlehook}{\thispagestyle{fancy}}
@@ -57,7 +62,7 @@
 \setcounter{tocdepth}{5}
 \title{Waterloop Final Design Package}
 
-\newdate{date}{05}{01}{2018}
+\newdate{date}{12}{01}{2018}
 \date{\displaydate{date}}
 
 \renewcommand{\contentsname}{Table of Contents}
@@ -122,7 +127,8 @@
     \tableofcontents
     \newpage
 
- 	\subfile{subfiles/00_quick_reference.tex}
+	% WE ARE NOT INCLUDING THE QUICK REFERENCE.
+ 	% \subfile{subfiles/00_quick_reference.tex}
     \subfile{subfiles/01_introduction.tex}
     \subfile{subfiles/02_propulsion.tex}
     \subfile{subfiles/03_eddy_current_brakes.tex}
@@ -189,18 +195,18 @@ intensify fire; oxidizer):\\
 \centering
 \caption{Electrical Failsafe Circuit}
 \label{my-label}
-\begin{tabular}{ccccccccc}
+\begin{tabular}{ccc|ccccc}
 \hline
-\multicolumn{3}{c}{Inputs}    &  & \multicolumn{4}{c}{Outputs} \\ \hline
-Main Battery & 24V 1 & 24V 2 &  & All Arduino Hubs & EC Brakes & Friction Brakes & Friction Drive \\ \hline
-1            & 1     & 1     &  & 1                & 1         & 1               & 1              \\
-1            & 1     & 0     &  & 1                & 0         & 1               & 0              \\
-1            & 0     & 1     &  & 1                & 0         & 1               & 0              \\
-1            & 0     & 0     &  & 0                & 0         & 0               & 0              \\
-0            & 1     & 1     &  & 1                & 0         & 1               & 0              \\
-0            & 1     & 0     &  & 1                & 0         & 1               & 0              \\
-0            & 0     & 1     &  & 1                & 0         & 1               & 0              \\
-0            & 0     & 0     &  & 0                & 0         & 0               & 0              \\ \hline
+\multicolumn{3}{c}{Input}     & \multicolumn{5}{c}{Output} \\ \hline
+Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes Disengage & Friction Brakes & Friction Drive \\ \hline
+1            & 1     & 1       & 1                & 1 & 1         & 1               & 1              \\
+1            & 1     & 0       & 1                & 0 & 0        & 1               & 0              \\
+1            & 0     & 1       & 1                & 0 & 0        & 1               & 0              \\
+1            & 0     & 0       & 0                & 0 & 0        & 0               & 0              \\
+0            & 1     & 1       & 1                & 0 & 0        & 1               & 0              \\
+0            & 1     & 0       & 1                & 0 & 0        & 1               & 0              \\
+0            & 0     & 1       & 1                & 0 & 0        & 1               & 0              \\
+0            & 0     & 0       & 0                & 0 & 0        & 0               & 0              \\ \hline
 \end{tabular}
 \end{table}
 
