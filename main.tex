@@ -194,10 +194,10 @@ intensify fire; oxidizer):\\
 \centering
 \caption{Electrical Failsafe Circuit}
 \label{my-label}
-\begin{tabular}{ccc|ccccc}
-\hline
-\multicolumn{3}{c}{Input}     & \multicolumn{5}{c}{Output} \\ \hline
-Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes Disengage & Friction Brakes & Friction Drive \\ \hline
+\begin{tabulary}{\linewidth}{@{}CCC|CCCCC@{}}
+\toprule
+\multicolumn{3}{c}{Input}     & \multicolumn{5}{c}{Output} \\ \midrule
+Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes Disengage & Friction Brakes & Friction Drive \\ \midrule
 1            & 1     & 1       & 1                & 1 & 1         & 1               & 1              \\
 1            & 1     & 0       & 1                & 0 & 0        & 1               & 0              \\
 1            & 0     & 1       & 1                & 0 & 0        & 1               & 0              \\
@@ -205,8 +205,8 @@ Main Battery & 24V 1 & 24V 2   & All Arduino Hubs & EC Brakes Engage & EC Brakes
 0            & 1     & 1       & 1                & 0 & 0        & 1               & 0              \\
 0            & 1     & 0       & 1                & 0 & 0        & 1               & 0              \\
 0            & 0     & 1       & 1                & 0 & 0        & 1               & 0              \\
-0            & 0     & 0       & 0                & 0 & 0        & 0               & 0              \\ \hline
-\end{tabular}
+0            & 0     & 0       & 0                & 0 & 0        & 0               & 0              \\ \bottomrule
+\end{tabulary}
 \end{table}
 
 \begin{table}
