@@ -16,31 +16,31 @@
     MATLAB simulations were created to ensure the lateral control system would maintain a close distance to the rail so as to prevent any pod component from entering a no-go zone or colliding with the rail. For example, the Eddy Current Brakes (when deployed) have a nominal distance to the rail of 19mm. As such, the lateral control system must always maintain a distance smaller than 19mm.\reffig{fig:RandDistToRail}\\
     The MATLAB simulation is programmed with inputs of pod mass, pod acceleration, and spring and damper coefficients. The simulation models the pod's lateral position when subjected to rails which are offset by values two times those listed in the tube specification PDF. It is important to note that this simulation models the pods entire acceleration profile; it starts from rest and reaches the pod's top speed at the end of the graph, so the pod's lateral response behaviour appears to change along the graph. Because of this, the pod tends to return to equilibrium faster on the left portion of the graph. \\
     The rails can either be oscillating back and forth or randomly arranged. They can also be angled to a degree specified in the tube specifications PDF. 
-     \begin{figure}
+     \begin{figure}[H]
     	\centering
         \includegraphics[width=\linewidth]{images/RandDistToRail}
         \label{fig:RandDistToRail}
-        \caption{The plot of the distance to the rail in when the rails are arranged in a random order. AS mentioned we see that the closest that the pod will ever get to the rail is 12mm while the brakes are nominally at 19mm when deployed}
+        \caption{The plot of the distance to the rail in when the rails are arranged in a random order. AS mentioned we see that the closest that the pod will ever get to the rail is less then 12mm while the brakes are nominally at 19mm when deployed}
     \end{figure}
-    \begin{figure}
+    \begin{figure}[H]
         	\centering
         \includegraphics[width=\linewidth]{images/OscillatingMaxDistToRail}
         \label{fig:OMaxDistRail}
-        \caption{This plot is similar to }
+        \caption{This plot is similar to \reffig{fig:RandDistToRail} except the the arrangement of the rail in this simulation is not in a random order, they are oscillating. Again we can see that the closest the pod will get to the rail in less then 12mm }
     \end{figure}
     
     
-    \begin{figure}
+    \begin{figure}[H]
     	\centering
         \includegraphics[width=\linewidth]{images/RandPodLateralResponse}
         \label{fig:RandpodLateralResponse}
-        \caption{FEA of the Magnet Bar}
+        \caption{This simulation was dong to show how the pod will respond to the specifications of rail in random order.}
     \end{figure}
-    \begin{figure}
+    \begin{figure}[H]
     	\centering
         \includegraphics[width=\linewidth]{images/OscillatingPodLateralResponse}
         \label{fig:OPodLateralRespnse}
-        \caption{FEA of the Magnet Bar}
+        \caption{This simulation was dong to show how the pod will respond to the specifications of the actual rail. But the rails are oscillating}
     \end{figure}    
 
     High rpm issues, both structural and thermal\\
@@ -49,10 +49,12 @@
     \section{Tests \& Validation }
     \subsection{Damper Coefficient Measurement}
     From our simulations we have determined a damping coefficient which is ideal for our pod. The dampers we have sourced have adjustable damping coefficients, so they must be tested to verify their coefficient is our planned value.\\
-    To test these values, we can hang a mass from the damper and observe its behavior as we let it fall. Using photoelectric distance sensors we can determine the instantaneous velocity of the mass as it falls. Once the mass reaches its steady state velocity, the damper's damping coefficient will be given by:
-    \begin{equation}\label{eq:damper}
+    To test these values, we can hang a mass from the damper and observe its behaviour as we let it fall. Using photoelectric distance sensors we can determine the instantaneous velocity of the mass as it falls. Once the mass reaches its steady state velocity, the damper's damping coefficient will be given by:
+%     \begin{equation}\label{eq:damper}
+	\[
      b = \frac{mg}{v}
-    \end{equation}
+    \]
+%     \end{equation}
     \subsection{Static Impulse Test}
     The fully-assembled pod will be loaded on an in-house test track and subjected to an impulse. Sensor values and video will then be analyzed to ensure pod is sufficiently damped (i.e., the pod does not oscillate past its equilibrium point more than twice).
     \subsection{Dynamic Integration Test}
