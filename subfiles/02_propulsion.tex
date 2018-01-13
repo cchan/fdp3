@@ -65,7 +65,7 @@ In the acceleration case, an additional global acceleration of 8 m/s rearwards w
 \caption{Displacements on the friction drive structure during acceleration.}\label{fig:acceldisp}
 \end{figure}
 
-In the braking case, a global acceleration of 30 m/s forwards was added, as well as a cumulative force of 1500 N on the frame connections. In this case, the wheel was fixed and the frame connections unfixed in the longitudinal direction. The solve gave a maximum stress of 113.4MPa on a motor mounting screw and a minimum safety factor of 2.70. The region of greatest stress is shown in \ref{fig:brakestress}. A maximum displacement of 1.2 mm was found in the same location as the previous case.
+In the braking case, a global acceleration of \SI{30}{m/s} forwards was added, as well as a cumulative force of \SI{1500}{N} on the frame connections. In this case, the wheel was fixed and the frame connections unfixed in the longitudinal direction. The solve gave a maximum stress of \SI{113.4}{MPa} on a motor mounting screw and a minimum safety factor of 2.70. The region of greatest stress is shown in \ref{fig:brakestress}. A maximum displacement of 1.2 mm was found in the same location as the previous case.
 
 \begin{figure}[H]
 \includegraphics[width=\textwidth]{images/BrakingStress.png}
@@ -459,10 +459,10 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     \begin{figure}
         \centering
         \includegraphics[width=\linewidth]{images/fig22}
-        \caption{Caption needed}
+        \caption{FEA mesh on wheel}
         \label{fig:mesh}
     \end{figure}
-    The mesh (\reffig{fig:mesh}) was created with an average element size of 2\% \textbf{units?} of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 6 mesh refinements with a convergence tolerance of 5\%.
+    The mesh (\reffig{fig:mesh}) was created with an average element size of 2\% of the model based size had a parabolic element order. To refine our mesh and create more accurate results, adaptive mesh refinement was done in the areas of peak stress, at a cycle of 6 mesh refinements with a convergence tolerance of 5\%.
 
     \section{Friction Braking Calipers}
     \label{sec:friction-braking-calipers}
@@ -554,7 +554,7 @@ As a result of this relatively high mass flow rate, the \SI{50}{psi} pressure re
     
 	The main test rig involves a flywheel that comes into contact with the drive wheel, which is used to substitute the I-Beam track, in order to test the endurance of the wheel. This rig can also be used to test eddy current braking and lateral systems.\\
     
-    Unfortunately, initial investigation revealed that a full speed test (\SI{90}{m/s}) would require an unreasonably large and strong flywheel, which would be extremely expensive and dangerous to design. Therefore, the current design of the test rig is intended to conduct half-speed tests (\approx \SI{45}{m/s}). This provides a cheaper and more realistic design while still obtaining valuable real-world data from which we can test hypotheses and extrapolate useful conclusions.\\
+    Unfortunately, initial investigation revealed that a full speed test (\SI{90}{m/s}) would require an unreasonably large and strong flywheel, which would be extremely expensive and dangerous to design. Therefore, the current design of the test rig is intended to conduct half-speed tests ($\approx \SI{45}{m/s}$). This provides a cheaper and more realistic design while still obtaining valuable real-world data from which we can test hypotheses and extrapolate useful conclusions.\\
     
     The flywheel is composed of \SI{16}{in} diameter aluminum bar stock, which replicates the material of the I-Beam, along with additional \SI{12}{in} diameter cast iron bar stock that is used to increase the moment of inertia to the required level. The cost of the flywheel and the mount is approximately 1120 CAD in total. The concept design of the test rig is shown in \reffig{fig:testrig}.\\
     
